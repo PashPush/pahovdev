@@ -1,13 +1,29 @@
 import gsap from 'gsap';
 import { ScrollTrigger, SplitText } from 'gsap/all';
 
+import Navbar from './components/Navbar';
+import Hero from './sections/Hero';
+import Projects from './sections/Projects';
+import Experience from './sections/Experience';
+import Feedback from './sections/Feedback';
+import Skills from './sections/Skills';
+import Additional from './sections/Additional';
+import Contact from './sections/Contact';
+
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const App = () => {
   return (
-    <main>
-      <h1 className="flex justify-center items-center text-5xl h-[100vh]">Pavel Khovalkin's site</h1>
-    </main>
+    <>
+      <Navbar />
+      <Hero />
+      <Projects />
+      <Experience />
+      <Feedback />
+      <Skills />
+      <Additional />
+      <Contact />
+    </>
   );
 };
 
