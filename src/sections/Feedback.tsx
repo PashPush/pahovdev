@@ -1,5 +1,5 @@
 const Feedback = () => {
-  return <div>Feedback</div>;
+  return <div className="h-screen">Feedback</div>;
 };
 
 export default Feedback;
