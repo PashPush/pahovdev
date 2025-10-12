@@ -68,4 +68,8 @@ const expCards = [
   },
 ];
 
-export { words, navLinks, expCards };
+const featureLists = ['Удобство пользователя', 'Сила команды', 'Постоянное развитие'];
+
+const goodLists = ['Ценность для бизнеса', 'Качество кода', 'Соблюдение сроков'];
+
+export { words, navLinks, expCards, featureLists, goodLists };
