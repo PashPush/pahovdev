@@ -5,10 +5,14 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { expCards } from '../constants';
 import TitleHeader from '../components/TitleHeader';
 import BlinkCard from '../components/BlinkCard';
+import { useMediaQuery } from 'react-responsive';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Experience = () => {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+  const timelineHeight = isMobile ? '90%' : '70%';
+
   useGSAP(() => {
     gsap.utils.toArray('.timeline-card').forEach(card => {
       gsap.from(card as HTMLElement, {
@@ -30,7 +34,7 @@ const Experience = () => {
       scrollTrigger: {
         trigger: '.timeline',
         start: 'top center',
-        end: '70% center',
+        end: `${timelineHeight} center`,
         onUpdate: self => {
           gsap.to('.timeline', {
             scaleY: 1 - self.progress,

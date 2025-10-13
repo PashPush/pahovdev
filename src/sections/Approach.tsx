@@ -2,8 +2,9 @@ import gsap from 'gsap';
 import { useMediaQuery } from 'react-responsive';
 import { useGSAP } from '@gsap/react';
 import { featureLists, goodLists } from '../constants/index.ts';
+import { classNames } from '../lib/classNames.ts';
 
-const Feedback = () => {
+const Approach = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
   useGSAP(() => {
@@ -13,8 +14,8 @@ const Feedback = () => {
       scrollTrigger: {
         trigger: '#approach',
         start,
-        end: 'bottom center',
-        scrub: 3,
+        end: '+=500',
+        scrub: 2.5,
         pin: true,
       },
     });
@@ -25,10 +26,15 @@ const Feedback = () => {
 
     maskTimeline
       .to('.will-grow', contentAnimation)
-      // .to('.will-fire', { opacity: 0.4, ease: 'power1.inOut' })
       .to({}, { duration: 2 })
       .to('.will-fade', { opacity: 0, stagger: 0.2, ease: 'power1.inOut' })
-      .to('.masked-img', { scale: 1.3, maskPosition: 'center', maskSize: '420%', duration: 1, ease: 'power1.inOut ' })
+      .to('.masked-img', {
+        scale: 1.8,
+        maskPosition: 'center',
+        maskSize: '450%',
+        duration: 1,
+        ease: 'power1.inOut ',
+      })
       .to('#masked-content', { opacity: 1, duration: 1, ease: 'power1.inOut' });
   });
 
@@ -41,7 +47,7 @@ const Feedback = () => {
         </h2>
 
         <div className="content">
-          <ul className="space-y-4 will-fade will-grow">
+          <ul className="space-y-4 will-fade will-grow md:mr-24 z-10">
             {goodLists.map((feature, index) => (
               <li key={index} className="flex items-center gap-2">
                 <img src="/images/check.png" alt="check" />
@@ -53,12 +59,14 @@ const Feedback = () => {
           <div className="approach-img">
             <img
               src="/images/pavel-light1.jpg"
-              alt="approach"
-              className="abs-center masked-img size-full object-contain"
+              alt="my approach"
+              className={classNames('abs-center masked-img size-full object-contain', {
+                'masked-img-mobile': isMobile,
+              })}
             />
           </div>
 
-          <ul className="space-y-4 will-fade will-grow">
+          <ul className="space-y-4 will-fade will-grow md:ml-24 z-10">
             {featureLists.map((feature, index) => (
               <li key={index} className="flex items-center justify-start gap-2">
                 <img src="/images/check.png" alt="check" />
@@ -88,4 +96,4 @@ const Feedback = () => {
     </div>
   );
 };
-export default Feedback;
+export default Approach;

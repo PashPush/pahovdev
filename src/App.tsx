@@ -5,7 +5,7 @@ import Navbar from './components/Navbar';
 import Hero from './sections/Hero';
 import Projects from './sections/Projects';
 import Experience from './sections/Experience';
-import Feedback from './sections/Feedback';
+import Approach from './sections/Approach';
 import Skills from './sections/Skills';
 import Additional from './sections/Additional';
 import Contact from './sections/Contact';
@@ -19,9 +19,9 @@ const App = () => {
       <Hero />
       <Projects />
       <Experience />
-      <Feedback />
-      <Skills />
+      <Approach />
       <Additional />
+      <Skills />
       <Contact />
     </>
   );

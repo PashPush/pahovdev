@@ -13,7 +13,7 @@ body {
   background-color: black;
   color: white;
   scroll-behavior: smooth;
-  font-family: 'Mona Sans', sans-serif;
+  font-family: sans-serif;
 }
 
 section {
@@ -49,7 +49,7 @@ section {
 }
 
 @utility abs-center {
-  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+  @apply absolute top-[55%] left-1/2 -translate-x-1/2 -translate-y-1/2;
 }
 
 @utility text-gradient {
@@ -63,11 +63,16 @@ section {
   background: radial-gradient(circle at center, #434343 0%, #000 50%, transparent 100%);
 }
 
-@utility masked-img {
+.masked-img {
   mask-image: url('/images/cogs2.webp');
   mask-repeat: no-repeat;
   mask-position: center;
-  mask-size: 50%;
+  mask-size: 40%;
+}
+
+.masked-img.masked-img-mobile {
+  mask-size: 70%;
+  top: 25%;
 }
 
 @layer components {
@@ -311,7 +316,7 @@ section {
     }
 
     .approach-img {
-      @apply md:w-[60vw] w-full h-[50vh] md:h-[70vh] rounded-4xl overflow-hidden absolute md:top-1/2 md:-translate-y-1/2 left-1/2 top-10 -translate-x-1/2;
+      @apply w-[100vw] h-[100vh] rounded-4xl absolute md:top-1/2 md:-translate-y-1/2 left-1/2 top-10 -translate-x-1/2;
     }
 
     .masked-container {
@@ -320,14 +325,14 @@ section {
       }
 
       div {
-        @apply opacity-0 md:px-0 px-5 space-y-5 absolute md:bottom-5 bottom-52 left-1/2 -translate-x-1/2;
+        @apply opacity-0 w-full md:px-0 px-5 space-y-5 absolute md:bottom-5 bottom-52 left-1/2 -translate-x-1/2 pt-4 filter-[drop-shadow(2px_4px_6px_rgba(0,0,0,0.6))];
 
         h3 {
-          @apply md:text-5xl text-2xl text-center font-serif md:w-full w-90 text-white;
+          @apply md:text-8xl text-3xl text-center font-serif md:w-full w-90 text-white;
         }
 
         p {
-          @apply text-lg text-center;
+          @apply md:text-3xl text-lg text-center;
         }
       }
     }
@@ -441,4 +446,45 @@ section {
 
 .card:hover::before {
   opacity: 1;
+}
+
+#skills {
+  height: 100vh;
+  width: 400%;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.horizontal-section {
+  background-color: black;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.horizontal-section:nth-child(1) {
+  background-color: #52aeff;
+}
+.horizontal-section:nth-child(2) {
+  background-color: #6d45ce;
+}
+.horizontal-section:nth-child(3) {
+  background-color: #fd5c79;
+}
+.horizontal-section:nth-child(4) {
+  background-color: #19a5aa;
+}
+
+.heading {
+  font-family: sans-serif;
+  font-size: 8vw;
+  font-weight: 300;
+  color: white;
+  letter-spacing: 1vw;
+  text-transform: uppercase;
 }
