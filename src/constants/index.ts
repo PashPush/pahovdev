@@ -8,8 +8,8 @@ const navLinks = [
     link: '#experience',
   },
   {
-    name: 'Отзывы',
-    link: '#feedback',
+    name: 'Мой подход',
+    link: '#approach',
   },
   {
     name: 'Навыки',
