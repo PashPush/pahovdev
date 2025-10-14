@@ -7,14 +7,14 @@ const Skills = () => {
       const horizontalSections = gsap.utils.toArray('.horizontal-section');
 
       gsap.to(horizontalSections, {
-        xPercent: -100 * (horizontalSections.length - 1),
+        xPercent: -110 * (horizontalSections.length - 1),
         ease: 'none',
         scrollTrigger: {
-          trigger: '#skills',
+          trigger: '#skills-screen',
           pin: true,
           scrub: 1,
           snap: 1 / (horizontalSections.length - 1),
-          end: () => '+=' + (document.querySelector('#skills') as HTMLElement).offsetWidth,
+          end: () => '+=' + (document.querySelector('#skills-screen') as HTMLElement).offsetWidth,
         },
       });
     });
@@ -23,21 +23,27 @@ const Skills = () => {
   }, []);
 
   return (
-    <main id="skills">
+    <main id="skills-screen">
+      <div className="h-screen w-[20vw] flex items-center justify-center">
+        <h1 id="skills" className="text-9xl font-bold flex flex-col">
+          <span>S</span>
+          <span>K</span>
+          <span>I</span>
+          <span>L</span>
+          <span>L</span>
+          <span>S</span>
+        </h1>
+      </div>
       <section className="horizontal-section">
-        <h1 className="heading">Horizontal Scroll</h1>
+        <h2 className="heading">Horizontal Scroll</h2>
       </section>
 
       <section className="horizontal-section">
-        <h1 className="heading">01</h1>
+        <h2 className="heading">01</h2>
       </section>
 
       <section className="horizontal-section">
-        <h1 className="heading">02</h1>
-      </section>
-
-      <section className="horizontal-section">
-        <h1 className="heading">03</h1>
+        <h2 className="heading">02</h2>
       </section>
     </main>
   );

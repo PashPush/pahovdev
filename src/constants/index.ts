@@ -1,19 +1,27 @@
 const navLinks = [
   {
+    name: 'Интро',
+    link: '#hero',
+  },
+  {
     name: 'Проекты',
     link: '#projects',
   },
   {
-    name: 'Опыт работы',
+    name: 'Опыт',
     link: '#experience',
   },
   {
-    name: 'Мой подход',
+    name: 'Подход',
     link: '#approach',
   },
   {
     name: 'Навыки',
     link: '#skills',
+  },
+  {
+    name: 'Связь',
+    link: '#contact',
   },
 ];
 
