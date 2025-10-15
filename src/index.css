@@ -345,14 +345,14 @@ section {
       }
 
       div {
-        @apply opacity-0 w-full md:px-0 px-5 space-y-5 absolute md:bottom-5 bottom-52 left-1/2 -translate-x-1/2 py-4 bg-[rgb(0,0,0,0.6)];
+        @apply opacity-0 w-full md:px-0 px-5 space-y-5 absolute md:bottom-5 bottom-10 left-1/2 -translate-x-1/2 py-4 bg-[rgb(0,0,0,0.6)];
 
         h3 {
-          @apply md:text-8xl text-3xl text-center font-serif md:w-full font-yeseva-one w-90 text-white;
+          @apply md:text-8xl text-4xl text-center font-serif w-full font-yeseva-one text-white;
         }
 
         p {
-          @apply md:text-3xl text-lg text-center;
+          @apply md:text-3xl text-2xl text-center;
         }
       }
     }
@@ -361,6 +361,14 @@ section {
   #skills-screen {
     h1 {
       @apply text-9xl font-bold flex flex-col;
+    }
+  }
+
+  .additional {
+    @apply flex md:flex-row flex-col items-center justify-around h-full md:gap-20 gap-5 z-20 relative px-5;
+
+    div {
+      @apply flex-center md:text-5xl text-3xl md:w-1/3 w-full h-1/2 rotate-12 filter-[drop-shadow(2px_4px_10px_rgba(0,0,0,0.5))];
     }
   }
 }

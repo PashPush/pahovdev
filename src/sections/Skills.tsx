@@ -7,7 +7,7 @@ const Skills = () => {
       const horizontalSections = gsap.utils.toArray('.horizontal-section');
 
       gsap.to(horizontalSections, {
-        xPercent: -110 * (horizontalSections.length - 1),
+        xPercent: -112.5 * (horizontalSections.length - 1),
         ease: 'none',
         scrollTrigger: {
           trigger: '#skills-screen',
@@ -24,7 +24,7 @@ const Skills = () => {
 
   return (
     <main id="skills-screen">
-      <div className="h-screen w-[20vw] flex items-center justify-center pt-16">
+      <div className="h-screen w-[25vw] flex items-center justify-center pt-16 bg-black">
         <h1 id="skills">
           <span>S</span>
           <span>K</span>
@@ -38,7 +38,7 @@ const Skills = () => {
         <h2 className="heading">Horizontal Scroll</h2>
       </section>
 
-      <section className="horizontal-section">
+      <section className="horizontal-section ">
         <h2 className="heading">01</h2>
       </section>
 
