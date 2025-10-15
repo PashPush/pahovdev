@@ -40,14 +40,14 @@ const Approach = () => {
 
   return (
     <div id="approach">
-      <div className="md:pt-20 container mx-auto h-full pt-16">
+      <div className="col-between md:pt-12 container mx-auto h-full pt-14">
         <h2 className="will-fade">
           <span>Мой</span>
           ПОДХОД
         </h2>
 
         <div className="content">
-          <ul className="space-y-4 will-fade will-grow md:mr-24 z-10">
+          <ul className="space-y-4 will-fade will-grow md:mr-50 z-10">
             {goodLists.map((feature, index) => (
               <li key={index} className="flex items-center gap-2">
                 <img src="/images/check.png" alt="check" />
@@ -66,7 +66,7 @@ const Approach = () => {
             />
           </div>
 
-          <ul className="space-y-4 will-fade will-grow md:ml-24 z-10">
+          <ul className="space-y-4 will-fade will-grow md:ml-50 z-10">
             {featureLists.map((feature, index) => (
               <li key={index} className="flex items-center justify-start gap-2">
                 <img src="/images/check.png" alt="check" />

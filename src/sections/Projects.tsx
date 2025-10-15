@@ -7,14 +7,14 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Projects = () => {
   const sectionRef = useRef(null);
-  const rydeRef = useRef(null);
-  const libraryRef = useRef(null);
-  const ycDirectoryRef = useRef(null);
+  const project1Ref = useRef(null);
+  const project2Ref = useRef(null);
+  const project3Ref = useRef(null);
 
   useGSAP(() => {
     gsap.fromTo(sectionRef.current, { opacity: 0 }, { opacity: 1, duration: 1.5 });
 
-    const cards = [rydeRef.current, libraryRef.current, ycDirectoryRef.current];
+    const cards = [project1Ref.current, project2Ref.current, project3Ref.current];
 
     cards.forEach((card, index) => {
       gsap.fromTo(
@@ -41,7 +41,7 @@ const Projects = () => {
     <div id="projects" ref={sectionRef} className="app-projects">
       <div className="w-full">
         <div className="projects-layout">
-          <div ref={rydeRef} className="first-project-wrapper">
+          <div ref={project1Ref} className="first-project-wrapper">
             <div className="image-wrapper bg-[#168be8]">
               <img src="/images/project1.png" alt="Project 1" />
             </div>
@@ -52,14 +52,14 @@ const Projects = () => {
           </div>
 
           <div className="project-list-wrapper overflow-hidden">
-            <div className="project" ref={libraryRef}>
+            <div className="project" ref={project2Ref}>
               <div className="image-wrapper bg-[#ffdaf6]">
                 <img src="/images/project2.png" alt="Project 2" />
               </div>
               <h2>Заголовок проекта 2</h2>
             </div>
 
-            <div className="project" ref={ycDirectoryRef}>
+            <div className="project" ref={project3Ref}>
               <div className="image-wrapper bg-[#b7f4b6]">
                 <img src="/images/project3.png" alt="Project 3" />
               </div>

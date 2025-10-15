@@ -48,6 +48,10 @@ section {
   @apply flex flex-col justify-center items-center;
 }
 
+@utility col-between {
+  @apply flex flex-col justify-between items-center;
+}
+
 @utility abs-center {
   @apply absolute top-[55%] left-1/2 -translate-x-1/2 -translate-y-1/2;
 }
@@ -67,7 +71,7 @@ section {
   mask-image: url('/images/cogs2.webp');
   mask-repeat: no-repeat;
   mask-position: center;
-  mask-size: 40%;
+  mask-size: 35%;
 }
 
 .masked-img.masked-img-mobile {
@@ -316,7 +320,7 @@ section {
     @apply flex-center flex-col min-h-dvh p-5 mt-28 relative radial-gradient;
 
     h2 {
-      @apply relative md:text-[16vw] text-6xl text-nowrap leading-none text-center font-yeseva-one text-[#505050] mb-24;
+      @apply relative md:text-[16vw] text-6xl text-nowrap leading-none text-center font-yeseva-one text-[#505050];
 
       span {
         @apply md:text-[4vw] text-[8vw] inline-flex relative left-[-2vw];
@@ -328,7 +332,7 @@ section {
     }
 
     .content {
-      @apply flex md:flex-row flex-col justify-around md:mb-16 md:mt-0 sm:mt-[32vh] mt-50 gap-10;
+      @apply flex w-full md:flex-row md:pt-0 flex-col justify-around gap-10 pt-[20vh];
     }
 
     .approach-img {
@@ -337,7 +341,7 @@ section {
 
     .masked-container {
       h2 {
-        @apply flex-center text-4xl md:text-5xl md:mt-56 text-center mb-10 text-white mt-16 gap-2 relative;
+        @apply flex-center text-4xl md:text-5xl text-center mb-10 text-white gap-2 relative;
       }
 
       div {
@@ -351,6 +355,12 @@ section {
           @apply md:text-3xl text-lg text-center;
         }
       }
+    }
+  }
+
+  #skills-screen {
+    h1 {
+      @apply text-9xl font-bold flex flex-col;
     }
   }
 }

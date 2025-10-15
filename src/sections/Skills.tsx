@@ -24,8 +24,8 @@ const Skills = () => {
 
   return (
     <main id="skills-screen">
-      <div className="h-screen w-[20vw] flex items-center justify-center">
-        <h1 id="skills" className="text-9xl font-bold flex flex-col">
+      <div className="h-screen w-[20vw] flex items-center justify-center pt-16">
+        <h1 id="skills">
           <span>S</span>
           <span>K</span>
           <span>I</span>
