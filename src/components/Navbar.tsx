@@ -42,7 +42,7 @@ const NavBar = () => {
   return (
     <header className={`navbar ${scrolled ? 'scrolled' : 'not-scrolled'}`}>
       <div className="inner">
-        <a href="#hero" className={classNames('logo', { active: currentLink === '#hero' })}>
+        <a href="#hero" className="logo">
           Khovalkin Pavel
         </a>
 
