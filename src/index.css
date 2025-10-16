@@ -341,10 +341,14 @@ section {
 
         h3 {
           @apply md:text-8xl text-4xl text-center font-serif w-full font-yeseva-one text-white;
+
+          .masked-span {
+            @apply opacity-0 mr-2;
+          }
         }
 
         p {
-          @apply md:text-3xl text-2xl text-center;
+          @apply md:text-3xl text-2xl text-center opacity-0;
         }
       }
     }

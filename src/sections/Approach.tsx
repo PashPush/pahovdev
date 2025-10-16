@@ -35,7 +35,9 @@ const Approach = () => {
         duration: 1,
         ease: 'power1.inOut ',
       })
-      .to('#masked-content', { opacity: 1, duration: 1, ease: 'power1.inOut' });
+      .fromTo('#masked-content', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power1.inOut' })
+      .to('.masked-span', { opacity: 1, duration: 1, stagger: 0.3, ease: 'power1.inOut' })
+      .to('.masked-p', { opacity: 1, duration: 1, ease: 'power1.inOut' });
   });
 
   return (
@@ -84,8 +86,12 @@ const Approach = () => {
             {/* <img src="/images/fire.png" className="will-fire" alt="check" /> */}
           </h2>
           <div id="masked-content">
-            <h3>Команда. Процесс. Результат.</h3>
-            <p>
+            <h3>
+              <span className="masked-span">Команда.</span>
+              <span className="masked-span">Процесс.</span>
+              <span className="masked-span">Результат.</span>
+            </h3>
+            <p className="masked-p">
               Умею работать в ритме Kanban и Scrum.
               <br />
               Фокус на качестве, сроках и общем успехе.
