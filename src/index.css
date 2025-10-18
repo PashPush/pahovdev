@@ -205,8 +205,7 @@ section {
           @apply group-hover:text-white transition-colors duration-300;
         }
         &.active {
-          @apply text-white;
-          background: linear-gradient(to top right, rgba(22, 194, 232, 1), rgba(130, 22, 232, 1));
+          @apply text-white bg-[#00ffff];
         }
       }
     }
@@ -355,6 +354,8 @@ section {
   }
 
   #skills-screen {
+    @apply z-10;
+
     h1 {
       @apply text-9xl font-bold flex flex-col;
     }
@@ -516,4 +517,13 @@ section {
   color: white;
   letter-spacing: 1vw;
   text-transform: uppercase;
+}
+
+canvas#neuro {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  display: none;
 }
