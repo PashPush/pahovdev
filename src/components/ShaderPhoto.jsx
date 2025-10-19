@@ -110,12 +110,13 @@ const ShaderPhoto = () => {
     displacement.canvasCursorPrevious = new THREE.Vector2(9999, 9999);
 
     window.addEventListener('pointermove', e => {
-      // Pointer move works on mobile too, that's why we chose it over mouse move
+      const rect = canvas.getBoundingClientRect();
 
-      displacement.screenCursor.x = (e.clientX / sizes.width) * 2 - 1;
-      displacement.screenCursor.y = -(e.clientY / sizes.height) * 2 + 1;
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
 
-      console.log('displacement.screenCursor.x', displacement.screenCursor.x, 'XXX', e.clientX);
+      displacement.screenCursor.x = (x / rect.width) * 2 - 1;
+      displacement.screenCursor.y = -(y / rect.height) * 2 + 1;
     });
 
     // Texture

@@ -2,10 +2,6 @@
 
 @import 'tailwindcss';
 
-:root {
-  --gradient: radial-gradient(circle, #e5e5e5 0%, #fff 100%);
-}
-
 html,
 body {
   width: 100dvw;
@@ -129,31 +125,37 @@ section {
   }
 
   .hero-layout {
-    @apply relative z-10 xl:mt-20 mt-32 md:h-dvh h-[80vh] flex xl:items-center items-start justify-center;
+    @apply relative mt-20 z-10 md:pt-20 p-4;
+
+    .title {
+      @apply flex md:flex-row flex-col justify-evenly xl:text-8xl md:text-[7vw] text-5xl font-yeseva-one text-gray-50 uppercase mb-auto gap-2 opacity-0;
+    }
+  }
+
+  .subtitle {
+    @apply relative text-white md:text-3xl md:leading-11 text-xl z-20;
   }
 
   .hero-text {
-    @apply flex flex-col justify-center md:text-[60px] text-[30px] font-semibold relative z-10 pointer-events-none;
-    img {
-      @apply size-8 md:size-10 object-contain;
-    }
-    .slide {
-      @apply absolute pt-0 px-2 md:px-5 py-[30px] h-[48px] md:h-[78px] md:translate-y-1 translate-y-0 overflow-hidden;
-    }
+    @apply flex flex-col absolute z-10 md:p-20 p-4 md:bottom-0 bottom-5 w-full;
   }
+  /* 
+  .react-img {
+    @apply absolute  -top-18 md:w-[141px] md:h-[129px] w-[80px] h-[73px];
+    filter: grayscale(1) opacity(0.2);
+  } */
 
   .text-span {
-    @apply px-2.5 pb-0.5 mx-1 text-black italic rounded-md;
+    @apply px-2.5 pb-0.5 mx-1 text-black italic rounded-md transition-all duration-300 ease-in-out;
 
-    background: linear-gradient(90deg, rgb(255, 215, 0) 0%, rgb(255, 140, 0) 100%);
+    background: linear-gradient(90deg, rgb(255 255 255) 0%, rgb(149 149 149) 100%);
   }
 
-  .hero-badge {
-    @apply bg-black-200 py-2 px-4 rounded-full w-fit text-sm md:text-base text-nowrap;
-  }
-
-  .hero-3d-layout {
-    @apply xl:w-[70%] w-full h-full min-h-[50vh] absolute xl:-top-20 top-24 xl:-right-20 right-0;
+  .text-span:hover {
+    /* cursor:
+      url('/images/chainsaw.png') 32 28,
+      auto; */
+    background: linear-gradient(90deg, rgb(255 255 255) 0%, rgb(48, 234, 255) 100%);
   }
 
   .navbar {
@@ -173,7 +175,7 @@ section {
     }
 
     .logo {
-      @apply text-white-50 text-xl md:text-2xl font-semibold transition-transform duration-300 hover:scale-105;
+      @apply text-white text-xl md:text-2xl font-semibold transition-transform duration-300 hover:scale-105;
     }
 
     nav.desktop {
@@ -183,7 +185,7 @@ section {
         @apply flex space-x-8;
 
         li {
-          @apply text-white-50 relative;
+          @apply text-white relative;
 
           span {
             @apply transition-colors duration-300 hover:text-white;
@@ -221,21 +223,21 @@ section {
   }
 
   .cta-button {
-    @apply px-4 py-4 rounded-lg bg-black-200 flex justify-center items-center relative cursor-pointer overflow-hidden;
+    @apply px-4 py-4 rounded-lg bg-black-200 flex justify-center items-center relative cursor-pointer overflow-hidden z-20 w-full h-11;
 
     .bg-circle {
       @apply absolute -right-6 origin-center top-1/2 -translate-y-1/2 
         w-[120%] h-[120%] group-hover:size-10 group-hover:right-6
-        rounded-full bg-white-50 transition-all duration-500;
+        rounded-full bg-white transition-all duration-500;
     }
 
     .text {
       @apply uppercase md:text-lg text-black transition-all duration-500
-        group-hover:text-white-50 group-hover:-translate-x-5 xl:translate-x-0 -translate-x-5;
+        group-hover:text-white group-hover:-translate-x-5 xl:translate-x-0 -translate-x-5;
     }
 
     .arrow-wrapper {
-      @apply group-hover:bg-white-50 size-10 rounded-full absolute right-6 top-1/2 
+      @apply group-hover:bg-white size-10 rounded-full absolute right-6 top-1/2 
         -translate-y-1/2 flex justify-center items-center overflow-hidden;
 
       img {
@@ -245,7 +247,7 @@ section {
   }
 
   .app-projects {
-    @apply w-full mt-20 px-5 md:px-20 py-10 md:py-20 flex items-center justify-center;
+    @apply w-full mt-10 px-5 md:px-20 py-10 md:py-20 flex items-center justify-center;
 
     .projects-layout {
       @apply flex xl:flex-row flex-col gap-10 justify-between;
@@ -292,8 +294,12 @@ section {
     }
   }
 
+  :root {
+    --gradient: radial-gradient(circle, #e5e5e5 0%, #fff 100%);
+  }
+
   .card-border {
-    @apply border border-black-50 bg-[rgba(0,0,0,0.6)];
+    @apply border border-black-50 bg-black;
   }
 
   .timeline-wrapper {
@@ -344,7 +350,7 @@ section {
         @apply opacity-0 w-full md:px-0 px-5 space-y-5 absolute md:bottom-5 bottom-10 left-1/2 -translate-x-1/2 py-4 bg-[rgb(0,0,0,0.6)];
 
         h3 {
-          @apply md:text-8xl text-4xl text-center font-serif w-full font-yeseva-one text-white;
+          @apply md:text-8xl text-4xl text-center w-full font-yeseva-one text-white flex flex-wrap justify-center;
 
           .masked-span {
             @apply opacity-0 mr-2;

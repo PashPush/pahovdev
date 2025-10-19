@@ -41,13 +41,13 @@ const Additional = () => {
     <div ref={sectionRef} className="h-[35vh] pb-20 relative">
       <div className="additional">
         <div ref={project1Ref}>
-          Task: <span className="text-gray-300 ml-1">To do</span>
+          Task: <span className="text-gray-300 ml-1 w-max">To do</span>
         </div>
         <div ref={project2Ref}>
-          Task: <span className="text-yellow-200 ml-1">In progress</span>
+          Task: <span className="text-yellow-200 ml-1 w-max">In progress</span>
         </div>
         <div ref={project3Ref}>
-          Task: <span className="text-green-300 ml-1">Done</span>
+          Task: <span className="text-green-300 ml-1 w-max">Done</span>
         </div>
       </div>
 

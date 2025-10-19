@@ -10,8 +10,7 @@ const handleClick = (event: React.MouseEvent, id?: string) => {
   const target = document.getElementById('projects');
 
   if (target && id) {
-    const offset = window.innerHeight * 0.15;
-    const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+    const top = target.getBoundingClientRect().top + window.pageYOffset;
     window.scrollTo({ top, behavior: 'smooth' });
   }
 };
