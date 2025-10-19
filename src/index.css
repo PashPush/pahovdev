@@ -16,6 +16,13 @@ body {
   font-family: sans-serif;
 }
 
+#webgl {
+  position: absolute;
+  top: 0;
+  left: 0;
+  outline: none;
+}
+
 section {
   width: 100dvw;
 }
@@ -123,8 +130,6 @@ section {
 
   .hero-layout {
     @apply relative z-10 xl:mt-20 mt-32 md:h-dvh h-[80vh] flex xl:items-center items-start justify-center;
-    background: url('/images/pavel.jpg') right no-repeat;
-    background-size: contain;
   }
 
   .hero-text {
@@ -288,7 +293,7 @@ section {
   }
 
   .card-border {
-    @apply border border-black-50 bg-black-100;
+    @apply border border-black-50 bg-[rgba(0,0,0,0.6)];
   }
 
   .timeline-wrapper {
