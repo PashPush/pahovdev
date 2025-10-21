@@ -133,7 +133,11 @@ section {
   }
 
   .subtitle {
-    @apply relative text-white md:text-3xl md:leading-11 text-xl z-20;
+    @apply relative text-white md:text-3xl md:leading-11 text-xl z-20 mb-10 mb-14;
+  }
+
+  .big-bottom {
+    @apply mb-20;
   }
 
   .hero-text {
@@ -145,17 +149,55 @@ section {
     filter: grayscale(1) opacity(0.2);
   } */
 
-  .text-span {
-    @apply px-2.5 pb-0.5 mx-1 text-black italic rounded-md transition-all duration-300 ease-in-out;
+  .interface {
+    @apply inline-block absolute  mx-1 text-black italic w-48 select-none text-3xl leading-11;
 
-    background: linear-gradient(90deg, rgb(255 255 255) 0%, rgb(149 149 149) 100%);
+    clip-path: polygon(-200% -500%, 160% -300%, 150% 94%, 0px 94%);
+
+    span {
+      @apply bg-white relative;
+
+      &.inter {
+        @apply rounded-tl-md rounded-bl-md pb-0.5 pl-2.5 z-10;
+      }
+
+      &.faces {
+        @apply absolute rounded-tr-md rounded-br-md pb-0.5 pr-2.5 z-40 leading-9 translate-y-1;
+      }
+    }
+
+    &:hover {
+      @apply cursor-pointer;
+
+      span {
+        @apply bg-orange-50;
+      }
+
+      .chainsaw {
+        @apply translate-y-5;
+      }
+    }
+
+    &.done {
+      @apply cursor-auto;
+
+      span {
+        @apply bg-white;
+      }
+    }
+
+    /* &::before {
+      content: '';
+      @apply absolute bottom-1 -left-20 h-100 w-100 bg-amber-100 z-10;
+    }
+    &::after {
+      content: '';
+      @apply absolute top-10 left-0 h-50 w-50  bg-amber-100 z-10;
+    } */
   }
 
-  .text-span:hover {
-    /* cursor:
-      url('/images/chainsaw.png') 32 28,
-      auto; */
-    background: linear-gradient(90deg, rgb(255 255 255) 0%, rgb(48, 234, 255) 100%);
+  .chainsaw {
+    @apply absolute top-0 right-0 w-40 z-30 transform -rotate-60 translate-y-7 translate-x-5;
   }
 
   .navbar {
@@ -537,4 +579,31 @@ canvas#neuro {
   width: 100%;
   pointer-events: none;
   display: none;
+}
+
+#blade {
+  animation: spinblade 2s infinite linear;
+}
+#engine_front {
+  animation: engineMovement 100ms infinite;
+}
+#fins {
+  animation: engineMovement2 250ms infinite;
+}
+@keyframes spinblade {
+  /* adding the final value at 50% and 100% means we can          have a pause in between the blade spinning   */
+  100% {
+    stroke-dashoffset: -240;
+  }
+}
+
+@keyframes engineMovement {
+  to {
+    transform: translateY(2px);
+  }
+}
+@keyframes engineMovement2 {
+  to {
+    transform: scale(1.01);
+  }
 }

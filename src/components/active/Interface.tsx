@@ -1,0 +1,177 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+import { useRef, useState, useEffect } from 'react';
+import Chainsaw from './Chainsaw';
+import gsap from 'gsap';
+import { classNames } from '../../lib/classNames';
+
+const Interface = () => {
+  const [count, setCount] = useState(0);
+  const containerRef = useRef(null);
+  const isPlayingRef = useRef(false);
+  const activeTimelinesRef = useRef([]);
+
+  useEffect(() => {
+    return () => {
+      activeTimelinesRef.current.forEach(tl => {
+        try {
+          tl.kill();
+        } catch (e) {
+          // skip
+        }
+      });
+      activeTimelinesRef.current = [];
+    };
+  }, []);
+
+  const runStage = stage => {
+    const container = containerRef.current;
+    if (!container) return Promise.resolve();
+
+    const chainsaw = container.querySelector('.chainsaw');
+    const faces = container.querySelector('.faces');
+
+    const tlToPromise = tl =>
+      new Promise(resolve => {
+        tl.eventCallback('onComplete', () => {
+          resolve();
+        });
+        tl.eventCallback('onKill', () => {
+          resolve();
+        });
+      });
+
+    const createdTimelines = [];
+
+    if (stage === 0) {
+      const tl = gsap.timeline();
+      createdTimelines.push(tl);
+
+      tl.to(chainsaw, {
+        translateY: -100,
+        translateX: 85,
+        rotate: 210,
+        width: 170,
+        duration: 1,
+        ease: 'power2.inOut',
+      })
+        .to(container, {
+          'clip-path': 'polygon(-200% -500%, 160% -300%, 150% 300%, 0 300%)',
+          duration: 0,
+        })
+        .to(chainsaw, {
+          translateY: -79,
+          translateX: 60,
+          rotate: 172,
+          width: 260,
+          duration: 0.8,
+          ease: 'power2.inOut',
+        })
+        .to(chainsaw, {
+          translateY: -70,
+          translateX: 70,
+          rotate: 169,
+          duration: 1.6,
+          ease: 'ease-in-out',
+        })
+        .to(faces, { rotate: 2, translateY: 5, duration: 0.3 });
+
+      activeTimelinesRef.current.push(tl);
+      return tlToPromise(tl);
+    }
+
+    if (stage === 1) {
+      const tl = gsap.timeline();
+      createdTimelines.push(tl);
+
+      tl.to(chainsaw, {
+        translateY: -63,
+        translateX: 78,
+        rotate: 165,
+        duration: 0.7,
+        ease: 'power3.inOut',
+      })
+        .to(chainsaw, {
+          translateY: -50,
+          translateX: 65,
+          rotate: 190,
+          duration: 0.9,
+          ease: 'power2.inOut',
+        })
+        .to(chainsaw, {
+          translateY: -47,
+          translateX: 75,
+          rotate: 187,
+          duration: 1,
+          ease: 'power3.inOut',
+        });
+
+      const facesTl = gsap.timeline();
+      createdTimelines.push(facesTl);
+      facesTl.to(faces, { rotate: 3, translateY: 6, duration: 1 });
+
+      activeTimelinesRef.current.push(...createdTimelines);
+      return Promise.all([tlToPromise(tl), tlToPromise(facesTl)]);
+    }
+
+    if (stage === 2) {
+      const maskTl = gsap.timeline();
+      createdTimelines.push(maskTl);
+      maskTl
+        .to(chainsaw, {
+          translateY: -12,
+          translateX: 70,
+          rotate: 175,
+          duration: 1,
+          ease: 'power3.inOut',
+        })
+        .to(chainsaw, {
+          translateX: 66,
+          rotate: 180,
+          duration: 0.5,
+          ease: 'ease-in-out',
+        });
+
+      const facesTl = gsap.timeline();
+      createdTimelines.push(facesTl);
+      facesTl
+        .to({}, { duration: 0.5 })
+        .to(faces, { rotate: 9, translateY: 80, translateX: 5, duration: 0.5 })
+        .to(faces, { rotate: 0, rotateX: 10, translateY: 71, duration: 0.2 })
+        .to(faces, { rotateX: 45, translateY: 69, translateX: 8, skewX: -10, duration: 0.5 });
+
+      activeTimelinesRef.current.push(...createdTimelines);
+      return Promise.all([tlToPromise(maskTl), tlToPromise(facesTl)]);
+    }
+
+    return Promise.resolve();
+  };
+
+  const handleClick = () => {
+    if (isPlayingRef.current) return;
+    if (count > 2) return;
+
+    isPlayingRef.current = true;
+
+    runStage(count)
+      .then(() => {
+        setCount(prev => prev + 1);
+      })
+      .catch(err => {
+        console.error('Animation error', err);
+      })
+      .finally(() => {
+        isPlayingRef.current = false;
+      });
+  };
+
+  return (
+    <div ref={containerRef} onClick={handleClick} className={classNames('interface', { done: count > 2 })}>
+      <span className="inter">интер</span>
+      <Chainsaw />
+      <span className="faces">фейсы</span>
+    </div>
+  );
+};
+
+export default Interface;
