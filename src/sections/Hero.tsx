@@ -23,14 +23,14 @@ const Hero = () => {
           </h1>
         </div>
         <div className="hero-text">
-          <p className={classNames('subtitle', { 'big-bottom': isMobile })}>
+          <div className={classNames('subtitle', { 'big-bottom': isMobile })}>
             Привет,
             <br />
             меня зовут Павел
             <br />Я люблю пилить
             {isMobile ? <br /> : ' '}
             <Interface />
-          </p>
+          </div>
           <Button text="смотреть работы" className="md:w-80 md:h-16 mt-6 h-12" id="work" />
         </div>
       </section>

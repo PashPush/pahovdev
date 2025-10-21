@@ -85,10 +85,10 @@ const Interface = () => {
       createdTimelines.push(tl);
 
       tl.to(chainsaw, {
-        translateY: -63,
-        translateX: 78,
-        rotate: 165,
-        duration: 0.7,
+        translateY: -66,
+        translateX: 74,
+        rotate: 167,
+        duration: 1,
         ease: 'power3.inOut',
       })
         .to(chainsaw, {

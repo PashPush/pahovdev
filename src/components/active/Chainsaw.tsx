@@ -176,8 +176,8 @@ const Chainsaw = () => {
               rx="14.5"
               fill="#CCD6D8"
               stroke="#EEEEEE"
-              stroke-width="3"
-              stroke-dasharray="3 3"
+              strokeWidth="3"
+              strokeDasharray="3 3"
             />
             <rect
               id="outline"
@@ -188,9 +188,9 @@ const Chainsaw = () => {
               rx="13"
               stroke="#EEEEEE"
               fill="#BBBBBB"
-              stroke-width="3"
+              strokeWidth="3"
             />
-            <rect id="inner shadow" x="141" y="70" width="12" height="23" fill="#828181" fill-opacity="0.44" />
+            <rect id="inner shadow" x="141" y="70" width="12" height="23" fill="#828181" fillOpacity="0.44" />
           </g>
           <path
             id="bg_4"
