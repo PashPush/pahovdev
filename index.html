@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pahov dev</title>
   </head>
@@ -71,7 +73,7 @@
           noise = max(.0, noise - .5);
           noise *= (1. - length(vUv - .2));
 
-          color = normalize(vec3(.2, .5 + .4 * cos(3. * u_scroll_progress), .5 + .5 * sin(3. * u_scroll_progress)));
+          color = normalize(vec3(1,1,1));
 
           color = color * noise;
 

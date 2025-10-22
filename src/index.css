@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Yeseva+One&display=swap');
 
 @import 'tailwindcss';
 
@@ -9,7 +9,7 @@ body {
   background-color: black;
   color: white;
   scroll-behavior: smooth;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 #webgl {
@@ -133,7 +133,7 @@ section {
   }
 
   .subtitle {
-    @apply relative text-white md:text-4xl md:leading-11 text-2xl z-20 mb-10 mb-14;
+    @apply relative text-white md:text-4xl md:leading-11 text-2xl z-20 mb-10;
   }
 
   .hero-text {
@@ -146,7 +146,7 @@ section {
   } */
 
   .interface {
-    @apply inline-block relative text-black italic w-48 select-none text-3xl leading-11;
+    @apply inline-block relative text-black w-48 select-none text-3xl leading-11;
 
     clip-path: polygon(-200% -500%, 160% -300%, 150% 94%, 0px 94%);
 
