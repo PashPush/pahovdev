@@ -23,7 +23,7 @@ const Hero = () => {
           </h1>
         </div>
         <div className="hero-text">
-          <div className={classNames('subtitle', { 'big-bottom': isMobile })}>
+          <div className="subtitle">
             Привет,
             <br />
             меня зовут Павел

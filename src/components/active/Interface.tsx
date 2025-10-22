@@ -3,9 +3,12 @@
 import { useRef, useState, useEffect } from 'react';
 import Chainsaw from './Chainsaw';
 import gsap from 'gsap';
+import { useMediaQuery } from 'react-responsive';
 import { classNames } from '../../lib/classNames';
+import Chips from './Chips';
 
 const Interface = () => {
+  const isMobile = useMediaQuery({ maxWidth: 460 });
   const [count, setCount] = useState(0);
   const containerRef = useRef(null);
   const isPlayingRef = useRef(false);
@@ -30,6 +33,7 @@ const Interface = () => {
 
     const chainsaw = container.querySelector('.chainsaw');
     const faces = container.querySelector('.faces');
+    const chips = container.querySelector('.wood-chips');
 
     const tlToPromise = tl =>
       new Promise(resolve => {
@@ -48,8 +52,8 @@ const Interface = () => {
       createdTimelines.push(tl);
 
       tl.to(chainsaw, {
-        translateY: -100,
-        translateX: 85,
+        translateY: -110,
+        translateX: 100,
         rotate: 210,
         width: 170,
         duration: 1,
@@ -60,21 +64,28 @@ const Interface = () => {
           duration: 0,
         })
         .to(chainsaw, {
-          translateY: -79,
+          translateY: -77,
           translateX: 60,
-          rotate: 172,
+          rotate: 178,
           width: 260,
           duration: 0.8,
           ease: 'power2.inOut',
         })
         .to(chainsaw, {
-          translateY: -70,
+          translateY: -75,
           translateX: 70,
           rotate: 169,
           duration: 1.6,
           ease: 'ease-in-out',
         })
-        .to(faces, { rotate: 2, translateY: 5, duration: 0.3 });
+        .to(faces, { rotate: 1, translateY: 5, duration: 0.3 });
+
+      const chipsTl = gsap.timeline();
+      createdTimelines.push(chipsTl);
+      chipsTl
+        .to({}, { duration: 1.7 })
+        .to(chips, { opacity: 1, duration: 0.1 })
+        .to(chips, { translateY: -65, duration: 1.5 });
 
       activeTimelinesRef.current.push(tl);
       return tlToPromise(tl);
@@ -85,30 +96,36 @@ const Interface = () => {
       createdTimelines.push(tl);
 
       tl.to(chainsaw, {
-        translateY: -66,
-        translateX: 74,
-        rotate: 167,
+        translateY: -70,
+        translateX: 60,
+        rotate: 160,
         duration: 1,
         ease: 'power3.inOut',
       })
         .to(chainsaw, {
-          translateY: -50,
-          translateX: 65,
-          rotate: 190,
-          duration: 0.9,
-          ease: 'power2.inOut',
+          translateY: -40,
+          translateX: 90,
+          rotate: 205,
+          duration: 1.5,
+          ease: 'power3.inOut',
         })
         .to(chainsaw, {
-          translateY: -47,
-          translateX: 75,
-          rotate: 187,
+          translateY: -35,
+          rotate: 195,
           duration: 1,
           ease: 'power3.inOut',
         });
 
+      const chipsTl = gsap.timeline();
+      createdTimelines.push(chipsTl);
+      chipsTl
+        .to(chips, { translateY: -60, rotate: -5, duration: 1 })
+        .to(chips, { translateY: -55, translateX: 0, rotate: 25, duration: 1.5 })
+        .to(chips, { translateY: -52, translateX: -6, rotate: 18, duration: 1 });
+
       const facesTl = gsap.timeline();
       createdTimelines.push(facesTl);
-      facesTl.to(faces, { rotate: 3, translateY: 6, duration: 1 });
+      facesTl.to({}, { duration: 2.5 }).to(faces, { rotate: 3, translateY: 7, duration: 1 });
 
       activeTimelinesRef.current.push(...createdTimelines);
       return Promise.all([tlToPromise(tl), tlToPromise(facesTl)]);
@@ -121,8 +138,8 @@ const Interface = () => {
         .to(chainsaw, {
           translateY: -12,
           translateX: 70,
-          rotate: 175,
-          duration: 1,
+          rotate: 172,
+          duration: 1.2,
           ease: 'power3.inOut',
         })
         .to(chainsaw, {
@@ -131,6 +148,10 @@ const Interface = () => {
           duration: 0.5,
           ease: 'ease-in-out',
         });
+
+      const chipsTl = gsap.timeline();
+      createdTimelines.push(chipsTl);
+      chipsTl.to(chips, { translateY: -30, rotate: 10, duration: 0.75 }).to(chips, { display: 'none', duration: 0 });
 
       const facesTl = gsap.timeline();
       createdTimelines.push(facesTl);
@@ -167,7 +188,8 @@ const Interface = () => {
 
   return (
     <div ref={containerRef} onClick={handleClick} className={classNames('interface', { done: count > 2 })}>
-      <span className="inter">интер</span>
+      <span className={classNames('inter', { 'no-margin': isMobile })}>интер</span>
+      <Chips />
       <Chainsaw />
       <span className="faces">фейсы</span>
     </div>

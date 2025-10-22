@@ -133,11 +133,7 @@ section {
   }
 
   .subtitle {
-    @apply relative text-white md:text-3xl md:leading-11 text-xl z-20 mb-10 mb-14;
-  }
-
-  .big-bottom {
-    @apply mb-20;
+    @apply relative text-white md:text-4xl md:leading-11 text-2xl z-20 mb-10 mb-14;
   }
 
   .hero-text {
@@ -150,19 +146,23 @@ section {
   } */
 
   .interface {
-    @apply inline-block absolute  mx-1 text-black italic w-48 select-none text-3xl leading-11;
+    @apply inline-block relative text-black italic w-48 select-none text-3xl leading-11;
 
     clip-path: polygon(-200% -500%, 160% -300%, 150% 94%, 0px 94%);
 
     span {
-      @apply bg-white relative;
+      @apply bg-white relative leading-11;
 
       &.inter {
-        @apply rounded-tl-md rounded-bl-md pb-0.5 pl-2.5 z-10;
+        @apply rounded-tl-md rounded-bl-md pb-0.5 pl-2.5 z-10 ml-2 pr-[1px];
+
+        &.no-margin {
+          @apply ml-0;
+        }
       }
 
       &.faces {
-        @apply absolute rounded-tr-md rounded-br-md pb-0.5 pr-2.5 z-40 leading-9 translate-y-1;
+        @apply absolute rounded-tr-md rounded-br-md pb-[1px] pr-2.5 z-40 leading-9 translate-y-1 -translate-x-[1px];
       }
     }
 
@@ -170,7 +170,7 @@ section {
       @apply cursor-pointer;
 
       span {
-        @apply bg-orange-50;
+        @apply bg-[#eaffff];
       }
 
       .chainsaw {
@@ -605,5 +605,95 @@ canvas#neuro {
 @keyframes engineMovement2 {
   to {
     transform: scale(1.01);
+  }
+}
+.wood-chips {
+  position: absolute;
+  z-index: 29;
+  left: 50%;
+  top: 50%;
+  transform: translate(-40%, -152%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.wood-chips.visible {
+  opacity: 1;
+}
+
+.chip {
+  fill: #00ffff;
+  transform-origin: center;
+  opacity: 0;
+  animation: chipBurst 0.35s ease-out infinite;
+}
+
+/* Разные направления выстрела */
+.chip:nth-child(1) {
+  --tx: -30px;
+  --ty: -35px;
+  --rot: -30deg;
+  animation-delay: 0s;
+}
+.chip:nth-child(2) {
+  --tx: 20px;
+  --ty: -42px;
+  --rot: 20deg;
+  animation-delay: 0.05s;
+}
+.chip:nth-child(3) {
+  --tx: 5px;
+  --ty: -32px;
+  --rot: 5deg;
+  animation-delay: 0.1s;
+}
+.chip:nth-child(4) {
+  --tx: -10px;
+  --ty: -40px;
+  --rot: -15deg;
+  animation-delay: 0.15s;
+}
+.chip:nth-child(5) {
+  --tx: 30px;
+  --ty: -29px;
+  --rot: 30deg;
+  animation-delay: 0.2s;
+}
+.chip:nth-child(6) {
+  --tx: -27px;
+  --ty: -30px;
+  --rot: -27deg;
+  animation-delay: 0s;
+}
+.chip:nth-child(7) {
+  --tx: 16px;
+  --ty: -31px;
+  --rot: 16deg;
+  animation-delay: 0.07s;
+}
+.chip:nth-child(8) {
+  --tx: 8px;
+  --ty: -42px;
+  --rot: 8deg;
+  animation-delay: 0.13s;
+}
+.chip:nth-child(9) {
+  --tx: -25px;
+  --ty: -20px;
+  --rot: -40deg;
+  animation-delay: 0.18s;
+}
+
+@keyframes chipBurst {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--tx), var(--ty)) rotate(var(--rot)) scale(0.8);
+    opacity: 0;
   }
 }
