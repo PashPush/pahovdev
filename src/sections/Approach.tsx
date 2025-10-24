@@ -6,6 +6,7 @@ import { classNames } from '../lib/classNames.ts';
 
 const Approach = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
+  const isSmallMobile = useMediaQuery({ maxWidth: 460 });
 
   useGSAP(() => {
     const start = isMobile ? 'top 1%' : 'top top';
@@ -24,6 +25,8 @@ const Approach = () => {
       ? { stagger: 0.8, translateX: 20, ease: 'power1.inOut' }
       : { scale: 1.2, stagger: 0.8, ease: 'power1.inOut' };
 
+    const translateY = isSmallMobile ? 130 : 0;
+
     maskTimeline
       .to('.will-grow', contentAnimation)
       .to({}, { duration: 2 })
@@ -32,6 +35,7 @@ const Approach = () => {
         scale: 1.8,
         maskPosition: 'center',
         maskSize: '450%',
+        translateY: translateY,
         duration: 1,
         ease: 'power1.inOut ',
       })

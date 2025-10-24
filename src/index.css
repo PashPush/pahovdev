@@ -144,7 +144,7 @@ body {
   .interface {
     @apply inline-block relative text-black w-48 select-none text-3xl leading-11;
 
-    clip-path: polygon(-200% -500%, 160% -300%, 150% 94%, 0px 94%);
+    clip-path: polygon(-200% -500%, 160% -300%, 150% 92%, 0px 92%);
 
     span {
       @apply bg-white relative leading-11;

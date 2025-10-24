@@ -38,7 +38,7 @@ const Additional = () => {
     });
   }, []);
   return (
-    <div ref={sectionRef} className="h-[35vh] pb-20 relative">
+    <div ref={sectionRef} className="h-[43vh] pb-20 relative">
       <div className="additional">
         <div ref={project1Ref}>
           Task: <span className="text-gray-300 ml-1 w-max">To do</span>
