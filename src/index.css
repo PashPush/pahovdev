@@ -422,11 +422,7 @@ body {
     }
 
     .heading {
-      font-size: 7vw;
-      font-weight: 300;
-      color: white;
-      letter-spacing: 1vw;
-      text-transform: uppercase;
+      @apply text-[7vw] font-light text-white;
     }
     .horizontal-section:nth-child(2) {
       background: radial-gradient(circle at 10% 90%, #02ffff 0%, #006363 50%, #001414 100%);
