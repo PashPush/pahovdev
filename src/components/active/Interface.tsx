@@ -99,29 +99,29 @@ const Interface = () => {
         translateY: -70,
         translateX: 60,
         rotate: 160,
-        duration: 1,
-        ease: 'power3.inOut',
+        duration: 0.9,
+        ease: 'power2.inOut',
       })
         .to(chainsaw, {
           translateY: -40,
           translateX: 90,
           rotate: 205,
-          duration: 1.5,
-          ease: 'power3.inOut',
+          duration: 1.3,
+          ease: 'power2.inOut',
         })
         .to(chainsaw, {
           translateY: -35,
           rotate: 195,
-          duration: 1,
-          ease: 'power3.inOut',
+          duration: 0.9,
+          ease: 'power2.inOut',
         });
 
       const chipsTl = gsap.timeline();
       createdTimelines.push(chipsTl);
       chipsTl
-        .to(chips, { translateY: -60, rotate: -5, duration: 1 })
-        .to(chips, { translateY: -55, translateX: 0, rotate: 25, duration: 1.5 })
-        .to(chips, { translateY: -52, translateX: -6, rotate: 18, duration: 1 });
+        .to(chips, { translateY: -60, rotate: -5, duration: 0.9 })
+        .to(chips, { translateY: -55, translateX: 0, rotate: 25, duration: 1.3 })
+        .to(chips, { translateY: -52, translateX: -6, rotate: 18, duration: 0.9 });
 
       const facesTl = gsap.timeline();
       createdTimelines.push(facesTl);

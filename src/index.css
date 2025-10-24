@@ -19,10 +19,6 @@ body {
   outline: none;
 }
 
-section {
-  width: 100dvw;
-}
-
 @theme {
   --font-sans: sans-serif;
   --font-yeseva-one: 'Yeseva One', serif;
@@ -410,7 +406,36 @@ section {
     @apply z-10;
 
     h1 {
-      @apply text-9xl font-bold flex flex-col;
+      @apply md:text-9xl text-8xl  font-bold flex flex-col;
+    }
+  }
+
+  #skills-screen {
+    @apply h-screen md:w-[290%] w-[350%] flex flex-nowrap;
+
+    .skills-word {
+      @apply h-screen md:w-[20vw] w-[25vw] flex items-center justify-center pt-16 bg-black;
+    }
+
+    section.horizontal-section {
+      @apply md:w-[80vw] w-[100vw] flex-center flex-col bg-black h-screen  bg-center bg-no-repeat;
+    }
+
+    .heading {
+      font-size: 7vw;
+      font-weight: 300;
+      color: white;
+      letter-spacing: 1vw;
+      text-transform: uppercase;
+    }
+    .horizontal-section:nth-child(2) {
+      background: radial-gradient(circle at 10% 90%, #02ffff 0%, #006363 50%, #001414 100%);
+    }
+    .horizontal-section:nth-child(3) {
+      background: radial-gradient(circle at 50% 90%, #ff9640 0%, #a64b00 50%, #421f02 100%);
+    }
+    .horizontal-section:nth-child(4) {
+      background: radial-gradient(circle at 30% 10%, #cc33cc 0%, #660066 50%, #2d022d 100%);
     }
   }
 
@@ -530,46 +555,6 @@ section {
 
 .card:hover::before {
   opacity: 1;
-}
-
-#skills-screen {
-  height: 100vh;
-  width: 350%;
-  display: flex;
-  flex-wrap: nowrap;
-}
-
-.horizontal-section {
-  background-color: black;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.horizontal-section:nth-child(1) {
-  background-color: #52aeff;
-}
-.horizontal-section:nth-child(2) {
-  background-color: #6d45ce;
-}
-.horizontal-section:nth-child(3) {
-  background-color: #fd5c79;
-}
-.horizontal-section:nth-child(4) {
-  background-color: #19a5aa;
-}
-
-.heading {
-  font-size: 8vw;
-  font-weight: 300;
-  color: white;
-  letter-spacing: 1vw;
-  text-transform: uppercase;
 }
 
 canvas#neuro {
@@ -696,4 +681,60 @@ canvas#neuro {
     transform: translate(var(--tx), var(--ty)) rotate(var(--rot)) scale(0.8);
     opacity: 0;
   }
+}
+
+#content {
+  background-color: transparent;
+  background-image:
+    linear-gradient(
+      0deg,
+      transparent 9%,
+      rgba(255, 255, 255, 0.2) 10%,
+      rgba(255, 255, 255, 0.2) 12%,
+      transparent 13%,
+      transparent 29%,
+      rgba(255, 255, 255, 0.1) 30%,
+      rgba(255, 255, 255, 0.1) 31%,
+      transparent 32%,
+      transparent 49%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0.1) 51%,
+      transparent 52%,
+      transparent 69%,
+      rgba(255, 255, 255, 0.1) 70%,
+      rgba(255, 255, 255, 0.1) 71%,
+      transparent 72%,
+      transparent 89%,
+      rgba(255, 255, 255, 0.1) 90%,
+      rgba(255, 255, 255, 0.1) 91%,
+      transparent 92%,
+      transparent
+    ),
+    linear-gradient(
+      90deg,
+      transparent 9%,
+      rgba(255, 255, 255, 0.2) 10%,
+      rgba(255, 255, 255, 0.2) 12%,
+      transparent 13%,
+      transparent 29%,
+      rgba(255, 255, 255, 0.1) 30%,
+      rgba(255, 255, 255, 0.1) 31%,
+      transparent 32%,
+      transparent 49%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0.1) 51%,
+      transparent 52%,
+      transparent 69%,
+      rgba(255, 255, 255, 0.1) 70%,
+      rgba(255, 255, 255, 0.1) 71%,
+      transparent 72%,
+      transparent 89%,
+      rgba(255, 255, 255, 0.1) 90%,
+      rgba(255, 255, 255, 0.1) 91%,
+      transparent 92%,
+      transparent
+    );
+
+  height: 100%;
+  background-size: 50px 50px;
 }

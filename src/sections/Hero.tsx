@@ -6,7 +6,6 @@ import Button from '../components/Button';
 import ShaderPhoto from '../components/ShaderPhoto';
 import Interface from '../components/active/Interface';
 import { useMediaQuery } from 'react-responsive';
-import { classNames } from '../lib/classNames';
 
 const Hero = () => {
   const isMobile = useMediaQuery({ maxWidth: 460 });
@@ -31,7 +30,7 @@ const Hero = () => {
             {isMobile ? <br /> : ' '}
             <Interface />
           </div>
-          <Button text="смотреть работы" className="md:w-80 md:h-16 mt-6 h-12" id="work" />
+          <Button text="смотреть проекты" className="md:w-80 md:h-16 mt-6 h-12" id="work" />
         </div>
       </section>
       <ShaderPhoto />

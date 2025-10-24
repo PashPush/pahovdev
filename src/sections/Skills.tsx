@@ -1,13 +1,16 @@
 import gsap from 'gsap';
 import { useEffect } from 'react';
+import { useMediaQuery } from 'react-responsive';
 
 const Skills = () => {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
   useEffect(() => {
     const ctx = gsap.context(() => {
       const horizontalSections = gsap.utils.toArray('.horizontal-section');
+      const xPercent = isMobile ? -112.5 : -100;
 
       gsap.to(horizontalSections, {
-        xPercent: -112.5 * (horizontalSections.length - 1),
+        xPercent: xPercent * (horizontalSections.length - 1),
         ease: 'none',
         scrollTrigger: {
           trigger: '#skills-screen',
@@ -24,7 +27,7 @@ const Skills = () => {
 
   return (
     <main id="skills-screen">
-      <div className="h-screen w-[25vw] flex items-center justify-center pt-16 bg-black">
+      <div className="skills-word">
         <h1 id="skills">
           <span>S</span>
           <span>K</span>
@@ -35,15 +38,18 @@ const Skills = () => {
         </h1>
       </div>
       <section className="horizontal-section">
-        <h2 className="heading">Horizontal Scroll</h2>
+        <h2 className="heading">БАЗА</h2>
+        {/* <div className="w-72 h-32 text-6xl text-white flex-center absolute bottom-0 bg-green-700">
+          <p>БАЗА</p>
+        </div> */}
       </section>
 
       <section className="horizontal-section ">
-        <h2 className="heading">01</h2>
+        <h2 className="heading">ИНСТРУМЕНТЫ</h2>
       </section>
 
       <section className="horizontal-section">
-        <h2 className="heading">02</h2>
+        <h2 className="heading">ДОПОЛНИТЕЛЬНО</h2>
       </section>
     </main>
   );
