@@ -6,7 +6,7 @@ import Hero from './sections/Hero';
 import Projects from './sections/Projects';
 import Experience from './sections/Experience';
 import Approach from './sections/Approach';
-import Skills from './sections/Skills';
+import Skills from './sections/Skills/Skills';
 import Additional from './sections/Additional';
 import Contact from './sections/Contact';
 

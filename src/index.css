@@ -433,6 +433,26 @@ body {
     .horizontal-section:nth-child(4) {
       background: radial-gradient(circle at 30% 10%, #cc33cc 0%, #660066 50%, #2d022d 100%);
     }
+
+    .skill-list {
+      @apply flex flex-row gap-5 flex-wrap w-2/3;
+    }
+
+    .skill-icon {
+      @apply rounded-full p-3 transition-all duration-300 ease-in-out;
+    }
+
+    .skill-badge {
+      @apply flex items-center gap-3 rounded-full shadow-md pr-5 filter-[saturate(0.4)];
+
+      &:hover {
+        @apply cursor-pointer filter-[none];
+
+        .skill-icon {
+          @apply transform scale-110 shadow-lg;
+        }
+      }
+    }
   }
 
   .additional {

@@ -1,6 +1,7 @@
 import gsap from 'gsap';
 import { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import First from './First';
 
 const Skills = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -15,8 +16,7 @@ const Skills = () => {
         scrollTrigger: {
           trigger: '#skills-screen',
           pin: true,
-          scrub: 1,
-          snap: 1 / (horizontalSections.length - 1),
+          scrub: 0,
           end: () => '+=' + (document.querySelector('#skills-screen') as HTMLElement).offsetWidth,
         },
       });
@@ -38,7 +38,8 @@ const Skills = () => {
         </h1>
       </div>
       <section className="horizontal-section">
-        <h2 className="heading">БАЗА</h2>
+        {/* <h2 className="heading">БАЗА</h2> */}
+        <First />
         {/* <div className="w-72 h-32 text-6xl text-white flex-center absolute bottom-0 bg-green-700">
           <p>БАЗА</p>
         </div> */}
