@@ -8,6 +8,9 @@ import {
   SiFigma,
   SiStorybook,
   SiJest,
+  SiNodedotjs,
+  SiMobx,
+  SiVite,
   SiHtml5,
   SiCss3,
   SiRedux,
@@ -18,6 +21,13 @@ import {
   SiSass,
 } from 'react-icons/si';
 import { FaCode, FaServer } from 'react-icons/fa';
+import { useMediaQuery } from 'react-responsive';
+import { useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+
+gsap.registerPlugin(ScrollTrigger);
 
 type Skill = {
   id: string;
@@ -33,16 +43,19 @@ const frontend: Skill[] = [
   { id: 'javascript', name: 'JavaScript', Icon: SiJavascript, color: '#f7df1e', colorBack: '#c2a902' },
   { id: 'html', name: 'HTML', Icon: SiHtml5, color: '#e34f26', colorBack: '#a63416' },
   { id: 'css', name: 'CSS', Icon: SiCss3, color: '#264de4', colorBack: '#182d8a' },
+  { id: 'react-native', name: 'React Native', Icon: SiReact, color: '#00bcd4', colorBack: '#007888' },
   { id: 'tailwind', name: 'Tailwind', Icon: SiTailwindcss, color: '#38bdf8', colorBack: '#20748f' },
   { id: 'scss', name: 'SCSS', Icon: SiSass, color: '#cc6699', colorBack: '#8b3b62' },
   { id: 'redux', name: 'Redux', Icon: SiRedux, color: '#764abc', colorBack: '#442674' },
+  { id: 'mobx', name: 'MobX', Icon: SiMobx, color: '#df5d15', colorBack: '#833a11' },
   { id: 'zustand', name: 'Zustand', Icon: FaServer, color: '#7e57c2', colorBack: '#483071' },
-  { id: 'react-native', name: 'React Native', Icon: SiReact, color: '#00bcd4', colorBack: '#007888' },
 ];
 
 const backendAndTools: Skill[] = [
   { id: 'next', name: 'Next.js', Icon: SiNextdotjs, color: '#000000', colorBack: '#3a3a3a' },
   { id: 'webpack', name: 'Webpack', Icon: SiWebpack, color: '#8ed6fb', colorBack: '#4c9ac7' },
+  { id: 'vite', name: 'Vite', Icon: SiVite, color: '#8c71fe', colorBack: '#31236b' },
+  { id: 'node', name: 'Node.js', Icon: SiNodedotjs, color: '#417e38', colorBack: '#295722' },
   { id: 'rest', name: 'REST API', Icon: SiPostman, color: '#FF6C37', colorBack: '#b9471b' },
   { id: 'graphql', name: 'GraphQL', Icon: SiGraphql, color: '#e10098', colorBack: '#8a0059' },
   { id: 'docker', name: 'Docker', Icon: SiDocker, color: '#2496ed', colorBack: '#165b8a' },
@@ -57,6 +70,8 @@ const testing: Skill[] = [
 ];
 
 function SkillBadge({ skill }: { skill: Skill }) {
+  const isMobile = useMediaQuery({ maxWidth: 639 });
+
   const { Icon } = skill;
   return (
     <div
@@ -66,21 +81,45 @@ function SkillBadge({ skill }: { skill: Skill }) {
       aria-label={skill.name}
     >
       <span style={{ background: skill.color }} className="skill-icon">
-        <Icon size={40} style={{ color: '#fff', minWidth: 40 }} />
+        <Icon size={isMobile ? 24 : 40} color="#fff" />
       </span>
-      <span className="text-white text-base font-medium" style={{ lineHeight: 1 }}>
+      <span className="skill-text" style={{ lineHeight: 1 }}>
         {skill.name}
       </span>
     </div>
   );
 }
 
-export default function First() {
+const First = () => {
+  const sectionRef = useRef(null);
+
+  useGSAP(() => {
+    gsap.fromTo(sectionRef.current, { opacity: 0 }, { opacity: 1, duration: 1.5 });
+
+    frontend.forEach((card, index) => {
+      gsap.fromTo(
+        card,
+        {
+          opacity: 0,
+        },
+        {
+          opacity: 1,
+          duration: 0.7,
+          delay: 0.1 * (index + 1),
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top bottom-=100',
+          },
+        }
+      );
+    });
+  }, []);
+
   return (
-    <section className="max-w-4xl mx-auto px-4 py-12">
-      <div className="space-y-8">
+    <section ref={sectionRef} className="max-w-4xl p-20">
+      <div className="space-y-12">
         <div>
-          <h3 className="text-lg text-white mb-4">Frontend Core</h3>
+          <h3 className="text-2xl text-white mb-4">Фронтенд База</h3>
           <div className="skill-list" role="list">
             {frontend.map(s => (
               <SkillBadge key={s.id} skill={s} />
@@ -89,7 +128,7 @@ export default function First() {
         </div>
 
         <div>
-          <h3 className="text-lg text-white mb-4">Backend & Tools</h3>
+          <h3 className="text-2xl text-white mb-4">Бэкенд и Инструменты</h3>
           <div className="skill-list" role="list">
             {backendAndTools.map(s => (
               <SkillBadge key={s.id} skill={s} />
@@ -98,7 +137,7 @@ export default function First() {
         </div>
 
         <div>
-          <h3 className="text-lg text-white mb-4">Testing & Component / QA</h3>
+          <h3 className="text-2xl text-white mb-4">Качество Компонентов</h3>
           <div className="skill-list" role="list">
             {testing.map(s => (
               <SkillBadge key={s.id} skill={s} />
@@ -108,4 +147,6 @@ export default function First() {
       </div>
     </section>
   );
-}
+};
+
+export default First;
