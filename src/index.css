@@ -403,18 +403,26 @@ body {
   }
 
   #skills-screen {
-    @apply z-10;
+    @apply z-10 overflow-hidden;
 
     h1 {
       @apply md:text-9xl text-8xl  font-bold flex flex-col;
     }
   }
 
+  .video-mask {
+    @apply relative w-[102%] h-[100vh] overflow-hidden flex-center;
+  }
+
+  .video-mask svg {
+    @apply relative w-full h-auto;
+  }
+
   #skills-screen {
-    @apply h-screen md:w-[290%] w-[350%] flex flex-nowrap;
+    @apply relative h-screen md:w-[370%] w-[425%] flex flex-nowrap;
 
     .skills-word {
-      @apply h-screen md:w-[20vw] w-[25vw] flex items-center justify-center pt-16 bg-black;
+      @apply h-screen md:w-[20vw] w-[25vw] flex items-center justify-center pt-16 bg-black z-40;
     }
 
     section.horizontal-section {
@@ -425,13 +433,24 @@ body {
       @apply text-[7vw] font-light text-white;
     }
     .horizontal-section:nth-child(2) {
-      background: radial-gradient(circle at 10% 90%, #02ffff 0%, #006363 50%, #001414 100%);
+      background: radial-gradient(circle at 10% 90%, #96d6d7 0%, #365050 50%, #001414 100%);
+      z-index: 40;
     }
     .horizontal-section:nth-child(3) {
       background: radial-gradient(circle at 50% 90%, #ff9640 0%, #a64b00 50%, #421f02 100%);
+      z-index: 40;
     }
     .horizontal-section:nth-child(4) {
+      background: transparent;
+      z-index: 30;
+    }
+    .horizontal-section:nth-child(5) {
       background: radial-gradient(circle at 30% 10%, #cc33cc 0%, #660066 50%, #2d022d 100%);
+      z-index: 40;
+    }
+
+    .bg-video {
+      @apply absolute;
     }
 
     .skill-list {
@@ -447,7 +466,7 @@ body {
     }
 
     .skill-badge {
-      @apply flex items-center sm:gap-3 gap-1 rounded-full shadow-md sm:pr-5 pr-2.5 filter-[saturate(0.4)];
+      @apply flex items-center sm:gap-3 gap-1 rounded-full shadow-md sm:pr-5 pr-2.5 filter-[saturate(0.6)];
 
       &:hover {
         @apply cursor-pointer filter-[none];
@@ -596,7 +615,6 @@ canvas#neuro {
   animation: engineMovement2 250ms infinite;
 }
 @keyframes spinblade {
-  /* adding the final value at 50% and 100% means we can          have a pause in between the blade spinning   */
   100% {
     stroke-dashoffset: -240;
   }
@@ -633,7 +651,7 @@ canvas#neuro {
   animation: chipBurst 0.35s ease-out infinite;
 }
 
-/* Разные направления выстрела */
+/* different positions and rotations for each chip */
 .chip:nth-child(1) {
   --tx: -30px;
   --ty: -35px;
@@ -703,6 +721,7 @@ canvas#neuro {
   }
 }
 
+/* engineer's grid */
 #content {
   background-color: transparent;
   background-image:
