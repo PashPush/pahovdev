@@ -15,8 +15,8 @@ const Approach = () => {
       scrollTrigger: {
         trigger: '#approach',
         start,
-        end: '+=500',
-        scrub: 2.5,
+        end: '+=2000',
+        scrub: 1.5,
         pin: true,
       },
     });

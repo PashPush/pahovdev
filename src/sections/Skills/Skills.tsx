@@ -10,20 +10,23 @@ const Skills = () => {
       const horizontalSections = gsap.utils.toArray('.horizontal-section');
       const xPercent = isMobile ? -108.3 : -100;
 
-      gsap.to(horizontalSections, {
-        xPercent: xPercent * (horizontalSections.length - 1),
-        ease: 'none',
+      const tl = gsap.timeline({
         scrollTrigger: {
           trigger: '#skills-screen',
           pin: true,
-          scrub: 0,
+          scrub: 1,
           end: () => '+=' + (document.querySelector('#skills-screen') as HTMLElement).offsetWidth,
         },
+      });
+
+      tl.to({}, { duration: 0.07 }).to(horizontalSections, {
+        xPercent: xPercent * (horizontalSections.length - 1),
+        ease: 'none',
       });
     });
 
     return () => ctx.revert();
-  }, []);
+  }, [isMobile]);
 
   return (
     <main id="skills-screen">
