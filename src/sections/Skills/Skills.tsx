@@ -19,7 +19,7 @@ const Skills = () => {
         },
       });
 
-      tl.to({}, { duration: 0.07 })
+      tl.to({}, { duration: 0.03 })
         .to(horizontalSections, {
           xPercent: xPercent * (horizontalSections.length - 1),
           ease: 'none',

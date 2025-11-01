@@ -33,8 +33,11 @@ const Contact = () => {
   }, []);
 
   return (
-    <div id="contact" ref={sectionRef} className="h-[200vh]">
-      <div className="mt-4">Contact</div>
+    <div id="contact" ref={sectionRef} className="h-[100vh]">
+      <div className="flex-center h-[50vh] text-9xl">Контакты</div>
+      <div className="flex-center h-[50vh] text-6xl z-50 relative text-shadow-[2px_2px_10px_rgba(0,0,0,0.8)]">
+        Telegtam: @pahovdev
+      </div>
     </div>
   );
 };
