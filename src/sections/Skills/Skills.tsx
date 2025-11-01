@@ -19,10 +19,12 @@ const Skills = () => {
         },
       });
 
-      tl.to({}, { duration: 0.07 }).to(horizontalSections, {
-        xPercent: xPercent * (horizontalSections.length - 1),
-        ease: 'none',
-      });
+      tl.to({}, { duration: 0.07 })
+        .to(horizontalSections, {
+          xPercent: xPercent * (horizontalSections.length - 1),
+          ease: 'none',
+        })
+        .to('.skills-word', { opacity: 0 }, '<');
     });
 
     return () => ctx.revert();
