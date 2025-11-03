@@ -5,6 +5,7 @@ import {
   SiJavascript,
   SiPostman,
   SiGraphql,
+  SiGit,
   SiFigma,
   SiStorybook,
   SiJest,
@@ -38,7 +39,7 @@ type Skill = {
 };
 
 const frontend: Skill[] = [
-  { id: 'react', name: 'React', Icon: SiReact, color: '#61dafb', colorBack: '#4a8392' },
+  { id: 'react', name: 'React', Icon: SiReact, color: '#61dafb', colorBack: '#469fb7' },
   { id: 'typescript', name: 'TypeScript', Icon: SiTypescript, color: '#3178C6', colorBack: '#1b3d6d' },
   { id: 'javascript', name: 'JavaScript', Icon: SiJavascript, color: '#f7df1e', colorBack: '#c2a902' },
   { id: 'html', name: 'HTML', Icon: SiHtml5, color: '#e34f26', colorBack: '#a63416' },
@@ -59,24 +60,28 @@ const backendAndTools: Skill[] = [
   { id: 'rest', name: 'REST API', Icon: SiPostman, color: '#FF6C37', colorBack: '#b9471b' },
   { id: 'graphql', name: 'GraphQL', Icon: SiGraphql, color: '#e10098', colorBack: '#8a0059' },
   { id: 'docker', name: 'Docker', Icon: SiDocker, color: '#2496ed', colorBack: '#165b8a' },
-  { id: 'ci', name: 'CI/CD', Icon: FaCode, color: '#ff8a00', colorBack: '#b45c00' }, // fallback icon
+  { id: 'ci', name: 'CI/CD', Icon: FaCode, color: '#ff8a00', colorBack: '#b45c00' },
+  { id: 'git', name: 'Git', Icon: SiGit, color: '#f05134', colorBack: '#92301f' },
 ];
 
 const testing: Skill[] = [
   { id: 'jest', name: 'Jest', Icon: SiJest, color: '#99424f', colorBack: '#5d2830' },
-  { id: 'playwright', name: 'Playwright', Icon: FaCode, color: '#1f8ceb', colorBack: '#14518d' }, // fallback
+  { id: 'playwright', name: 'Playwright', Icon: FaCode, color: '#1f8ceb', colorBack: '#14518d' },
   { id: 'storybook', name: 'Storybook', Icon: SiStorybook, color: '#ff4785', colorBack: '#b0305d' },
   { id: 'figma', name: 'Figma', Icon: SiFigma, color: '#ec87a9', colorBack: '#b9587b' },
 ];
 
 function SkillBadge({ skill }: { skill: Skill }) {
   const isMobile = useMediaQuery({ maxWidth: 639 });
-
   const { Icon } = skill;
+
   return (
     <div
-      className="skill-badge"
-      style={{ background: skill.colorBack ? skill.colorBack : skill.color, width: 'fit-content' }}
+      className="skill-badge opacity-0"
+      style={{
+        background: skill.colorBack ?? skill.color,
+        width: 'fit-content',
+      }}
       role="listitem"
       aria-label={skill.name}
     >
@@ -91,24 +96,46 @@ function SkillBadge({ skill }: { skill: Skill }) {
 }
 
 const First = () => {
-  const sectionRef = useRef(null);
+  const frontendRef = useRef<HTMLDivElement>(null);
+  const backendRef = useRef<HTMLDivElement>(null);
+  const componentsRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    gsap.fromTo(sectionRef.current, { opacity: 0 }, { opacity: 1, duration: 1.5 });
+    const sections = [frontendRef, backendRef, componentsRef];
 
-    frontend.forEach((card, index) => {
+    sections.forEach((ref, i) => {
+      const el = ref.current;
+      if (!el) return;
+
+      // Анимация появления блока
       gsap.fromTo(
-        card,
+        el,
+        { y: 50, opacity: 0 },
         {
-          opacity: 0,
-        },
-        {
+          y: 0,
           opacity: 1,
           duration: 0.7,
-          delay: 0.1 * (index + 1),
+          delay: 0.1 * i,
           scrollTrigger: {
-            trigger: sectionRef.current,
+            trigger: el,
             start: 'top bottom-=100',
+          },
+        }
+      );
+
+      const badges = el.querySelectorAll('.skill-badge');
+      gsap.fromTo(
+        badges,
+        { opacity: 0, y: 5 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          stagger: 0.07,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top center+=200',
           },
         }
       );
@@ -116,29 +143,29 @@ const First = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="max-w-4xl p-20">
-      <div className="space-y-12">
-        <div>
-          <h3 className="text-2xl text-white mb-4">Фронтенд База</h3>
+    <section className="max-w-7xl pt-22 pb-10 sm:px-15 px-2">
+      <div className="sm:space-y-8 space-y-4">
+        <div ref={frontendRef}>
           <div className="skill-list" role="list">
+            <h3 className="first-title">Фронтенд База</h3>
             {frontend.map(s => (
               <SkillBadge key={s.id} skill={s} />
             ))}
           </div>
         </div>
 
-        <div>
-          <h3 className="text-2xl text-white mb-4">Бэкенд и Инструменты</h3>
+        <div ref={backendRef}>
           <div className="skill-list" role="list">
+            <h3 className="first-title">Бэкенд и Инструменты</h3>
             {backendAndTools.map(s => (
               <SkillBadge key={s.id} skill={s} />
             ))}
           </div>
         </div>
 
-        <div>
-          <h3 className="text-2xl text-white mb-4">Качество Компонентов</h3>
+        <div ref={componentsRef}>
           <div className="skill-list" role="list">
+            <h3 className="first-title">Качество Компонентов</h3>
             {testing.map(s => (
               <SkillBadge key={s.id} skill={s} />
             ))}
