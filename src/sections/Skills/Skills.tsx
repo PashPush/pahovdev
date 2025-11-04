@@ -19,12 +19,10 @@ const Skills = () => {
         },
       });
 
-      tl.to({}, { duration: 0.03 })
-        .to(horizontalSections, {
-          xPercent: xPercent * (horizontalSections.length - 1),
-          ease: 'none',
-        })
-        .to('.skills-word', { opacity: 0 }, '<');
+      tl.to({}, { duration: 0.03 }).to(horizontalSections, {
+        xPercent: xPercent * (horizontalSections.length - 1),
+        ease: 'none',
+      });
     });
 
     return () => ctx.revert();
@@ -43,60 +41,16 @@ const Skills = () => {
         </h1>
       </div>
       <section className="horizontal-section">
-        {/* <h2 className="heading">БАЗА</h2> */}
         <First />
-        {/* <div className="w-72 h-32 text-6xl text-white flex-center absolute bottom-0 bg-green-700">
-          <p>БАЗА</p>
-        </div> */}
       </section>
 
       <section className="horizontal-section">
         <h2 className="heading">БАЗА 2</h2>
       </section>
 
-      <section className="horizontal-section ">
-        <div className="video-mask">
-          <svg viewBox="0 0 800 1500" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <mask id="text-mask" x="0" y="0" width="100%" height="100%">
-                <rect x="0" y="0" width="100%" height="100%" fill="white" />
-                <text
-                  x="50%"
-                  y="40%"
-                  textAnchor="middle"
-                  dy=".35em"
-                  fontFamily="Arial, sans-serif"
-                  fontSize="300"
-                  fontWeight="900"
-                  fill="black"
-                >
-                  ПРО
-                </text>
-                <text
-                  x="50%"
-                  y="60%"
-                  textAnchor="middle"
-                  dy=".35em"
-                  fontFamily="Arial, sans-serif"
-                  fontSize="300"
-                  fontWeight="900"
-                  fill="black"
-                >
-                  ЗОЖ
-                </text>
-              </mask>
-            </defs>
-            <rect width="100%" height="100%" fill="black" mask="url(#text-mask)" />
-          </svg>
-        </div>
-      </section>
-
       <section className="horizontal-section">
         <h2 className="heading">ДОПОЛНИТЕЛЬНО</h2>
       </section>
-      <video autoPlay muted loop playsInline className="bg-video">
-        <source src="https://cdn.pixabay.com/video/2017/09/20/12124-235051424_large.mp4" type="video/mp4" />
-      </video>
     </main>
   );
 };

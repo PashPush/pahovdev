@@ -422,7 +422,7 @@ body {
     @apply relative h-screen md:w-[370%] w-[425%] flex flex-nowrap;
 
     .skills-word {
-      @apply h-screen md:w-[20vw] w-[25vw] flex items-center justify-center pt-16 bg-black z-40;
+      @apply h-screen md:w-[20vw] w-[25vw] flex items-center justify-center pt-16 bg-black z-10;
     }
 
     section.horizontal-section {
@@ -434,19 +434,23 @@ body {
     }
     .horizontal-section:nth-child(2) {
       background: radial-gradient(circle at 10% 90%, #96d6d7 0%, #365050 50%, #001414 100%);
-      z-index: 40;
+      z-index: 20;
     }
     .horizontal-section:nth-child(3) {
       background: radial-gradient(circle at 50% 90%, #ff9640 0%, #a64b00 50%, #421f02 100%);
-      z-index: 40;
+      z-index: 10;
     }
-    .horizontal-section:nth-child(4) {
+    /* .horizontal-section:nth-child(4) {
       background: transparent;
       z-index: 30;
-    }
-    .horizontal-section:nth-child(5) {
+    } */
+    .horizontal-section:nth-child(4) {
       background: radial-gradient(circle at 30% 10%, #cc33cc 0%, #660066 50%, #2d022d 100%);
-      z-index: 40;
+      z-index: 20;
+    }
+
+    .gears {
+      @apply absolute z-30 top-[15%] right-[-340px] rotate-65 sm:opacity-30 opacity-10;
     }
 
     .bg-video {

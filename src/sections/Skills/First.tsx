@@ -27,6 +27,7 @@ import { useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
+import AnimatedGears from './AnimatedGears';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -96,6 +97,7 @@ function SkillBadge({ skill }: { skill: Skill }) {
 }
 
 const First = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
   const frontendRef = useRef<HTMLDivElement>(null);
   const backendRef = useRef<HTMLDivElement>(null);
   const componentsRef = useRef<HTMLDivElement>(null);
@@ -107,7 +109,6 @@ const First = () => {
       const el = ref.current;
       if (!el) return;
 
-      // Анимация появления блока
       gsap.fromTo(
         el,
         { y: 50, opacity: 0 },
@@ -143,8 +144,9 @@ const First = () => {
   }, []);
 
   return (
-    <section className="max-w-7xl pt-22 pb-10 sm:px-15 px-2">
-      <div className="sm:space-y-8 space-y-4">
+    <section ref={sectionRef} className="max-w-7xl pt-22 pb-10 sm:px-15 px-2">
+      <AnimatedGears ref={sectionRef} />
+      <div className="sm:space-y-8 space-y-4 z-40 relative">
         <div ref={frontendRef}>
           <div className="skill-list" role="list">
             <h3 className="first-title">Фронтенд База</h3>
