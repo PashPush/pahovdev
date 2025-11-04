@@ -446,11 +446,11 @@ body {
     } */
     .horizontal-section:nth-child(4) {
       background: radial-gradient(circle at 30% 10%, #cc33cc 0%, #660066 50%, #2d022d 100%);
-      z-index: 20;
+      z-index: 10;
     }
 
     .gears {
-      @apply absolute z-30 top-[15%] right-[-340px] rotate-65 sm:opacity-30 opacity-10;
+      @apply absolute z-30 top-[15%] right-[-335px] rotate-65 sm:opacity-30 opacity-10;
     }
 
     .bg-video {
@@ -479,6 +479,10 @@ body {
           @apply transform scale-110 shadow-lg;
         }
       }
+    }
+
+    .second-end {
+      @apply h-[100vh] w-1/4 flex-center bg-[#FFD700] absolute z-30 right-0 translate-x-3/4;
     }
 
     .first-title {

@@ -28,6 +28,11 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import AnimatedGears from './AnimatedGears';
+import CICD from './icons/CICD';
+import N8n from './icons/N8n';
+import Gsap from './icons/Gsap';
+import Zustand from './icons/Zustand';
+import Playwright from './icons/Playwright';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -50,7 +55,7 @@ const frontend: Skill[] = [
   { id: 'scss', name: 'SCSS', Icon: SiSass, color: '#cc6699', colorBack: '#8b3b62' },
   { id: 'redux', name: 'Redux', Icon: SiRedux, color: '#764abc', colorBack: '#442674' },
   { id: 'mobx', name: 'MobX', Icon: SiMobx, color: '#df5d15', colorBack: '#833a11' },
-  { id: 'zustand', name: 'Zustand', Icon: FaServer, color: '#7e57c2', colorBack: '#483071' },
+  { id: 'zustand', name: 'Zustand', Icon: Zustand as IconType, color: '#7e57c2', colorBack: '#483071' },
 ];
 
 const backendAndTools: Skill[] = [
@@ -61,14 +66,16 @@ const backendAndTools: Skill[] = [
   { id: 'rest', name: 'REST API', Icon: SiPostman, color: '#FF6C37', colorBack: '#b9471b' },
   { id: 'graphql', name: 'GraphQL', Icon: SiGraphql, color: '#e10098', colorBack: '#8a0059' },
   { id: 'docker', name: 'Docker', Icon: SiDocker, color: '#2496ed', colorBack: '#165b8a' },
-  { id: 'ci', name: 'CI/CD', Icon: FaCode, color: '#ff8a00', colorBack: '#b45c00' },
+  { id: 'ci', name: 'CI/CD', Icon: CICD as IconType, color: '#ff8a00', colorBack: '#b45c00' },
   { id: 'git', name: 'Git', Icon: SiGit, color: '#f05134', colorBack: '#92301f' },
+  { id: 'n8n', name: 'n8n', Icon: N8n as IconType, color: '#eb4a71', colorBack: '#8f2b44' },
 ];
 
 const testing: Skill[] = [
   { id: 'jest', name: 'Jest', Icon: SiJest, color: '#99424f', colorBack: '#5d2830' },
-  { id: 'playwright', name: 'Playwright', Icon: FaCode, color: '#1f8ceb', colorBack: '#14518d' },
+  { id: 'playwright', name: 'Playwright', Icon: Playwright as IconType, color: '#1f8ceb', colorBack: '#14518d' },
   { id: 'storybook', name: 'Storybook', Icon: SiStorybook, color: '#ff4785', colorBack: '#b0305d' },
+  { id: 'gsap', name: 'Gsap', Icon: Gsap as IconType, color: '#0ae448', colorBack: '#22853e' },
   { id: 'figma', name: 'Figma', Icon: SiFigma, color: '#ec87a9', colorBack: '#b9587b' },
 ];
 

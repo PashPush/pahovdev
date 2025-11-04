@@ -2,13 +2,14 @@ import gsap from 'gsap';
 import { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import First from './First';
+import Second from './Second';
 
 const Skills = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   useEffect(() => {
     const ctx = gsap.context(() => {
       const horizontalSections = gsap.utils.toArray('.horizontal-section');
-      const xPercent = isMobile ? -108.3 : -100;
+      const xPercent = isMobile ? -112.52 : -100;
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -45,7 +46,7 @@ const Skills = () => {
       </section>
 
       <section className="horizontal-section">
-        <h2 className="heading">БАЗА 2</h2>
+        <Second />
       </section>
 
       <section className="horizontal-section">
