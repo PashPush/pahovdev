@@ -20,7 +20,7 @@ const Contact = () => {
 
     ScrollTrigger.create({
       trigger: sectionRef.current,
-      start: 'top center',
+      start: 'top center-=1000',
       end: 'bottom center',
       onEnter: () => gsap.set(canvas, { display: 'block' }),
       onLeaveBack: () => gsap.set(canvas, { display: 'none' }),

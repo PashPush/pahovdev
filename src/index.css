@@ -422,7 +422,7 @@ body {
     @apply relative h-screen md:w-[370%] w-[425%] flex flex-nowrap;
 
     .skills-word {
-      @apply h-screen md:w-[20vw] w-[25vw] flex items-center justify-center pt-16 bg-black z-10;
+      @apply h-screen md:w-[20vw] w-[25vw] flex items-center justify-center pt-16 bg-black z-10 ml-0.5;
     }
 
     section.horizontal-section {
@@ -439,6 +439,7 @@ body {
     .horizontal-section:nth-child(3) {
       background: radial-gradient(circle at 50% 90%, #ff9640 0%, #a64b00 50%, #421f02 100%);
       z-index: 10;
+      margin-left: -1px;
     }
     /* .horizontal-section:nth-child(4) {
       background: transparent;
@@ -447,6 +448,7 @@ body {
     .horizontal-section:nth-child(4) {
       background: radial-gradient(circle at 30% 10%, #cc33cc 0%, #660066 50%, #2d022d 100%);
       z-index: 10;
+      margin-left: -1px;
     }
 
     .gears {
@@ -485,8 +487,20 @@ body {
       @apply h-[100vh] w-1/4 flex-center bg-[#FFD700] absolute z-30 right-0 translate-x-3/4;
     }
 
+    #curved-line {
+      @apply absolute top-[10%] left-[7%] z-10 opacity-80;
+    }
+
     .first-title {
       @apply flex w-full sm:text-4xl text-xl text-white;
+    }
+
+    .processes {
+      @apply grid grid-cols-2 grid-rows-2 w-[80vw] max-w-[1000px] max-h-[1000px] h-full p-40 gap-10;
+
+      div {
+        @apply flex items-center justify-center bg-amber-300;
+      }
     }
   }
 
@@ -786,6 +800,80 @@ canvas#neuro {
       transparent
     );
 
-  height: 100%;
   background-size: 50px 50px;
+}
+
+/* ---------- СТИЛИ ЗАПИСКИ ---------- */
+.post-it {
+  width: 250px;
+  min-height: 240px;
+  margin: 80px auto;
+  padding: 25px 20px;
+  color: #2b2b2b;
+  border-radius: 4px;
+  position: relative;
+  font-size: 18px;
+  line-height: 1.5em;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  /* Текстура бумаги */
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.7) 0.5px, transparent 0.5px),
+    linear-gradient(to bottom, #fff8b0 0%, #fff7a5 100%);
+  background-size:
+    3px 3px,
+    100% 100%;
+
+  /* Тень — низ немного оттопырен */
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.15),
+    0 15px 25px rgba(0, 0, 0, 0.25);
+  transform-origin: top center;
+  transform: rotate(-1deg);
+}
+
+.post-it:nth-child(1) {
+  transform: rotate(-1deg);
+  background: #ffb3b0;
+}
+.post-it:nth-child(2) {
+  transform: rotate(2deg);
+  background: #fff8b0;
+}
+.post-it:nth-child(3) {
+  transform: rotate(1deg);
+  background: #b0f3ff;
+}
+.post-it:nth-child(4) {
+  transform: rotate(-1deg);
+  background: #b0ffcd;
+}
+
+/* Едва заметный изгиб нижнего края */
+.post-it::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.2));
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  transform: rotateX(15deg);
+  transform-origin: top;
+  z-index: 0;
+}
+
+/* ---------- ТЕКСТ ---------- */
+.post-it h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.post-it p {
+  font-size: 18px;
+  margin: 0;
 }

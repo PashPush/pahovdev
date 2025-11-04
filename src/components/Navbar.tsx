@@ -61,7 +61,7 @@ const NavBar = () => {
 
         <a href="#contact" className="contact-btn group">
           <div className={classNames('inner', { active: currentLink === '#contact' })}>
-            <span>На связи</span>
+            <span>Контакты</span>
           </div>
         </a>
       </div>
