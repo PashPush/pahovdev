@@ -484,7 +484,7 @@ body {
     }
 
     .second-end {
-      @apply h-[100vh] w-1/4 flex-center bg-[#FFD700] absolute z-30 right-0 translate-x-3/4;
+      @apply h-[100vh] w-1/4 flex-center bg-[#FFD700] absolute z-30 right-0 translate-y-5/3;
     }
 
     #curved-line {

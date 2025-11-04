@@ -20,7 +20,7 @@ const Second = () => {
 
     const offsetEnd = isMobile ? 50 : 500;
     gsap.to(endRef.current, {
-      translateX: 0,
+      translateY: 0,
       transformOrigin: 'center center',
       ease: 'none',
       scrollTrigger: {
