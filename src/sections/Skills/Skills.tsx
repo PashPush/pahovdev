@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import First from './First';
 import Second from './Second';
+import Third from './Third';
 
 const Skills = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -10,6 +11,7 @@ const Skills = () => {
     const ctx = gsap.context(() => {
       const horizontalSections = gsap.utils.toArray('.horizontal-section');
       const xPercent = isMobile ? -112.52 : -100;
+      const canvas = document.querySelector('canvas#neuro');
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -20,10 +22,14 @@ const Skills = () => {
         },
       });
 
-      tl.to({}, { duration: 0.03 }).to(horizontalSections, {
+      tl.to({}, { duration: 0.1 });
+
+      tl.to(horizontalSections, {
         xPercent: xPercent * (horizontalSections.length - 1),
         ease: 'none',
       });
+
+      tl.to(canvas, { display: isMobile ? 'none' : 'block', duration: 0.2 });
     });
 
     return () => ctx.revert();
@@ -50,7 +56,7 @@ const Skills = () => {
       </section>
 
       <section className="horizontal-section">
-        <h2 className="heading">ДОПОЛНИТЕЛЬНО</h2>
+        <Third />
       </section>
     </main>
   );

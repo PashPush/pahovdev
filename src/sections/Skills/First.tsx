@@ -21,7 +21,6 @@ import {
   SiDocker,
   SiSass,
 } from 'react-icons/si';
-import { FaCode, FaServer } from 'react-icons/fa';
 import { useMediaQuery } from 'react-responsive';
 import { useRef } from 'react';
 import { gsap } from 'gsap';
@@ -181,6 +180,7 @@ const First = () => {
           </div>
         </div>
       </div>
+      <div className="noise"></div>
     </section>
   );
 };

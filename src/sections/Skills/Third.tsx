@@ -7,7 +7,7 @@ import CurvedLine from './icons/CurvedLine';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Second = () => {
+const Third = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const endRef = useRef<HTMLDivElement>(null);
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -51,7 +51,7 @@ const Second = () => {
     const line = svg && svg.querySelector('path');
     if (!line) return;
     const offsetLineStart = isMobile ? 50 : 150;
-    const offsetLineEnd = isMobile ? 50 : 100;
+    const offsetLineEnd = isMobile ? 50 : 300;
     const lineLength = line.getTotalLength();
     gsap.set(line, { strokeDasharray: lineLength });
 
@@ -68,7 +68,6 @@ const Second = () => {
           start: `top+=${offsetLineStart}%`,
           end: `bottom top-=${offsetLineEnd}%`,
           scrub: 1,
-          once: true,
         },
       }
     );
@@ -101,34 +100,12 @@ const Second = () => {
 
   return (
     <section ref={sectionRef} className="w-full flex flex-row justify-between">
-      <div className="h-[100vh] w-3/4 flex justify-center">
-        <CurvedLine size={lineWidth} />
-        <div className="processes">
-          <div className="sticker">
-            <h3>To Do</h3>
-            <p>Анализирую требования и цели</p>
-          </div>
-          <div className="sticker">
-            <h3>In Progress</h3>
-            <p>Пишу надёжный, понятный код</p>
-          </div>
-          <div className="sticker">
-            <h3>Code Review</h3>
-            <p>Открыт к обсуждению и улучшениям</p>
-          </div>
-          <div className="sticker">
-            <h3>Ready for Release</h3>
-            <p>Готово к внедрению без доработок</p>
-          </div>
-        </div>
+      <div className="h-[100vh] w-full flex justify-center" id="content">
+        <h2 className="heading">ДОПОЛНИТЕЛЬНО</h2>
       </div>
-      <div className="h-[100vh] w-1/4 flex-center bg-amber-900">Goodbye 11111</div>
-      <div ref={endRef} className="second-end">
-        Goodbye
-      </div>
-      <div className="noise"></div>
+      {/* <div className="noise"></div> */}
     </section>
   );
 };
 
-export default Second;
+export default Third;

@@ -430,7 +430,7 @@ body {
     }
 
     .heading {
-      @apply text-[7vw] font-light text-white;
+      @apply text-[5vw] pt-40 font-light text-white;
     }
     .horizontal-section:nth-child(2) {
       background: radial-gradient(circle at 10% 90%, #96d6d7 0%, #365050 50%, #001414 100%);
@@ -483,12 +483,23 @@ body {
       }
     }
 
+    .noise {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index: 11;
+      top: 0;
+      left: 0;
+      background-image: url(/images/noise.png);
+      opacity: 0.05;
+    }
+
     .second-end {
       @apply h-[100vh] w-1/4 flex-center bg-[#FFD700] absolute z-30 right-0 translate-y-5/3;
     }
 
     #curved-line {
-      @apply absolute top-[10%] left-[7%] z-10 opacity-80;
+      @apply absolute top-[12%] left-[5%] z-30 opacity-80 w-2/3;
     }
 
     .first-title {
@@ -496,7 +507,7 @@ body {
     }
 
     .processes {
-      @apply grid grid-cols-2 grid-rows-2 w-[80vw] max-w-[1000px] max-h-[1000px] h-full p-40 gap-10;
+      @apply grid grid-cols-2 grid-rows-2 w-[80vw] max-w-[1000px] max-h-[1000px] h-full p-40 gap-10 z-20;
 
       div {
         @apply flex items-center justify-center bg-amber-300;
@@ -803,8 +814,7 @@ canvas#neuro {
   background-size: 50px 50px;
 }
 
-/* ---------- СТИЛИ ЗАПИСКИ ---------- */
-.post-it {
+.sticker {
   width: 250px;
   min-height: 240px;
   margin: 80px auto;
@@ -818,7 +828,6 @@ canvas#neuro {
   flex-direction: column;
   text-align: center;
 
-  /* Текстура бумаги */
   background-image:
     radial-gradient(rgba(255, 255, 255, 0.7) 0.5px, transparent 0.5px),
     linear-gradient(to bottom, #fff8b0 0%, #fff7a5 100%);
@@ -826,7 +835,6 @@ canvas#neuro {
     3px 3px,
     100% 100%;
 
-  /* Тень — низ немного оттопырен */
   box-shadow:
     0 4px 6px rgba(0, 0, 0, 0.15),
     0 15px 25px rgba(0, 0, 0, 0.25);
@@ -834,25 +842,24 @@ canvas#neuro {
   transform: rotate(-1deg);
 }
 
-.post-it:nth-child(1) {
+.sticker:nth-child(1) {
   transform: rotate(-1deg);
   background: #ffb3b0;
 }
-.post-it:nth-child(2) {
+.sticker:nth-child(2) {
   transform: rotate(2deg);
   background: #fff8b0;
 }
-.post-it:nth-child(3) {
+.sticker:nth-child(3) {
   transform: rotate(1deg);
   background: #b0f3ff;
 }
-.post-it:nth-child(4) {
+.sticker:nth-child(4) {
   transform: rotate(-1deg);
   background: #b0ffcd;
 }
 
-/* Едва заметный изгиб нижнего края */
-.post-it::after {
+.sticker::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -867,13 +874,14 @@ canvas#neuro {
   z-index: 0;
 }
 
-/* ---------- ТЕКСТ ---------- */
-.post-it h3 {
+.sticker h3 {
   font-size: 24px;
   margin-bottom: 10px;
+  font-weight: 500;
+  color: #333;
 }
 
-.post-it p {
+.sticker p {
   font-size: 18px;
   margin: 0;
 }
