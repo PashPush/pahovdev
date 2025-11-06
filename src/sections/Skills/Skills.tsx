@@ -29,7 +29,7 @@ const Skills = () => {
         ease: 'none',
       });
 
-      tl.to(canvas, { display: isMobile ? 'none' : 'block', duration: 0.2 });
+      tl.to(canvas, { display: 'block', duration: 0.1 });
     });
 
     return () => ctx.revert();
