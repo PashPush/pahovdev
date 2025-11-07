@@ -11,8 +11,6 @@ const Second = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const endRef = useRef<HTMLDivElement>(null);
   const isMobile = useMediaQuery({ maxWidth: 767 });
-  const isSmallDisplay = useMediaQuery({ maxWidth: 1400 });
-  const lineWidth = isSmallDisplay ? 700 : 962;
 
   const getRotate = (index: number) => {
     switch (index) {
@@ -102,7 +100,7 @@ const Second = () => {
   return (
     <section ref={sectionRef} className="w-full flex flex-row justify-between">
       <div className="h-[100vh] w-3/4 flex justify-center">
-        <CurvedLine size={lineWidth} />
+        <CurvedLine />
         <div className="processes">
           <div className="sticker">
             <h3>To Do</h3>

@@ -66,7 +66,7 @@ const Experience = () => {
             {expCards.map((card, index) => (
               <div key={card.title} className="exp-card-wrapper">
                 <div className="xl:w-2/6">
-                  <BlinkCard index={index} card={card}>
+                  <BlinkCard index={index} card={card} className="timeline-card">
                     <div>
                       <img src={card.imgPath} alt="exp-img" />
                     </div>

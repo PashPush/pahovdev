@@ -7,7 +7,7 @@ import Projects from './sections/Projects';
 import Experience from './sections/Experience';
 import Approach from './sections/Approach';
 import Skills from './sections/Skills/Skills';
-import Additional from './sections/Additional';
+import Review from './sections/Review';
 import Contact from './sections/Contact';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -20,7 +20,7 @@ const App = () => {
       <Projects />
       <Experience />
       <Approach />
-      <Additional />
+      <Review />
       <Skills />
       <Contact />
     </>

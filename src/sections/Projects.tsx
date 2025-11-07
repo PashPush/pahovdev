@@ -12,8 +12,6 @@ const Projects = () => {
   const project3Ref = useRef(null);
 
   useGSAP(() => {
-    gsap.fromTo(sectionRef.current, { opacity: 0 }, { opacity: 1, duration: 1.5 });
-
     const cards = [project1Ref.current, project2Ref.current, project3Ref.current];
 
     cards.forEach((card, index) => {
@@ -30,7 +28,7 @@ const Projects = () => {
           delay: 0.3 * (index + 1),
           scrollTrigger: {
             trigger: card,
-            start: 'top bottom-=100',
+            start: 'top bottom-=70',
           },
         }
       );
