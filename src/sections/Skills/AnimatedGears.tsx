@@ -58,8 +58,8 @@ const AnimatedGears = forwardRef<HTMLDivElement>((_, ref) => {
       className="gears"
       viewBox="0 0 100 100"
       preserveAspectRatio="xMidYMid"
-      width="800"
-      height="800"
+      width="600"
+      height="600"
     >
       <g data-idx="1">
         <g transform="matrix(1,0,0,1,50,50)" data-idx="2">

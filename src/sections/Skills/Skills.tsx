@@ -15,10 +15,10 @@ const Skills = () => {
 
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: '#skills-screen',
+          trigger: '#skills',
           pin: true,
           scrub: 1,
-          end: () => '+=' + (document.querySelector('#skills-screen') as HTMLElement).offsetWidth,
+          end: () => '+=' + (document.querySelector('#skills') as HTMLElement).offsetWidth,
         },
       });
 
@@ -36,9 +36,9 @@ const Skills = () => {
   }, [isMobile]);
 
   return (
-    <main id="skills-screen">
+    <main id="skills">
       <div className="skills-word">
-        <h1 id="skills">
+        <h1>
           <span>S</span>
           <span>K</span>
           <span>I</span>
