@@ -11,7 +11,7 @@ void main()
 {
     // Displacement
     vec3 newPosition = position;
-    float displacementIntensity = texture(uDisplacementTexture, uv).r;
+    float displacementIntensity = texture2D(uDisplacementTexture, uv).r;
     displacementIntensity = smoothstep(0.1, 0.35, displacementIntensity);
 
     vec3 displacement = vec3(
@@ -33,7 +33,7 @@ void main()
     gl_Position = projectedPosition;
 
     // Picture
-    float pictureIntensity = texture(uPictureTexture, uv).r;
+    float pictureIntensity = texture2D(uPictureTexture, uv).r;
 
     // Point size
     gl_PointSize = 0.15 * pictureIntensity * uResolution.y;
