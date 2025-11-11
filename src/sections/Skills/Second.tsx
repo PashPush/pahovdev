@@ -13,6 +13,7 @@ const Second = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const endRef = useRef<HTMLDivElement>(null);
   const isMobile = useMediaQuery({ maxWidth: 640 });
+  const smallScreen = useMediaQuery({ maxWidth: 1024 });
 
   const getRotate = (index: number) => {
     switch (index) {
@@ -49,19 +50,19 @@ const Second = () => {
       });
     }
 
-    const svg = document.querySelector(isMobile ? '#curved-line-mobile' : '#curved-line');
+    const svg = document.querySelector(smallScreen ? '#curved-line-mobile' : '#curved-line');
     const line = svg && svg.querySelector('path');
 
     if (line) {
-      const offsetLineStart = isMobile ? 60 : 150;
-      const offsetLineEnd = isMobile ? 0 : 300;
+      const offsetLineStart = isMobile ? 60 : smallScreen ? 100 : 150;
+      const offsetLineEnd = isMobile ? 0 : smallScreen ? 100 : 250;
       const lineLength = line.getTotalLength();
       gsap.set(line, { strokeDasharray: lineLength });
 
       gsap.fromTo(
         line,
         {
-          strokeDashoffset: isMobile ? lineLength : -lineLength,
+          strokeDashoffset: smallScreen ? lineLength : -lineLength,
         },
         {
           strokeDashoffset: 0,
@@ -105,7 +106,7 @@ const Second = () => {
   return (
     <section ref={sectionRef} className="w-full flex flex-row justify-between">
       <div className="processes-wrapper">
-        {isMobile ? <CurvedLineMobile /> : <CurvedLine />}
+        {smallScreen ? <CurvedLineMobile /> : <CurvedLine />}
         <div className="processes">
           {stickers.map(sticker => (
             <div className="sticker">

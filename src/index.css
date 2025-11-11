@@ -433,7 +433,7 @@ body {
       z-index: 20;
     }
     .horizontal-section:nth-child(3) {
-      background: radial-gradient(circle at 50% 90%, #ff9640 0%, #a64b00 50%, #421f02 100%);
+      background: radial-gradient(circle at 90% 90%, #96d6d7 0%, #365050 50%, #001414 100%);
       z-index: 10;
       margin-left: -1px;
     }
@@ -442,7 +442,7 @@ body {
       z-index: 30;
     } */
     .horizontal-section:nth-child(4) {
-      background: radial-gradient(circle at 30% 10%, #cc33cc 0%, #660066 50%, #2d022d 100%);
+      background: radial-gradient(circle at 10% 90%, #a531a5 0%, #5b025b 50%, #280028 100%);
       z-index: 10;
       margin-left: -1px;
     }
@@ -511,44 +511,42 @@ body {
     }
 
     .processes {
-      @apply grid items-center lg:grid-cols-2 lg:grid-rows-2 grid-cols-1 grid-rows-4 sm:w-[80vw] w-[100vw]  max-w-[1000px] max-h-[1000px] h-full md:px-10 xl:px-30 px-5 sm:py-40 py-28 mt-5 gap-10 z-20;
+      @apply grid items-center lg:grid-cols-2 lg:grid-rows-2 grid-cols-1 grid-rows-4 sm:w-[80vw] w-[100vw] max-h-[1000px] h-full md:px-10 xl:px-30 px-5 py-28 sm:mt-10 mt-5 gap-10 z-20;
 
       div {
-        @apply flex items-center justify-center bg-amber-300;
+        @apply flex items-center justify-center;
+
+        &:nth-child(1) {
+          transform: rotate(-1deg);
+          background-color: #ebb8b5;
+        }
+        &:nth-child(2) {
+          transform: rotate(2deg);
+          background-color: #faf7c5;
+        }
+        &:nth-child(3) {
+          transform: rotate(1deg);
+          background-color: #c0eff7;
+        }
+        &:nth-child(4) {
+          transform: rotate(-1deg);
+          background-color: #c2f9d6;
+        }
       }
 
       .sticker {
-        @apply lg:w-[250px] w-full lg:max-h-[240px] max-h-[140px] mx-auto px-5 sm:py-20 py-18 text-[#2b2b2b] rounded-md relative text-lg flex flex-col text-center z-90;
+        @apply lg:w-[250px] w-full lg:max-h-[240px] max-h-[140px] mx-auto px-5 sm:py-20 py-18 text-[#2b2b2b] relative text-lg flex flex-col text-center z-90;
 
-        background-image:
-          radial-gradient(rgba(255, 255, 255, 0.7) 0.5px, transparent 0.5px),
-          linear-gradient(to bottom, #fff8b0 0%, #fff7a5 100%);
-        background-size:
-          3px 3px,
-          100% 100%;
+        background-image: url('/images/paper-3.png');
 
         box-shadow:
           0 4px 6px rgba(0, 0, 0, 0.15),
-          0 15px 25px rgba(0, 0, 0, 0.25);
+          0 15px 25px rgba(0, 0, 0, 0.35);
         transform-origin: top center;
         transform: rotate(-1deg);
-      }
 
-      .sticker:nth-child(1) {
-        transform: rotate(-1deg);
-        background: #ffb3b0;
-      }
-      .sticker:nth-child(2) {
-        transform: rotate(2deg);
-        background: #fff8b0;
-      }
-      .sticker:nth-child(3) {
-        transform: rotate(1deg);
-        background: #b0f3ff;
-      }
-      .sticker:nth-child(4) {
-        transform: rotate(-1deg);
-        background: #b0ffcd;
+        font-family: 'Segoe Print', 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+        font-weight: 500;
       }
 
       .sticker::after {
@@ -581,7 +579,7 @@ body {
   }
 
   .review-wrapper {
-    @apply flex lg:flex-row flex-col justify-around h-full gap-5 md:px-15 px-10 sm:bg-none bg-[linear-gradient(0deg,#777777,transparent)];
+    @apply flex lg:flex-row flex-col justify-around h-full gap-5 md:px-15 px-10 md:bg-none bg-[linear-gradient(0deg,#777777,transparent)];
   }
 }
 
@@ -846,58 +844,6 @@ canvas#neuro {
   }
 }
 
-/* engineer's grid */
 #content {
-  background-color: transparent;
-  background-image:
-    linear-gradient(
-      0deg,
-      transparent 9%,
-      rgba(255, 255, 255, 0.2) 10%,
-      rgba(255, 255, 255, 0.2) 12%,
-      transparent 13%,
-      transparent 29%,
-      rgba(255, 255, 255, 0.1) 30%,
-      rgba(255, 255, 255, 0.1) 31%,
-      transparent 32%,
-      transparent 49%,
-      rgba(255, 255, 255, 0.1) 50%,
-      rgba(255, 255, 255, 0.1) 51%,
-      transparent 52%,
-      transparent 69%,
-      rgba(255, 255, 255, 0.1) 70%,
-      rgba(255, 255, 255, 0.1) 71%,
-      transparent 72%,
-      transparent 89%,
-      rgba(255, 255, 255, 0.1) 90%,
-      rgba(255, 255, 255, 0.1) 91%,
-      transparent 92%,
-      transparent
-    ),
-    linear-gradient(
-      90deg,
-      transparent 9%,
-      rgba(255, 255, 255, 0.2) 10%,
-      rgba(255, 255, 255, 0.2) 12%,
-      transparent 13%,
-      transparent 29%,
-      rgba(255, 255, 255, 0.1) 30%,
-      rgba(255, 255, 255, 0.1) 31%,
-      transparent 32%,
-      transparent 49%,
-      rgba(255, 255, 255, 0.1) 50%,
-      rgba(255, 255, 255, 0.1) 51%,
-      transparent 52%,
-      transparent 69%,
-      rgba(255, 255, 255, 0.1) 70%,
-      rgba(255, 255, 255, 0.1) 71%,
-      transparent 72%,
-      transparent 89%,
-      rgba(255, 255, 255, 0.1) 90%,
-      rgba(255, 255, 255, 0.1) 91%,
-      transparent 92%,
-      transparent
-    );
-
-  background-size: 50px 50px;
+  background-image: url('/images/paper-4.png');
 }
