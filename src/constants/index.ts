@@ -107,4 +107,23 @@ const feedbacks = [
   },
 ];
 
-export { words, navLinks, expCards, featureLists, goodLists, feedbacks };
+const stickers = [
+  {
+    title: 'To Do',
+    description: 'Анализирую требования и цели',
+  },
+  {
+    title: 'In Progress',
+    description: 'Пишу надёжный, понятный код',
+  },
+  {
+    title: 'Code Review',
+    description: 'Открыт к обсуждению и улучшениям',
+  },
+  {
+    title: 'Ready for Release',
+    description: 'Готово к внедрению без доработок',
+  },
+];
+
+export { words, navLinks, expCards, featureLists, goodLists, feedbacks, stickers };

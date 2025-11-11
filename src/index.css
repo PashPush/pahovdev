@@ -498,6 +498,10 @@ body {
       @apply absolute md:top-[9%] xl:top-[12%] left-[5%] z-100 opacity-80 w-2/3;
     }
 
+    #curved-line-mobile {
+      @apply absolute top-0 left-0 h-[100vh] z-100 opacity-60;
+    }
+
     .first-title {
       @apply flex w-full sm:text-4xl text-xl text-white;
     }

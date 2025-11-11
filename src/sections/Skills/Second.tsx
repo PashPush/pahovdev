@@ -4,6 +4,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { useMediaQuery } from 'react-responsive';
 import CurvedLine from './icons/CurvedLine';
+import { stickers } from '../../constants';
+import CurvedLineMobile from './icons/CurvedLineMobile';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -47,19 +49,19 @@ const Second = () => {
       });
     }
 
-    const svg = document.querySelector('#curved-line');
+    const svg = document.querySelector(isMobile ? '#curved-line-mobile' : '#curved-line');
     const line = svg && svg.querySelector('path');
 
     if (line) {
-      const offsetLineStart = isMobile ? 50 : 150;
-      const offsetLineEnd = isMobile ? 50 : 300;
+      const offsetLineStart = isMobile ? 60 : 150;
+      const offsetLineEnd = isMobile ? 0 : 300;
       const lineLength = line.getTotalLength();
       gsap.set(line, { strokeDasharray: lineLength });
 
       gsap.fromTo(
         line,
         {
-          strokeDashoffset: -lineLength,
+          strokeDashoffset: isMobile ? lineLength : -lineLength,
         },
         {
           strokeDashoffset: 0,
@@ -90,7 +92,7 @@ const Second = () => {
           rotate: getRotate(index),
           opacity: 1,
           duration: 0.7,
-          delay: 0.7 * (index + 1),
+          delay: 0.5 * (index + 1),
           scrollTrigger: {
             trigger: sticker,
             start: 'top bottom-=1000',
@@ -103,24 +105,14 @@ const Second = () => {
   return (
     <section ref={sectionRef} className="w-full flex flex-row justify-between">
       <div className="processes-wrapper">
-        <CurvedLine />
+        {isMobile ? <CurvedLineMobile /> : <CurvedLine />}
         <div className="processes">
-          <div className="sticker">
-            <h3>To Do</h3>
-            <p>Анализирую требования и цели</p>
-          </div>
-          <div className="sticker">
-            <h3>In Progress</h3>
-            <p>Пишу надёжный, понятный код</p>
-          </div>
-          <div className="sticker">
-            <h3>Code Review</h3>
-            <p>Открыт к обсуждению и улучшениям</p>
-          </div>
-          <div className="sticker">
-            <h3>Ready for Release</h3>
-            <p>Готово к внедрению без доработок</p>
-          </div>
+          {stickers.map(sticker => (
+            <div className="sticker">
+              <h3>{sticker.title}</h3>
+              <p>{sticker.description}</p>
+            </div>
+          ))}
         </div>
       </div>
       {!isMobile && (
