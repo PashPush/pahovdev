@@ -42,7 +42,7 @@ const Contact = () => {
 
   return (
     <div id="contact" ref={sectionRef}>
-      <div className="flex-center pt-50 pb-10 sm:text-8xl text-5xl">Контакты</div>
+      <div className="flex-center pt-50 pb-10 sm:text-8xl text-5xl font-yeseva-one">Контакты</div>
       <div className="form-wrapper">
         <div className="flex-center rounded-xl p-10 bg-[rgba(0,0,0,0.9)]">
           <form ref={formRef} onSubmit={handleSubmit} className="w-full flex flex-col gap-7">

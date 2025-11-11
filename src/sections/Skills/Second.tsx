@@ -38,12 +38,13 @@ const Second = () => {
     const offsetEnd = isMobile ? 50 : 500;
     if (!isMobile) {
       gsap.to(endRef.current, {
-        translateY: 0,
+        // translateY: 0,
+        opacity: 1,
         transformOrigin: 'center center',
         ease: 'none',
         scrollTrigger: {
           trigger: triggerEl,
-          start: 'top',
+          start: 'top+=300%',
           end: `bottom top-=${offsetEnd}%`,
           scrub: 1,
         },
@@ -108,23 +109,22 @@ const Second = () => {
       <div className="processes-wrapper">
         {smallScreen ? <CurvedLineMobile /> : <CurvedLine />}
         <div className="processes">
-          {stickers.map(sticker => (
-            <div className="sticker">
-              <h3>{sticker.title}</h3>
-              <p>{sticker.description}</p>
+          {stickers.map(({ title, description }) => (
+            <div key={title} className="sticker">
+              <h3>{title}</h3>
+              <p>{description}</p>
             </div>
           ))}
         </div>
       </div>
       {!isMobile && (
         <>
-          <div className="h-[100vh] w-1/4 flex-center bg-amber-900">Goodbye 11111</div>
-          <div ref={endRef} className="second-end">
+          {/* <div className="h-[100vh] w-1/4 flex-center">Goodbye 11111</div> */}
+          <div ref={endRef} className="h-[100vh] w-1/4 flex-center second-end">
             Goodbye
           </div>
         </>
       )}
-
       <div className="noise"></div>
     </section>
   );

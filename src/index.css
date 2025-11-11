@@ -142,7 +142,7 @@ body {
   } */
 
   .interface {
-    @apply inline-block relative text-black w-48 select-none text-3xl leading-11;
+    @apply inline-block relative text-black w-48 select-none text-3xl leading-11 cursor-pointer;
 
     clip-path: polygon(-200% -500%, 160% -300%, 150% 92%, 0px 92%);
 
@@ -163,8 +163,6 @@ body {
     }
 
     &:hover {
-      @apply cursor-pointer;
-
       span {
         @apply bg-[#eaffff];
       }
@@ -490,8 +488,15 @@ body {
       opacity: 0.05;
     }
 
+    .noise.squares {
+      background-image: url(/images/squares.png);
+      opacity: 0.6;
+    }
+
     .second-end {
-      @apply h-[100vh] w-1/4 flex-center bg-[#FFD700] absolute z-30 right-0 translate-y-5/3;
+      @apply h-[100vh] w-1/4 flex-center bg-[#000] absolute z-30 right-0 opacity-0;
+
+      background-image: url(/images/squares.png);
     }
 
     #curved-line {
@@ -503,7 +508,7 @@ body {
     }
 
     .first-title {
-      @apply flex w-full sm:text-4xl text-xl text-white;
+      @apply flex w-full sm:text-4xl text-xl text-white font-yeseva-one;
     }
 
     .processes-wrapper {
@@ -845,5 +850,5 @@ canvas#neuro {
 }
 
 #content {
-  background-image: url('/images/paper-4.png');
+  background-image: url('/images/squares.png');
 }

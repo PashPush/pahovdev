@@ -9,10 +9,10 @@ const Third = () => {
 
   return (
     <section ref={sectionRef} className="w-full flex flex-row justify-between">
-      <div className="h-[100vh] w-full flex justify-center" id="content">
-        <h2 className="heading">ДОПОЛНИТЕЛЬНО</h2>
+      <div className="h-[100vh] w-full flex justify-center">
+        <h2 className="heading font-yeseva-one">ДОПОЛНИТЕЛЬНО</h2>
       </div>
-      {/* <div className="noise"></div> */}
+      <div className="noise squares"></div>
     </section>
   );
 };
