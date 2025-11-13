@@ -101,7 +101,7 @@ const Second = () => {
           ))}
         </div>
       </div>
-      <div className="noise"></div>
+      <div className="noise sm:w-3/4"></div>
       {!isMobile && <Hands />}
     </section>
   );

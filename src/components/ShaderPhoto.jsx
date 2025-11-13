@@ -170,7 +170,7 @@ const ShaderPhoto = () => {
       }
 
       displacement.context.globalCompositeOperation = 'source-over';
-      displacement.context.globalAlpha = 0.01;
+      displacement.context.globalAlpha = 0.02;
       displacement.context.fillRect(0, 0, displacement.canvas.width, displacement.canvas.height);
 
       const cursorDistance = displacement.canvasCursorPrevious.distanceTo(displacement.canvasCursor);

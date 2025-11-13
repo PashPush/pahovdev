@@ -70,7 +70,7 @@ const Hands = () => {
       .to(
         {},
         {
-          duration: 0.5,
+          duration: 0.3,
         },
         '>'
       )
@@ -116,9 +116,9 @@ const Hands = () => {
       .to(
         '.like-hand',
         {
-          translateY: -100,
+          translateY: -140,
           translateX: -15,
-          rotate: -175,
+          rotate: -178,
           duration: 0.3,
         },
         '>'
@@ -126,7 +126,7 @@ const Hands = () => {
       .to(
         '.point-hand',
         {
-          translateY: 300,
+          translateY: 250,
           rotate: 0,
           duration: 1,
         },
