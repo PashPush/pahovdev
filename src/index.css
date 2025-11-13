@@ -493,10 +493,37 @@ body {
       opacity: 0.6;
     }
 
-    .second-end {
-      @apply h-[100vh] w-1/4 flex-center bg-[#000] absolute z-30 right-0 opacity-0;
-
+    .second-bg {
+      @apply h-[100vh] w-1/4 flex-center;
       background-image: url(/images/squares.png);
+    }
+
+    .hand {
+      @apply absolute text-[200px];
+    }
+
+    .wait-hand {
+      @apply -rotate-20 z-30 -translate-y-2;
+    }
+
+    .like-hand {
+      @apply z-30 -translate-y-[8px] text-[160px] translate-x-[39px] -rotate-120 opacity-0;
+    }
+
+    .boom-hand {
+      @apply z-40 scale-50 opacity-0;
+    }
+
+    .hit-hand {
+      @apply translate-y-6/2 rotate-15 z-50 -translate-x-[100px];
+    }
+
+    .point-hand {
+      @apply z-50 text-[190px] opacity-0 -rotate-75 translate-y-[60px] -translate-x-[4px];
+    }
+
+    .call-hand {
+      @apply z-50 text-[160px] opacity-0 translate-y-[295px] -translate-x-[21px];
     }
 
     #curved-line {

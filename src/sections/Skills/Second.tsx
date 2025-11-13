@@ -6,12 +6,12 @@ import { useMediaQuery } from 'react-responsive';
 import CurvedLine from './icons/CurvedLine';
 import { stickers } from '../../constants';
 import CurvedLineMobile from './icons/CurvedLineMobile';
+import Hands from './Hands';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Second = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const endRef = useRef<HTMLDivElement>(null);
   const isMobile = useMediaQuery({ maxWidth: 640 });
   const smallScreen = useMediaQuery({ maxWidth: 1024 });
 
@@ -34,22 +34,6 @@ const Second = () => {
   useGSAP(() => {
     const triggerEl =
       sectionRef && typeof sectionRef === 'object' && 'current' in sectionRef ? sectionRef.current : document.body;
-
-    const offsetEnd = isMobile ? 50 : 500;
-    if (!isMobile) {
-      gsap.to(endRef.current, {
-        // translateY: 0,
-        opacity: 1,
-        transformOrigin: 'center center',
-        ease: 'none',
-        scrollTrigger: {
-          trigger: triggerEl,
-          start: 'top+=300%',
-          end: `bottom top-=${offsetEnd}%`,
-          scrub: 1,
-        },
-      });
-    }
 
     const svg = document.querySelector(smallScreen ? '#curved-line-mobile' : '#curved-line');
     const line = svg && svg.querySelector('path');
@@ -117,15 +101,8 @@ const Second = () => {
           ))}
         </div>
       </div>
-      {!isMobile && (
-        <>
-          {/* <div className="h-[100vh] w-1/4 flex-center">Goodbye 11111</div> */}
-          <div ref={endRef} className="h-[100vh] w-1/4 flex-center second-end">
-            Goodbye
-          </div>
-        </>
-      )}
       <div className="noise"></div>
+      {!isMobile && <Hands />}
     </section>
   );
 };
