@@ -66,7 +66,7 @@ const Third = () => {
               {languages.map((lang, index) => (
                 <div
                   key={index}
-                  className="group relative bg-gradient-to-br from-white/20 to-white/30 backdrop-blur-sm rounded-2xl py-3 px-6 border border-white/30 hover:border-white/80 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10"
+                  className="group relative bg-gradient-to-br from-white/20 to-white/30 backdrop-blur-sm rounded-2xl py-3 px-6 border border-white/30 hover:border-white/80 transition-all duration-300 shadow-md shadow-black/10 hover:shadow-lg"
                 >
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-x-4 flex-wrap">
@@ -91,7 +91,7 @@ const Third = () => {
                   </div>
 
                   {/* Progress bar */}
-                  <div className="relative h-2 bg-[#5a055a] rounded-full overflow-hidden">
+                  <div className="relative h-2 bg-[#660b66] rounded-full overflow-hidden">
                     <div
                       className={classNames(
                         'absolute inset-y-0 left-0 bg-gradient-to-r  rounded-full transition-all duration-1000',
@@ -109,14 +109,16 @@ const Third = () => {
             </div>
 
             <div className="mt-6 p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
-              <p className="text-blue-300 text-sm">💼 Комфортно работаю с международными командами и клиентами</p>
+              <p className="text-slate-100 text-sm text-center">
+                Комфортно работаю с международными командами и клиентами
+              </p>
             </div>
           </div>
 
           <div className="space-y-6 col-span-3">
             <div className="flex items-center gap-3 mb-8">
               <div className="p-3 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-xl border border-purple-500/30">
-                <IoSparklesOutline className="w-6 h-6 text-purple-400" />
+                <IoSparklesOutline className="w-6 h-6 text-purple-300" />
               </div>
               <h3 className="text-2xl text-white font-yeseva-one">Что меня драйвит</h3>
             </div>
@@ -131,7 +133,7 @@ const Third = () => {
                   >
                     <div className="flex gap-4">
                       <div className="flex-shrink-0">
-                        <div className="p-3 bg-[#5a055a] rounded-xl border border-white/50 group-hover:border-white/80 transition-colors">
+                        <div className="p-3 bg-[#660b66] rounded-xl border border-white/50 group-hover:border-white/80 transition-colors">
                           <Icon className="w-5 h-5 text-white-50 group-hover:text-white transition-colors" />
                         </div>
                       </div>
@@ -147,7 +149,6 @@ const Third = () => {
           </div>
         </div>
 
-        {/* Bottom CTA */}
         <div className="mt-16 text-center z-20">
           <div className="inline-block p-6 bg-gradient-to-r from-purple-500/10 via-blue-500/10 to-purple-500/10 rounded-2xl border border-purple-500/20">
             <p className="text-white text-lg">
