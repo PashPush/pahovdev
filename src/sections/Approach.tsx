@@ -32,8 +32,7 @@ const Approach = () => {
       .to({}, { duration: 2 })
       .to('.will-fade', { opacity: 0, stagger: 0.2, ease: 'power1.inOut' })
       .to('.masked-img', {
-        scale: 1.8,
-        maskPosition: 'center',
+        scale: 2,
         maskSize: '450%',
         translateY: translateY,
         duration: 1,
@@ -64,7 +63,7 @@ const Approach = () => {
 
           <div className="approach-img">
             <img
-              src="/images/pavel-light1.jpg"
+              src="/images/pavel7.jpg"
               alt="my approach"
               className={classNames('abs-center masked-img size-full object-contain', {
                 'masked-img-mobile': isMobile,

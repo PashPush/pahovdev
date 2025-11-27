@@ -30,7 +30,7 @@ const Hero = () => {
             {isMobile ? <br /> : ' '}
             <Interface />
           </div>
-          <Button text="смотреть проекты" className="md:w-80 md:h-16 mt-6 h-12" id="work" />
+          <Button text="смотреть проекты" className="md:w-80 md:mb-5 mt-6 h-12" id="work" />
         </div>
       </section>
       <ShaderPhoto />

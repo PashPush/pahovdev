@@ -168,7 +168,8 @@ const Interface = () => {
     return Promise.resolve();
   };
 
-  const handleClick = () => {
+  const handleClick = e => {
+    e.preventDefault();
     if (isPlayingRef.current) return;
     if (count > 2) return;
 
@@ -187,12 +188,18 @@ const Interface = () => {
   };
 
   return (
-    <div ref={containerRef} onClick={handleClick} className={classNames('interface', { done: count > 2 })}>
+    <a
+      href="#"
+      ref={containerRef}
+      onClick={handleClick}
+      className={classNames('interface', { done: count > 2 })}
+      tabIndex={2}
+    >
       <span className={classNames('inter', { 'no-margin': isMobile })}>интер</span>
       <Chips />
       <Chainsaw />
       <span className="faces">фейсы</span>
-    </div>
+    </a>
   );
 };
 
