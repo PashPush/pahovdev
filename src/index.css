@@ -199,7 +199,8 @@ body {
 
     &.scrolled {
       @apply top-0;
-      background-color: rgba(0, 0, 0, 0.8);
+      background-color: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
     }
 
     &.not-scrolled {
@@ -450,27 +451,27 @@ body {
     }
 
     .gears {
-      @apply absolute z-30 top-[38%] right-[-250px] rotate-65 sm:opacity-30 opacity-15;
+      @apply absolute z-30 top-[38%] right-[-250px] rotate-65 md:opacity-30 opacity-15;
     }
 
-    .bg-video {
-      @apply absolute;
+    .skills-wrapper {
+      @apply sm:space-y-6 xl:space-y-8 space-y-4 z-40 relative;
     }
 
     .skill-list {
-      @apply flex flex-row sm:gap-[2vh] gap-2 flex-wrap rounded-2xl min-h-fit sm:p-5 p-3 bg-[rgba(255,255,255,0.1)] shadow-md;
+      @apply flex flex-row md:gap-3 xl:gap-[2vh] gap-2 flex-wrap rounded-2xl min-h-fit md:p-4 xl:p-5 p-3 bg-[rgba(255,255,255,0.1)] shadow-md;
     }
 
     .skill-icon {
-      @apply rounded-full sm:p-3 p-1.5 transition-all duration-500 ease-in-out;
+      @apply rounded-full md:p-2 xl:p-3 p-1.5 transition-all duration-500 ease-in-out;
     }
 
     .skill-text {
-      @apply text-white sm:text-base text-sm font-medium;
+      @apply text-white md:text-base text-sm font-medium;
     }
 
     .skill-badge {
-      @apply flex items-center sm:gap-3 gap-1 rounded-full shadow-md sm:pr-5 pr-2.5 sm:h-14 h-9 filter-[saturate(0.6)];
+      @apply flex items-center md:gap-2 xl:gap-3 gap-1 rounded-full shadow-md md:pr-3 xl:pr-5 pr-2.5 md:h-12 xl:h-14 h-9 filter-[saturate(0.6)];
 
       &:hover {
         @apply cursor-pointer filter-[none];
@@ -539,11 +540,11 @@ body {
     }
 
     .first-title {
-      @apply flex w-full sm:text-4xl text-xl text-white font-yeseva-one;
+      @apply flex w-full sm:text-2xl xl:text-4xl text-xl text-white font-yeseva-one;
     }
 
     .processes-wrapper {
-      @apply h-[100vh] sm:w-3/4 w-full px-6 flex;
+      @apply h-[100vh] md:w-3/4 w-full px-6 flex;
     }
 
     .processes {

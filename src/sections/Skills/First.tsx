@@ -79,7 +79,7 @@ const testing: Skill[] = [
 ];
 
 function SkillBadge({ skill }: { skill: Skill }) {
-  const isMobile = useMediaQuery({ maxWidth: 639 });
+  const isMobile = useMediaQuery({ maxWidth: 768 });
   const { Icon } = skill;
 
   return (
@@ -152,7 +152,7 @@ const First = () => {
   return (
     <section ref={sectionRef} className="max-w-7xl pt-22 pb-10 sm:px-15 px-2">
       <AnimatedGears ref={sectionRef} />
-      <div className="sm:space-y-8 space-y-4 z-40 relative">
+      <div className="skills-wrapper">
         <div ref={frontendRef}>
           <div className="skill-list" role="list">
             <h3 className="first-title">Фронтенд База</h3>
