@@ -440,7 +440,11 @@ body {
       z-index: 30;
     } */
     .horizontal-section:nth-child(4) {
-      background: radial-gradient(circle at 10% 90%, #a531a5 0%, #5b025b 50%, #280028 100%);
+      background-image: radial-gradient(
+        circle farthest-corner at 10% 20%,
+        rgba(100, 43, 115, 1) 0%,
+        rgb(32, 2, 32) 90%
+      );
       z-index: 10;
       margin-left: -1px;
     }
@@ -616,7 +620,7 @@ body {
 }
 
 .form-wrapper {
-  @apply max-w-5xl mx-auto p-5 z-20 relative;
+  @apply max-w-5xl mx-auto z-20 relative;
 }
 
 form {
