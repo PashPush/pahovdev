@@ -19,7 +19,7 @@ const Interface = () => {
       activeTimelinesRef.current.forEach(tl => {
         try {
           tl.kill();
-        } catch (e) {
+        } catch {
           // skip
         }
       });

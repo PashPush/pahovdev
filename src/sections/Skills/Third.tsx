@@ -46,16 +46,16 @@ const Third = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="max-w-7xl pt-30 pb-10 xl:px-20 sm:px-10 px-2">
+    <section ref={sectionRef} className="max-w-7xl pt-30 pb-10 xl:px-20 sm:px-10 px-3">
       <div className="max-w-7xl w-full">
         <div className="noise opacity-[0.03]"></div>
         <div className="lg:mb-12 mb-8 text-center z-20 hidden md:block">
-          <h2 className="lg:text-6xl text-5xl  text-white font-yeseva-one">Не только код</h2>
+          <h2 className="lg:text-6xl text-5xl text-white font-yeseva-one">Не только код</h2>
         </div>
 
         <div className="grid sm:grid-cols-5 grid-cols-3 xl:gap-12 gap-4 items-start z-20 relative">
           {/* Languages Section */}
-          <div className="space-y-6 sm:col-span-2 col-span-3">
+          <div className="sm:col-span-2 col-span-3">
             <div className="flex items-center gap-3 lg:mb-8 mb-4">
               <div className="sm:p-3 p-2 bg-gradient-to-br from-gray-500/20 to-purple-500/20 rounded-xl border border-blue-500/20">
                 <IoLanguageSharp className="sm:size-6 size-5 text-blue-200" />
@@ -63,7 +63,7 @@ const Third = () => {
               <h3 className="text-xl text-white font-yeseva-one">Владение языками</h3>
             </div>
 
-            <div className="space-y-6 flex flex-row sm:block gap-2 justify-between">
+            <div className="space-y-6 flex sm:block flex-row gap-2 justify-between">
               {languages.map((lang, index) => (
                 <div
                   key={index}

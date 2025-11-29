@@ -86,7 +86,6 @@ const Approach = () => {
             Нормально делай
             <br />
             Нормально будет
-            {/* <img src="/images/fire.png" className="will-fire" alt="check" /> */}
           </h2>
           <div id="masked-content">
             <h3>

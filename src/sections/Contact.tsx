@@ -2,6 +2,8 @@ import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { SiTelegram, SiWhatsapp } from 'react-icons/si';
+import { MdMail } from 'react-icons/md';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -41,11 +43,11 @@ const Contact = () => {
   };
 
   return (
-    <div id="contact" ref={sectionRef}>
-      <div className="flex-center pt-50 pb-10 sm:text-8xl text-5xl font-yeseva-one">Контакты</div>
+    <div id="contact" ref={sectionRef} className="contacts">
+      <div className="title">Контакты</div>
       <div className="form-wrapper">
-        <div className="flex-center rounded-xl p-10 bg-[rgba(0,0,0,0.9)]">
-          <form ref={formRef} onSubmit={handleSubmit} className="w-full flex flex-col gap-7">
+        <div className="form-body">
+          <form ref={formRef} onSubmit={handleSubmit} className="w-full flex flex-col sm:gap-7 gap-4">
             <div>
               <label htmlFor="name">Имя</label>
               <input
@@ -80,7 +82,7 @@ const Contact = () => {
                 value={form.message}
                 onChange={handleChange}
                 placeholder="Есть вакансия или интересный проект? Напишите пару слов :)"
-                rows={4}
+                rows={2}
                 required
               />
             </div>
@@ -90,16 +92,25 @@ const Contact = () => {
                 <div className="bg-circle" />
                 <p className="text">{loading ? 'Отправка...' : 'Отправить'}</p>
                 <div className="arrow-wrapper">
-                  <img src="/images/mail-login.svg" alt="arrow" className="animate-pulse" />
+                  <img src="/images/mail-login.svg" alt="email" className="animate-pulse" />
                 </div>
               </div>
             </button>
           </form>
         </div>
       </div>
-      <div className="flex-center pb-20 pt-10  sm:text-5xl text-3xl z-50 relative text-shadow-[2px_2px_10px_rgba(0,0,0,0.8)]">
-        Telegram: @pahhov
+      <div className="socials">
+        <a href="https://t.me/pahhov" target="_blank" className="bg-[#00aaff]">
+          <SiTelegram size={44} color="#fff" />
+        </a>
+        <a href="https://wa.me/79934690793" target="_blank" className="bg-[#4ac959]">
+          <SiWhatsapp size={44} color="#fff" />
+        </a>
+        <a href="mailto:pahovdev@gmail.com" target="_blank" className="bg-[#2e2d38]">
+          <MdMail size={24} color="#fff" />
+        </a>
       </div>
+      <div className="flex-center md:pb-4 pb-2">Pavel Khovalkin © {new Date().getFullYear()}</div>
     </div>
   );
 };
