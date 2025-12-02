@@ -142,7 +142,7 @@ const ShaderPhoto = () => {
       camera.aspect = sizes.width / sizes.height;
       camera.updateProjectionMatrix();
 
-      renderer.setSize(sizes.width, sizes.height);
+      renderer.setSize(sizes.width / 1.05, sizes.height / 1.05);
       renderer.setPixelRatio(sizes.pixelRatio);
     };
 

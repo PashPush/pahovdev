@@ -49,9 +49,9 @@ const Third = () => {
     <section ref={sectionRef} className="max-w-7xl pt-30 pb-10 xl:px-20 sm:px-10 px-3">
       <div className="max-w-7xl w-full">
         <div className="noise opacity-[0.03]"></div>
-        <div className="lg:mb-12 mb-8 text-center z-20 hidden md:block">
-          <h2 className="lg:text-6xl text-5xl text-white font-yeseva-one">Не только код</h2>
-        </div>
+        <h2 className="lg:text-6xl text-5xl text-white font-yeseva-one lg:mb-12 mb-8 text-center z-20 hidden md:block">
+          Не только код
+        </h2>
 
         <div className="grid sm:grid-cols-5 grid-cols-3 xl:gap-12 gap-4 items-start z-20 relative">
           {/* Languages Section */}
@@ -69,10 +69,10 @@ const Third = () => {
                   key={index}
                   className="group relative w-full sm:mb-4 mb-0 bg-gradient-to-br from-white/20 to-white/30 backdrop-blur-sm rounded-2xl sm:py-3 sm:px-6 py-2 px-2 border border-white/30 hover:border-white/80 transition-all duration-300 shadow-md shadow-black/10 hover:shadow-lg"
                 >
-                  <div className="flex items-center sm:justify-between justify-center lg:mb-4 mb-2">
+                  <div className="flex sm:justify-between justify-center lg:mb-4 mb-2">
                     <div className="flex items-center lg:gap-x-4 gap-x-2 flex-wrap">
                       <span className="text-4xl">{lang.flag}</span>
-                      <h4 className="text-xl text-white mb-1 hidden sm:block">{lang.name}</h4>
+                      <h4 className="text-xl text-white hidden sm:block">{lang.name}</h4>
 
                       <div className="flex items-center lg:gap-4 gap-2">
                         <span

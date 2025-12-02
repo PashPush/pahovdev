@@ -150,7 +150,7 @@ const First = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="max-w-7xl pt-22 pb-10 sm:px-15 px-2">
+    <section ref={sectionRef} className="max-w-7xl pt-22 pb-10 sm:px-5 lg:px-15 px-2">
       <AnimatedGears ref={sectionRef} />
       <div className="skills-wrapper">
         <div ref={frontendRef}>
