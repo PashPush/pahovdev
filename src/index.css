@@ -284,7 +284,7 @@ body {
   }
 
   .app-projects {
-    @apply w-full mt-10 px-5 md:px-20 py-10 md:py-20 flex items-center justify-center;
+    @apply w-full mt-10 px-5 md:px-20 pt-20 pb-10 flex items-center justify-center;
 
     .projects-layout {
       @apply flex xl:flex-row flex-col gap-10 justify-between;
@@ -612,6 +612,54 @@ body {
         font-size: 18px;
         margin: 0;
       }
+    }
+  }
+
+  .lang-card {
+    @apply relative w-full sm:mb-4 mb-0 bg-gradient-to-br from-white/20 to-white/30  rounded-2xl sm:py-3 sm:px-6 py-2 px-2 border border-white/30 hover:border-white/80 transition-all duration-300 shadow-md shadow-black/10 hover:shadow-lg;
+
+    .lang-badge {
+      @apply px-3 py-1 rounded-full text-white font-bold text-sm border transition-all duration-300 border-white/30;
+    }
+  }
+
+  .lang-effective {
+    @apply mt-6 p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl hidden sm:block;
+
+    p {
+      @apply text-slate-100 lg:text-sm text-xs text-center;
+    }
+  }
+
+  .drive-card {
+    @apply relative bg-gradient-to-br from-white/20 to-white/30 rounded-2xl sm:p-3 p-2 sm:mb-4 mb-2 border border-white/30 hover:border-white/80 transition-all duration-300 hover:shadow-lg hover:shadow-white/10 hover:translate-x-1;
+
+    .drive-icon-wrapper {
+      @apply sm:p-3 p-2 bg-[#4b1c54] rounded-xl border border-white/50 transition-colors;
+    }
+
+    .drive-icon {
+      @apply sm:size-5 size-4 text-white-50 transition-colors;
+    }
+
+    .drive-title {
+      @apply text-slate-100 mb-2 sm:text-base text-sm transition-colors;
+    }
+  }
+
+  .call-grow {
+    @apply lg:mt-8 mt-4 text-center z-20 relative;
+
+    div {
+      @apply inline-block px-6 py-3 bg-gradient-to-r from-purple-500/10 via-blue-500/10 to-purple-500/10 rounded-2xl border border-purple-500/20;
+    }
+
+    p {
+      @apply text-white sm:text-lg text-base;
+    }
+
+    span {
+      @apply text-transparent font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text;
     }
   }
 

@@ -49,7 +49,7 @@ const Third = () => {
     <section ref={sectionRef} className="max-w-7xl pt-30 pb-10 xl:px-20 sm:px-10 px-3">
       <div className="max-w-7xl w-full">
         <div className="noise opacity-[0.03]"></div>
-        <h2 className="lg:text-6xl text-5xl text-white font-yeseva-one lg:mb-12 mb-8 text-center z-20 hidden md:block">
+        <h2 className="relative lg:text-6xl text-5xl text-white font-yeseva-one lg:mb-12 mb-8 text-center z-20 hidden md:block">
           Не только код
         </h2>
 
@@ -65,10 +65,7 @@ const Third = () => {
 
             <div className="space-y-6 flex sm:block flex-row gap-2 justify-between">
               {languages.map((lang, index) => (
-                <div
-                  key={index}
-                  className="group relative w-full sm:mb-4 mb-0 bg-gradient-to-br from-white/20 to-white/30 backdrop-blur-sm rounded-2xl sm:py-3 sm:px-6 py-2 px-2 border border-white/30 hover:border-white/80 transition-all duration-300 shadow-md shadow-black/10 hover:shadow-lg"
-                >
+                <div key={index} className="group lang-card">
                   <div className="flex sm:justify-between justify-center lg:mb-4 mb-2">
                     <div className="flex items-center lg:gap-x-4 gap-x-2 flex-wrap">
                       <span className="text-4xl">{lang.flag}</span>
@@ -76,14 +73,11 @@ const Third = () => {
 
                       <div className="flex items-center lg:gap-4 gap-2">
                         <span
-                          className={classNames(
-                            'px-3 py-1 bg-grey-500/50 rounded-full text-white font-bold text-sm border transition-all duration-300 border-white/30 group-hover:border-white/80',
-                            {
-                              'bg-green-400/40': index === 0,
-                              'bg-yellow-300/40': index === 1,
-                              'bg-blue-400/40': index === 2,
-                            }
-                          )}
+                          className={classNames('lang-badge group-hover:border-white/80', {
+                            'bg-green-400/40': index === 0,
+                            'bg-yellow-300/40': index === 1,
+                            'bg-blue-400/40': index === 2,
+                          })}
                         >
                           {lang.level}
                         </span>
@@ -110,10 +104,8 @@ const Third = () => {
               ))}
             </div>
 
-            <div className="mt-6 p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl hidden sm:block">
-              <p className="text-slate-100 lg:text-sm text-xs text-center">
-                Умею эффективно работать с международными командами и заказчиками
-              </p>
+            <div className="lang-effective">
+              <p>Умею эффективно работать с международными командами и заказчиками</p>
             </div>
           </div>
 
@@ -129,20 +121,15 @@ const Third = () => {
               {drives.map((drive, index) => {
                 const Icon = drive.icon;
                 return (
-                  <div
-                    key={index}
-                    className="group relative bg-gradient-to-br from-white/20 to-white/30 backdrop-blur-sm rounded-2xl sm:p-3 p-2 sm:mb-4 mb-2 border border-white/30 hover:border-white/80 transition-all duration-300 hover:shadow-lg hover:shadow-white/10 hover:translate-x-1"
-                  >
+                  <div key={index} className="group drive-card">
                     <div className="flex sm:gap-4 gap-2">
                       <div className="flex-shrink-0">
-                        <div className="sm:p-3 p-2 bg-[#4b1c54] rounded-xl border border-white/50 group-hover:border-white/80 transition-colors">
-                          <Icon className="sm:size-5 size-4 text-white-50 group-hover:text-white transition-colors" />
+                        <div className="drive-icon-wrapper group-hover:border-white/80">
+                          <Icon className="drive-icon group-hover:text-white" />
                         </div>
                       </div>
                       <div className="flex-1">
-                        <h4 className="text-slate-100 mb-2 group-hover:text-white sm:text-base text-sm transition-colors">
-                          {drive.title}
-                        </h4>
+                        <h4 className="drive-title group-hover:text-white">{drive.title}</h4>
                         <p className="text-slate-200 text-xs leading-relaxed">{drive.description}</p>
                       </div>
                     </div>
@@ -153,14 +140,11 @@ const Third = () => {
           </div>
         </div>
 
-        <div className="lg:mt-8 mt-4 text-center z-20">
-          <div className="inline-block px-6 py-3 bg-gradient-to-r from-purple-500/10 via-blue-500/10 to-purple-500/10 rounded-2xl border border-purple-500/20">
-            <p className="text-white sm:text-lg text-base">
+        <div className="call-grow">
+          <div>
+            <p>
               Ищу возможности для роста и создания
-              <span className="text-transparent font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text">
-                {' '}
-                значимых продуктов
-              </span>
+              <span> значимых продуктов</span>
             </p>
           </div>
         </div>
