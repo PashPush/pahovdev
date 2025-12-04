@@ -33,7 +33,7 @@ const Approach = () => {
       .to('.will-fade', { opacity: 0, stagger: 0.2, ease: 'power1.inOut' })
       .to('.masked-img', {
         scale: 2,
-        maskSize: '450%',
+        maskSize: isSmallMobile ? '450%' : '250%',
         translateY: translateY,
         duration: 1,
         ease: 'power1.inOut ',
@@ -45,7 +45,7 @@ const Approach = () => {
 
   return (
     <div id="approach">
-      <div className="col-between md:pt-12 container mx-auto h-full pt-14">
+      <div>
         <h2 className="will-fade">
           <span>Мой</span>
           ПОДХОД

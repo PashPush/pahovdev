@@ -64,7 +64,7 @@ const Experience = () => {
         <div className="md:mt-32 mt-20 relative">
           <div className="relative z-50 xl:space-y-32 space-y-10">
             {expCards.map((card, index) => (
-              <div key={card.title} className="exp-card-wrapper">
+              <div key={card.logoPath} className="exp-card-wrapper">
                 <div className="xl:w-2/6">
                   <BlinkCard index={index} card={card} className="timeline-card">
                     <div>

@@ -133,8 +133,8 @@ const ShaderPhoto = () => {
     scene.add(camera);
 
     const handleResize = () => {
-      sizes.width = window.innerWidth;
-      sizes.height = window.innerHeight;
+      sizes.width = window.outerWidth;
+      sizes.height = window.outerHeight;
       sizes.pixelRatio = Math.min(window.devicePixelRatio, 2);
 
       particlesMaterial.uniforms.uResolution.value.set(sizes.width * sizes.pixelRatio, sizes.height * sizes.pixelRatio);
@@ -142,7 +142,7 @@ const ShaderPhoto = () => {
       camera.aspect = sizes.width / sizes.height;
       camera.updateProjectionMatrix();
 
-      renderer.setSize(sizes.width / 1.05, sizes.height / 1.05);
+      renderer.setSize(sizes.width, sizes.height);
       renderer.setPixelRatio(sizes.pixelRatio);
     };
 

@@ -35,7 +35,7 @@ const Review = () => {
     );
   }, []);
   return (
-    <div ref={sectionRef} className="sm:py-40 py-20 relative">
+    <div ref={sectionRef} className="review">
       <div className="review-wrapper">
         {feedbacks.map((feedback, index) => (
           <BlinkCard card={feedback} key={index} icon={feedback.icon} index={index} className="feedback-card">
