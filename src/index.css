@@ -67,7 +67,7 @@ body {
 }
 
 .masked-img {
-  mask-image: url('/images/cogs2.webp');
+  mask-image: url('/images/cogs22.png');
   mask-repeat: no-repeat;
   mask-position: center;
   mask-size: 35%;
@@ -398,6 +398,14 @@ body {
     @apply flex flex-col-reverse xl:flex-row xl:gap-20 gap-10 justify-between;
   }
 
+  .exp-ul {
+    @apply list-disc ms-5 mt-5 flex flex-col sm:gap-5 gap-2 text-white-50;
+
+    li {
+      @apply text-base md:text-lg;
+    }
+  }
+
   #approach {
     @apply flex-center flex-col min-h-dvh p-5 mt-28 relative radial-gradient;
 
@@ -426,7 +434,7 @@ body {
 
       .masked-container {
         h2 {
-          @apply flex-center text-4xl md:text-5xl text-center mb-10 text-white gap-2 relative;
+          @apply flex-center text-[8vw] sm:text-5xl text-center mb-10 text-white gap-2 relative;
         }
 
         div {
@@ -551,6 +559,36 @@ body {
         .skill-icon {
           @apply transform scale-110 shadow-lg;
         }
+      }
+    }
+
+    .first-wrapper {
+      @apply max-w-7xl pt-22 pb-10 sm:px-5 lg:px-15 px-2;
+    }
+
+    @media (height <= 600px) {
+      .first-wrapper {
+        @apply px-1;
+      }
+
+      .skills-wrapper {
+        @apply flex-center;
+      }
+
+      .skill-list {
+        @apply gap-1 gap-y-2 p-1;
+      }
+
+      .skill-icon {
+        @apply p-1.5;
+      }
+
+      .skill-text {
+        @apply text-sm;
+      }
+
+      .skill-badge {
+        @apply gap-1 pr-2 h-9;
       }
     }
 
@@ -690,14 +728,43 @@ body {
       h1 {
         @apply text-[13vh];
       }
+
       .skills-wrapper {
         @apply space-y-4 flex-row gap-2;
       }
 
-      .skill-list {
-        @apply gap-2;
+      .processes {
+        @apply gap-20 mt-0 px-4 py-24;
+
+        .sticker {
+          @apply py-0;
+        }
+      }
+
+      .hand {
+        @apply absolute text-[140px];
+      }
+
+      .like-hand {
+        @apply text-[110px];
+      }
+
+      .call-hand {
+        @apply text-[110px] translate-y-[100px] -translate-x-[21px];
       }
     }
+  }
+
+  .beyond-code {
+    @apply relative lg:text-6xl text-5xl text-white font-yeseva-one lg:mb-12 mb-8 text-center z-20 hidden md:block;
+  }
+
+  .additional {
+    @apply grid sm:grid-cols-5 grid-cols-3 xl:gap-12 gap-4 items-start z-20 relative;
+  }
+
+  .languages {
+    @apply sm:col-span-2 col-span-3;
   }
 
   .lang-card {
@@ -709,11 +776,15 @@ body {
   }
 
   .lang-effective {
-    @apply mt-6 p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl hidden sm:block;
+    @apply mt-4 p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl hidden sm:block;
 
     p {
       @apply text-slate-100 lg:text-sm text-xs text-center;
     }
+  }
+
+  .drive {
+    @apply space-y-6 col-span-3;
   }
 
   .drive-card {

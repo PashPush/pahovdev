@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
@@ -45,17 +46,154 @@ const Third = () => {
     },
   ];
 
+  useGSAP(() => {
+    if (!sectionRef.current) return;
+
+    const additionals = sectionRef.current.querySelectorAll('.additional > div');
+    const beyondCode = sectionRef.current.querySelector('.beyond-code');
+    const langEffective = sectionRef.current.querySelector('.lang-effective');
+    const callGrow = sectionRef.current.querySelector('.call-grow');
+
+    gsap.delayedCall(0.2, () => {
+      const mainTrigger = ScrollTrigger.getAll().find(st => st.trigger && st.trigger.id === 'skills');
+
+      if (!mainTrigger) {
+        return;
+      }
+
+      additionals.forEach((additional, index) => {
+        gsap.fromTo(
+          additional,
+          {
+            opacity: 0,
+            transformOrigin: 'center top',
+          },
+          {
+            opacity: 1,
+            duration: 1,
+            delay: 0.5 * (index + 1),
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              containerAnimation: mainTrigger.animation,
+              start: 'left 70%',
+            },
+          }
+        );
+      });
+
+      gsap.fromTo(
+        beyondCode,
+        {
+          y: -80,
+          opacity: 0,
+          transformOrigin: 'center top',
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.7,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            containerAnimation: mainTrigger.animation,
+            start: 'left 70%',
+          },
+        }
+      );
+
+      gsap.fromTo(
+        langEffective,
+        {
+          x: 50,
+          opacity: 0,
+          transformOrigin: 'center top',
+        },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 0.7,
+          delay: 1.5,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            containerAnimation: mainTrigger.animation,
+            start: 'left 60%',
+          },
+        }
+      );
+
+      gsap.fromTo(
+        callGrow,
+        {
+          y: 80,
+          opacity: 0,
+          transformOrigin: 'center top',
+        },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            containerAnimation: mainTrigger.animation,
+            start: 'left 45%',
+          },
+        }
+      );
+      // Animate language cards
+      const langCards = sectionRef.current.querySelectorAll('.lang-card');
+      langCards.forEach((card, index) => {
+        gsap.fromTo(
+          card,
+          {
+            x: 150,
+            opacity: 0,
+          },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 0.7,
+            delay: 0.5 * index,
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              containerAnimation: mainTrigger.animation,
+              start: 'left 60%',
+            },
+          }
+        );
+      });
+
+      // Animate drive cards
+      const driveCards = sectionRef.current.querySelectorAll('.drive-card');
+      driveCards.forEach((card, index) => {
+        gsap.fromTo(
+          card,
+          {
+            x: 150,
+            opacity: 0,
+          },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 0.7,
+            delay: 0.6 * index,
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              containerAnimation: mainTrigger.animation,
+              start: 'left 60%',
+            },
+          }
+        );
+      });
+    });
+  }, []);
+
   return (
     <section ref={sectionRef} className="max-w-7xl pt-30 pb-10 xl:px-20 sm:px-10 px-3">
       <div className="max-w-7xl w-full">
         <div className="noise opacity-[0.03]"></div>
-        <h2 className="relative lg:text-6xl text-5xl text-white font-yeseva-one lg:mb-12 mb-8 text-center z-20 hidden md:block">
-          Не только код
-        </h2>
+        <h2 className="beyond-code">Не только код</h2>
 
-        <div className="grid sm:grid-cols-5 grid-cols-3 xl:gap-12 gap-4 items-start z-20 relative">
-          {/* Languages Section */}
-          <div className="sm:col-span-2 col-span-3">
+        <div className="additional">
+          <div className="languages">
             <div className="flex items-center gap-3 lg:mb-8 mb-4">
               <div className="sm:p-3 p-2 bg-gradient-to-br from-gray-500/20 to-purple-500/20 rounded-xl border border-blue-500/20">
                 <IoLanguageSharp className="sm:size-6 size-5 text-blue-200" />
@@ -63,7 +201,7 @@ const Third = () => {
               <h3 className="text-xl text-white font-yeseva-one">Владение языками</h3>
             </div>
 
-            <div className="space-y-6 flex sm:block flex-row gap-2 justify-between">
+            <div className="flex sm:block flex-row gap-2 justify-between">
               {languages.map((lang, index) => (
                 <div key={index} className="group lang-card">
                   <div className="flex sm:justify-between justify-center lg:mb-4 mb-2">
@@ -86,11 +224,10 @@ const Third = () => {
                     </div>
                   </div>
 
-                  {/* Progress bar */}
                   <div className="relative h-2 bg-[#4b1c54] rounded-full overflow-hidden">
                     <div
                       className={classNames(
-                        'absolute inset-y-0 left-0 bg-gradient-to-r  rounded-full transition-all duration-1000',
+                        'absolute inset-y-0 left-0 bg-gradient-to-r rounded-full transition-all duration-1000',
                         {
                           'from-[#42857b] to-[#26ccb7]': index === 0,
                           'from-[#b6784b] to-[#f3c925]': index === 1,
@@ -109,7 +246,7 @@ const Third = () => {
             </div>
           </div>
 
-          <div className="space-y-6 col-span-3">
+          <div className="drive">
             <div className="flex items-center gap-3 lg:mb-8 mb-4">
               <div className="sm:p-3 p-2 bg-gradient-to-br from-purple-500/20 to-[#532a5b]/20 rounded-xl border border-purple-500/20">
                 <IoSparklesOutline className="sm:size-6 size-5 text-purple-300" />

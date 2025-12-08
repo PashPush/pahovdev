@@ -33,7 +33,7 @@ const Approach = () => {
       .to('.will-fade', { opacity: 0, stagger: 0.2, ease: 'power1.inOut' })
       .to('.masked-img', {
         scale: 2,
-        maskSize: isSmallMobile ? '450%' : '250%',
+        maskSize: isSmallMobile ? '450%' : '300%',
         translateY: translateY,
         duration: 1,
         ease: 'power1.inOut ',

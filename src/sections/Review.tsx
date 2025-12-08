@@ -45,7 +45,7 @@ const Review = () => {
               </div>
               <div>
                 <p className="font-bold">{feedback.name}</p>
-                <p className="text-white-50">{feedback.position}</p>
+                <p className="text-white-50 sm:text-base text-sm">{feedback.position}</p>
               </div>
             </div>
           </BlinkCard>

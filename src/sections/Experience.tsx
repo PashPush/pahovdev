@@ -83,14 +83,12 @@ const Experience = () => {
                         <img src={card.logoPath} alt={`logo-${index + 1}`} />
                       </div>
                       <div>
-                        <h1 className="font-semibold text-3xl">{card.title}</h1>
-                        <p className="my-5 text-white-50">&nbsp;{card.date}</p>
+                        <h2 className="font-semibold sm:text-3xl text-2xl">{card.title}</h2>
+                        <p className="my-5 text-white-50">{card.date}</p>
                         {card.responsibilities.length > 0 && <p className="text-[#839CB5] italic">Обязанности</p>}
-                        <ul className="list-disc ms-5 mt-5 flex flex-col gap-5 text-white-50">
+                        <ul className="exp-ul">
                           {card.responsibilities.map((responsibility, index) => (
-                            <li key={index} className="text-lg">
-                              {responsibility}
-                            </li>
+                            <li key={index}>{responsibility}</li>
                           ))}
                         </ul>
                       </div>

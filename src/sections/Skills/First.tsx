@@ -62,7 +62,7 @@ const backendAndTools: Skill[] = [
   { id: 'webpack', name: 'Webpack', Icon: SiWebpack, color: '#8ed6fb', colorBack: '#4c9ac7' },
   { id: 'vite', name: 'Vite', Icon: SiVite, color: '#8c71fe', colorBack: '#31236b' },
   { id: 'node', name: 'Node.js', Icon: SiNodedotjs, color: '#417e38', colorBack: '#295722' },
-  { id: 'rest', name: 'REST API', Icon: SiPostman, color: '#FF6C37', colorBack: '#b9471b' },
+  { id: 'rest', name: 'REST', Icon: SiPostman, color: '#FF6C37', colorBack: '#b9471b' },
   { id: 'graphql', name: 'GraphQL', Icon: SiGraphql, color: '#e10098', colorBack: '#8a0059' },
   { id: 'docker', name: 'Docker', Icon: SiDocker, color: '#2496ed', colorBack: '#165b8a' },
   { id: 'ci', name: 'CI/CD', Icon: CICD as IconType, color: '#ff8a00', colorBack: '#b45c00' },
@@ -80,6 +80,8 @@ const testing: Skill[] = [
 
 function SkillBadge({ skill }: { skill: Skill }) {
   const isMobile = useMediaQuery({ maxWidth: 768 });
+  const horizontal = useMediaQuery({ maxHeight: 600 });
+
   const { Icon } = skill;
 
   return (
@@ -93,7 +95,7 @@ function SkillBadge({ skill }: { skill: Skill }) {
       aria-label={skill.name}
     >
       <span style={{ background: skill.color }} className="skill-icon">
-        <Icon size={isMobile ? 24 : 40} color="#fff" />
+        <Icon size={isMobile || horizontal ? 24 : 40} color="#fff" />
       </span>
       <span className="skill-text" style={{ lineHeight: 1 }}>
         {skill.name}
@@ -150,7 +152,7 @@ const First = () => {
   }, []);
 
   return (
-    <section className="max-w-7xl pt-22 pb-10 sm:px-5 lg:px-15 px-2">
+    <section className="first-wrapper">
       <AnimatedGears ref={sectionRef} />
       <div className="skills-wrapper">
         <div ref={frontendRef}>

@@ -48,7 +48,7 @@ const BlinkCard = ({ card, index, icon = 'stars', children, className = '' }: Bl
         cardRefs.current[index] = el;
       }}
       onMouseMove={handleMouseMove(index)}
-      className={`card card-border rounded-xl p-10 mb-5 break-inside-avoid-column ${className}`}
+      className={`card card-border rounded-xl sm:p-10 p-8 mb-5 break-inside-avoid-column ${className}`}
     >
       <div className="glow"></div>
       <div className="flex items-center gap-1">
@@ -59,7 +59,7 @@ const BlinkCard = ({ card, index, icon = 'stars', children, className = '' }: Bl
         )}
       </div>
       <div className="mb-5">
-        <p className="text-white-50 text-lg">{card.review}</p>
+        <p className="text-white-50 sm:text-lg text-base">{card.review}</p>
       </div>
       {children}
     </div>
