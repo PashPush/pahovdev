@@ -2,7 +2,6 @@ import gsap from 'gsap';
 import { useMediaQuery } from 'react-responsive';
 import { useGSAP } from '@gsap/react';
 import { featureLists, goodLists } from '../constants/index.ts';
-import { classNames } from '../lib/classNames.ts';
 
 const Approach = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -33,7 +32,7 @@ const Approach = () => {
       .to('.will-fade', { opacity: 0, stagger: 0.2, ease: 'power1.inOut' })
       .to('.masked-img', {
         scale: 2,
-        maskSize: isSmallMobile ? '450%' : '300%',
+        maskSize: isMobile ? '450%' : '300%',
         translateY: translateY,
         duration: 1,
         ease: 'power1.inOut ',
@@ -65,9 +64,7 @@ const Approach = () => {
             <img
               src="/images/pavel7.jpg"
               alt="my approach"
-              className={classNames('abs-center masked-img size-full object-contain', {
-                'masked-img-mobile': isMobile,
-              })}
+              className="abs-center masked-img size-full object-contain"
             />
           </div>
 

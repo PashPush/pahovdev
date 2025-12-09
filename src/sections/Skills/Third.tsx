@@ -11,11 +11,13 @@ import {
   IoReaderOutline,
 } from 'react-icons/io5';
 import { classNames } from '../../lib/classNames';
+import { useMediaQuery } from 'react-responsive';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Third = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const horizontal = useMediaQuery({ maxHeight: 600 });
 
   const languages = [
     { name: 'English', level: 'C1', levelText: 'Advanced', flag: '🇬🇧', percentage: 89 },
@@ -187,18 +189,18 @@ const Third = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="max-w-7xl pt-30 pb-10 xl:px-20 sm:px-10 px-3">
+    <section ref={sectionRef} className="third-wrapper">
       <div className="max-w-7xl w-full">
         <div className="noise opacity-[0.03]"></div>
-        <h2 className="beyond-code">Не только код</h2>
+        {!horizontal && <h2 className="beyond-code">Не только код</h2>}
 
         <div className="additional">
           <div className="languages">
-            <div className="flex items-center gap-3 lg:mb-8 mb-4">
-              <div className="sm:p-3 p-2 bg-gradient-to-br from-gray-500/20 to-purple-500/20 rounded-xl border border-blue-500/20">
+            <div className="card-title">
+              <div className="lang-title-icon">
                 <IoLanguageSharp className="sm:size-6 size-5 text-blue-200" />
               </div>
-              <h3 className="text-xl text-white font-yeseva-one">Владение языками</h3>
+              <h3>Владение языками</h3>
             </div>
 
             <div className="flex sm:block flex-row gap-2 justify-between">
@@ -219,7 +221,9 @@ const Third = () => {
                         >
                           {lang.level}
                         </span>
-                        <span className="text-slate-100 text-sm hidden sm:block">{lang.levelText}</span>
+                        {!horizontal && (
+                          <span className="text-slate-100 text-sm hidden sm:block">{lang.levelText}</span>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -241,39 +245,43 @@ const Third = () => {
               ))}
             </div>
 
-            <div className="lang-effective">
-              <p>Умею эффективно работать с международными командами и заказчиками</p>
-            </div>
+            {!horizontal && (
+              <div className="lang-effective">
+                <p>Умею эффективно работать с международными командами и заказчиками</p>
+              </div>
+            )}
           </div>
 
           <div className="drive">
-            <div className="flex items-center gap-3 lg:mb-8 mb-4">
-              <div className="sm:p-3 p-2 bg-gradient-to-br from-purple-500/20 to-[#532a5b]/20 rounded-xl border border-purple-500/20">
+            <div className="card-title">
+              <div className="drive-title-icon">
                 <IoSparklesOutline className="sm:size-6 size-5 text-purple-300" />
               </div>
-              <h3 className="text-xl text-white font-yeseva-one">Что меня драйвит</h3>
+              <h3>Что меня драйвит</h3>
             </div>
 
-            <div className="space-y-4">
-              {drives.map((drive, index) => {
-                const Icon = drive.icon;
-                return (
-                  <div key={index} className="group drive-card">
-                    <div className="flex sm:gap-4 gap-2">
-                      <div className="flex-shrink-0">
-                        <div className="drive-icon-wrapper group-hover:border-white/80">
-                          <Icon className="drive-icon group-hover:text-white" />
-                        </div>
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="drive-title group-hover:text-white">{drive.title}</h4>
-                        <p className="text-slate-200 text-xs leading-relaxed">{drive.description}</p>
+            {drives.map((drive, index) => {
+              const Icon = drive.icon;
+              return (
+                <div key={index} className="group drive-card">
+                  <div className="flex sm:gap-4 gap-2">
+                    <div className="flex-shrink-0">
+                      <div className="drive-icon-wrapper group-hover:border-white/80">
+                        <Icon className="drive-icon group-hover:text-white" />
                       </div>
                     </div>
+                    <div className="flex-1">
+                      <h4 className="drive-title group-hover:text-white">{drive.title}</h4>
+                      {!horizontal && (
+                        <p className="text-slate-200 md:text-sm xl:text-base text-xs leading-relaxed">
+                          {drive.description}
+                        </p>
+                      )}
+                    </div>
                   </div>
-                );
-              })}
-            </div>
+                </div>
+              );
+            })}
           </div>
         </div>
 
