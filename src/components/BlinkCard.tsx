@@ -2,8 +2,11 @@ import { useRef } from 'react';
 
 type ExperienceCard = {
   review: string;
+  info?: string;
   imgPath: string;
+  url: string;
   logoPath: string;
+  logoAlt: string;
   title: string;
   date: string;
   responsibilities: string[];
@@ -11,6 +14,7 @@ type ExperienceCard = {
 
 type RewiewCard = {
   name: string;
+  info?: string;
   position: string;
   review: string;
   imgPath: string;
@@ -58,8 +62,9 @@ const BlinkCard = ({ card, index, icon = 'stars', children, className = '' }: Bl
           <span className="icon">{icon}</span>
         )}
       </div>
-      <div className="mb-5">
+      <div className="mb-3">
         <p className="text-white-50 sm:text-lg text-base">{card.review}</p>
+        {card.info && <p className="text-[#899aae] text-base mt-3">{card.info}</p>}
       </div>
       {children}
     </div>

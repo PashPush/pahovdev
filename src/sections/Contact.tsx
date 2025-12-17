@@ -106,11 +106,11 @@ const Contact = () => {
         <a href="https://wa.me/79934690793" target="_blank" className="bg-[#4ac959]">
           <SiWhatsapp size={44} color="#fff" />
         </a>
-        <a href="mailto:pahovdev@gmail.com" target="_blank" className="bg-[#2e2d38]">
+        <a href="mailto:pah0v@rambler.ru" target="_blank" className="bg-[#2e2d38]">
           <MdMail size={24} color="#fff" />
         </a>
       </div>
-      <div className="flex-center md:pb-4 pb-2">Pavel Khovalkin © {new Date().getFullYear()}</div>
+      <div className="flex-center md:pb-4 pb-2">Pavel Hovalkin © {new Date().getFullYear()}</div>
     </div>
   );
 };

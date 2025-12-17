@@ -67,9 +67,9 @@ const Experience = () => {
               <div key={card.logoPath} className="exp-card-wrapper">
                 <div className="xl:w-2/6">
                   <BlinkCard index={index} card={card} className="timeline-card">
-                    <div>
-                      <img src={card.imgPath} alt="exp-img" />
-                    </div>
+                    <a href={card.url} target="_blank" className="relative z-10">
+                      <img src={card.imgPath} alt={card.logoAlt} />
+                    </a>
                   </BlinkCard>
                 </div>
                 <div className="xl:w-4/6">
@@ -80,12 +80,12 @@ const Experience = () => {
                     </div>
                     <div className="expText flex xl:gap-20 md:gap-10 gap-5 relative z-20">
                       <div className="timeline-logo">
-                        <img src={card.logoPath} alt={`logo-${index + 1}`} />
+                        <img src={card.logoPath} alt={card.logoAlt} />
                       </div>
                       <div>
                         <h2 className="font-semibold sm:text-3xl text-2xl">{card.title}</h2>
                         <p className="my-5 text-white-50">{card.date}</p>
-                        {card.responsibilities.length > 0 && <p className="text-[#839CB5] italic">Обязанности</p>}
+                        {card.responsibilities.length > 0 && <p className="text-[#899aae] italic">Обязанности</p>}
                         <ul className="exp-ul">
                           {card.responsibilities.map((responsibility, index) => (
                             <li key={index}>{responsibility}</li>
