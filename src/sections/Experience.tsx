@@ -1,13 +1,9 @@
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
 import { expCards } from '../constants';
 import TitleHeader from '../components/TitleHeader';
 import BlinkCard from '../components/BlinkCard';
 import { useMediaQuery } from 'react-responsive';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const Experience = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });

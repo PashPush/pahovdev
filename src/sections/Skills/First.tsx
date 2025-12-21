@@ -24,7 +24,6 @@ import {
 import { useMediaQuery } from 'react-responsive';
 import { useRef } from 'react';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import AnimatedGears from './AnimatedGears';
 import CICD from './icons/CICD';
@@ -32,8 +31,6 @@ import N8n from './icons/N8n';
 import Gsap from './icons/Gsap';
 import Zustand from './icons/Zustand';
 import Playwright from './icons/Playwright';
-
-gsap.registerPlugin(ScrollTrigger);
 
 type Skill = {
   id: string;

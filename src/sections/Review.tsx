@@ -1,11 +1,8 @@
 import { useRef } from 'react';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import BlinkCard from '../components/BlinkCard';
 import { feedbacks } from '../constants';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const Review = () => {
   const sectionRef = useRef(null);

@@ -6,9 +6,13 @@ import Hero from './sections/Hero';
 import Projects from './sections/Projects';
 import Experience from './sections/Experience';
 import Approach from './sections/Approach';
-import Skills from './sections/Skills/Skills';
 import Review from './sections/Review';
-import Contact from './sections/Contact';
+// import Skills from './sections/Skills/Skills';
+// import Contact from './sections/Contact';
+import React from 'react';
+
+const Skills = React.lazy(() => import('./sections/Skills/Skills'));
+const Contact = React.lazy(() => import('./sections/Contact'));
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 

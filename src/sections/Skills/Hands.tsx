@@ -3,8 +3,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { useMediaQuery } from 'react-responsive';
 
-gsap.registerPlugin(ScrollTrigger);
-
 const Hands = () => {
   const horizontal = useMediaQuery({ maxHeight: 600 });
 

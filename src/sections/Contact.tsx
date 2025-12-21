@@ -1,12 +1,8 @@
 import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SiTelegram, SiWhatsapp } from 'react-icons/si';
 import { MdMail } from 'react-icons/md';
 import { classNames } from '../lib/classNames';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const Contact = () => {
   const sectionRef = useRef<HTMLDivElement>(null);

@@ -1,9 +1,6 @@
 import { useRef, forwardRef } from 'react';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const AnimatedGears = forwardRef<HTMLDivElement>((_, ref) => {
   const gear1Ref = useRef<SVGGElement>(null);

@@ -1,14 +1,11 @@
 import { useRef } from 'react';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { useMediaQuery } from 'react-responsive';
 import CurvedLine from './icons/CurvedLine';
 import { stickers } from '../../constants';
 import CurvedLineMobile from './icons/CurvedLineMobile';
 import Hands from './Hands';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const Second = () => {
   const sectionRef = useRef<HTMLDivElement>(null);

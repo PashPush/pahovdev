@@ -13,8 +13,6 @@ import {
 import { classNames } from '../../lib/classNames';
 import { useMediaQuery } from 'react-responsive';
 
-gsap.registerPlugin(ScrollTrigger);
-
 const Third = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const horizontal = useMediaQuery({ maxHeight: 600 });
@@ -141,50 +139,54 @@ const Third = () => {
         }
       );
       // Animate language cards
-      const langCards = sectionRef.current.querySelectorAll('.lang-card');
-      langCards.forEach((card, index) => {
-        gsap.fromTo(
-          card,
-          {
-            x: 150,
-            opacity: 0,
-          },
-          {
-            x: 0,
-            opacity: 1,
-            duration: 0.7,
-            delay: 0.5 * index,
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              containerAnimation: mainTrigger.animation,
-              start: 'left 60%',
+      const langCards = sectionRef?.current?.querySelectorAll('.lang-card');
+      if (langCards) {
+        langCards.forEach((card, index) => {
+          gsap.fromTo(
+            card,
+            {
+              x: 150,
+              opacity: 0,
             },
-          }
-        );
-      });
+            {
+              x: 0,
+              opacity: 1,
+              duration: 0.7,
+              delay: 0.5 * index,
+              scrollTrigger: {
+                trigger: sectionRef.current,
+                containerAnimation: mainTrigger.animation,
+                start: 'left 60%',
+              },
+            }
+          );
+        });
+      }
 
       // Animate drive cards
-      const driveCards = sectionRef.current.querySelectorAll('.drive-card');
-      driveCards.forEach((card, index) => {
-        gsap.fromTo(
-          card,
-          {
-            x: 150,
-            opacity: 0,
-          },
-          {
-            x: 0,
-            opacity: 1,
-            duration: 0.7,
-            delay: 0.6 * index,
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              containerAnimation: mainTrigger.animation,
-              start: 'left 60%',
+      const driveCards = sectionRef?.current?.querySelectorAll('.drive-card');
+      if (driveCards) {
+        driveCards.forEach((card, index) => {
+          gsap.fromTo(
+            card,
+            {
+              x: 150,
+              opacity: 0,
             },
-          }
-        );
-      });
+            {
+              x: 0,
+              opacity: 1,
+              duration: 0.7,
+              delay: 0.6 * index,
+              scrollTrigger: {
+                trigger: sectionRef.current,
+                containerAnimation: mainTrigger.animation,
+                start: 'left 60%',
+              },
+            }
+          );
+        });
+      }
     });
   }, []);
 
