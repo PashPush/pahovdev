@@ -62,9 +62,12 @@ const Approach = () => {
 
           <div className="approach-img">
             <img
-              src="/images/pavel7.jpg"
+              src="/images/pavel.webp"
               alt="my approach"
               className="abs-center masked-img size-full object-contain"
+              loading="lazy"
+              width={isMobile ? 300 : 400}
+              height={isMobile ? 300 : 400}
             />
           </div>
 

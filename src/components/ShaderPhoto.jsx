@@ -79,7 +79,7 @@ const ShaderPhoto = () => {
     particlesGeometry.setAttribute('aAngle', new THREE.BufferAttribute(anglesArray, 1));
 
     // Picture texture
-    const pictureTexture = textureLoader.load('/images/pavel-bw.png');
+    const pictureTexture = textureLoader.load('/images/pavel-bw.webp');
     pictureTexture.minFilter = THREE.LinearFilter;
     pictureTexture.magFilter = THREE.LinearFilter;
     pictureTexture.generateMipmaps = false;

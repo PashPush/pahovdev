@@ -41,7 +41,7 @@ const Projects = () => {
         <div className="projects-layout">
           <div ref={project1Ref} className="first-project-wrapper">
             <div className="image-wrapper bg-[#168be8]">
-              <img src="/images/project-pt.png" alt="Power Thesaurus" />
+              <img src="/images/project-pt.webp" alt="Power Thesaurus" />
             </div>
             <div className="text-content">
               <h2>Power Thesaurus</h2>
@@ -52,14 +52,14 @@ const Projects = () => {
           <div className="project-list-wrapper overflow-hidden">
             <div className="project" ref={project2Ref}>
               <div className="image-wrapper project-rambler">
-                <img src="/images/project-rambler.png" alt="Rambler" />
+                <img src="/images/project-rambler.webp" alt="Rambler" />
               </div>
               <h2>Рамблер почта</h2>
             </div>
 
             <div className="project" ref={project3Ref}>
               <div className="image-wrapper project-sagama">
-                <img src="/images/project-sagama2.png" alt="Sagama" />
+                <img src="/images/project-sagama.webp" alt="Sagama" />
               </div>
               <h2>Sagama Group</h2>
             </div>

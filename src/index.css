@@ -67,7 +67,7 @@ body {
 }
 
 .masked-img {
-  mask-image: url('/images/cogs22.png');
+  mask-image: url('/images/cogs.webp');
   mask-repeat: no-repeat;
   mask-position: center;
   mask-size: 35%;
