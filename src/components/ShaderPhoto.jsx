@@ -58,6 +58,7 @@ const ShaderPhoto = () => {
     displacement.texture.minFilter = THREE.LinearFilter;
     displacement.texture.magFilter = THREE.LinearFilter;
     displacement.texture.generateMipmaps = false;
+    displacement.texture.flipY = false;
 
     /**
      * Particles
@@ -166,7 +167,7 @@ const ShaderPhoto = () => {
       if (intersections.length) {
         const uv = intersections[0].uv;
         displacement.canvasCursor.x = uv.x * displacement.canvas.width;
-        displacement.canvasCursor.y = (1 - uv.y) * displacement.canvas.height;
+        displacement.canvasCursor.y = uv.y * displacement.canvas.height;
       }
 
       displacement.context.globalCompositeOperation = 'source-over';
