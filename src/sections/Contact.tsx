@@ -4,6 +4,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SiTelegram, SiWhatsapp } from 'react-icons/si';
 import { MdMail } from 'react-icons/md';
+import { classNames } from '../lib/classNames';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,6 +12,7 @@ const Contact = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const [loading, setLoading] = useState(false);
+  const [isSent, setIsSent] = useState(false);
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -35,6 +37,10 @@ const Contact = () => {
       );
 
       setForm({ name: '', email: '', message: '' });
+      setIsSent(true);
+      setTimeout(() => {
+        setIsSent(false);
+      }, 5000);
     } catch (error) {
       console.error('EmailJS Error:', error);
     } finally {
@@ -97,6 +103,17 @@ const Contact = () => {
               </div>
             </button>
           </form>
+          <div
+            className={classNames(
+              'absolute flex-center rounded-2xl px-4 py-2 bg-[#50a2ff] text-lg transition-all duration-300 ease-in-out opacity-0 bottom-0',
+              {
+                'opacity-100': isSent,
+                'translate-y-5': isSent,
+              }
+            )}
+          >
+            <p>Сообщение отправлено!</p>
+          </div>
         </div>
       </div>
       <div className="socials">

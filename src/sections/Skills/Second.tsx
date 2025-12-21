@@ -15,6 +15,8 @@ const Second = () => {
   const isMobile = useMediaQuery({ maxWidth: 640 });
   const smallScreen = useMediaQuery({ maxWidth: 1024 });
 
+  const isSafari = useRef(/^((?!chrome|android).)*safari/i.test(navigator.userAgent));
+
   const getRotate = (index: number) => {
     switch (index) {
       case 0:
@@ -38,7 +40,7 @@ const Second = () => {
     const svg = document.querySelector(smallScreen ? '#curved-line-mobile' : '#curved-line');
     const line = svg && svg.querySelector('path');
 
-    if (line) {
+    if (line && !isSafari.current) {
       const offsetLineStart = isMobile ? 60 : smallScreen ? 100 : 150;
       const offsetLineEnd = isMobile ? 0 : smallScreen ? 100 : 250;
       const lineLength = line.getTotalLength();

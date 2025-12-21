@@ -946,7 +946,7 @@ body {
 }
 
 .form-body {
-  @apply flex-center rounded-xl p-10 bg-[rgba(0,0,0,0.9)];
+  @apply flex-center rounded-xl p-10 bg-[rgba(0,0,0,0.9)] flex-col transition-all duration-300 ease-in-out;
 }
 
 form {
