@@ -82,7 +82,7 @@ const Experience = () => {
                       <div>
                         <h2 className="font-semibold sm:text-3xl text-2xl">{card.title}</h2>
                         <p className="my-5 text-white-50">{card.date}</p>
-                        {card.responsibilities.length > 0 && <p className="text-[#899aae] italic">Обязанности</p>}
+                        {card.responsibilities.length > 0 && <p className="text-[#899aae] italic">{card.subtitle}</p>}
                         <ul className="exp-ul">
                           {card.responsibilities.map((responsibility, index) => (
                             <li key={index}>{responsibility}</li>

@@ -48,10 +48,10 @@ const Projects = () => {
 
           <div className="project-list-wrapper overflow-hidden">
             <div className="project" ref={project2Ref}>
-              <div className="image-wrapper project-rambler">
-                <img src="/images/project-rambler.webp" alt="Rambler" />
+              <div className="image-wrapper project-index">
+                <img src="/images/project-index.webp" alt="Index Marketing" />
               </div>
-              <h2>Рамблер почта</h2>
+              <h2>Индекс Маркетинг</h2>
             </div>
 
             <div className="project" ref={project3Ref}>
