@@ -29,13 +29,12 @@ import AnimatedGears from './AnimatedGears';
 import CICD from './icons/CICD';
 import N8n from './icons/N8n';
 import Gsap from './icons/Gsap';
-import Zustand from './icons/Zustand';
 import Playwright from './icons/Playwright';
 
 type Skill = {
   id: string;
   name: string;
-  Icon: IconType;
+  Icon: IconType | string;
   color: string;
   colorBack?: string;
 };
@@ -51,7 +50,7 @@ const frontend: Skill[] = [
   { id: 'scss', name: 'SCSS', Icon: SiSass, color: '#cc6699', colorBack: '#8b3b62' },
   { id: 'redux', name: 'Redux', Icon: SiRedux, color: '#764abc', colorBack: '#442674' },
   { id: 'mobx', name: 'MobX', Icon: SiMobx, color: '#df5d15', colorBack: '#833a11' },
-  { id: 'zustand', name: 'Zustand', Icon: Zustand as IconType, color: '#7e57c2', colorBack: '#483071' },
+  { id: 'zustand', name: 'Zustand', Icon: '/images/zustand.webp', color: '#7e57c2', colorBack: '#483071' },
 ];
 
 const backendAndTools: Skill[] = [
@@ -92,7 +91,16 @@ function SkillBadge({ skill }: { skill: Skill }) {
       aria-label={skill.name}
     >
       <span style={{ background: skill.color }} className="skill-icon">
-        <Icon size={isMobile || horizontal ? 24 : 40} color="#fff" />
+        {typeof Icon !== 'string' ? (
+          <Icon size={isMobile || horizontal ? 24 : 40} color="#fff" />
+        ) : (
+          <img
+            src={Icon}
+            alt="Zustand"
+            width={isMobile || horizontal ? 24 : 40}
+            height={isMobile || horizontal ? 24 : 40}
+          />
+        )}
       </span>
       <span className="skill-text" style={{ lineHeight: 1 }}>
         {skill.name}

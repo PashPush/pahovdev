@@ -3,7 +3,6 @@ import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 
 const Projects = () => {
-  const sectionRef = useRef(null);
   const project1Ref = useRef(null);
   const project2Ref = useRef(null);
   const project3Ref = useRef(null);
@@ -33,7 +32,7 @@ const Projects = () => {
   }, []);
 
   return (
-    <div id="projects" ref={sectionRef} className="app-projects">
+    <div id="projects" className="app-projects">
       <div className="w-full">
         <div className="projects-layout">
           <div ref={project1Ref} className="first-project-wrapper">
