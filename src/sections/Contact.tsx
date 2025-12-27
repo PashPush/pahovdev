@@ -113,13 +113,13 @@ const Contact = () => {
         </div>
       </div>
       <div className="socials">
-        <a href="https://t.me/pahhov" target="_blank" className="bg-[#00aaff]">
+        <a href="https://t.me/pah0v" aria-label="telegram" target="_blank" className="bg-[#00aaff]">
           <SiTelegram size={44} color="#fff" />
         </a>
-        <a href="https://wa.me/79934690793" target="_blank" className="bg-[#4ac959]">
+        <a href="https://wa.me/79934690793" aria-label="whatsapp" target="_blank" className="bg-[#4ac959]">
           <SiWhatsapp size={44} color="#fff" />
         </a>
-        <a href="mailto:pahovdev@gmail.com" target="_blank" className="bg-[#2e2d38]">
+        <a href="mailto:pahovdev@gmail.com" aria-label="email" target="_blank" className="bg-[#2e2d38]">
           <MdMail size={24} color="#fff" />
         </a>
       </div>

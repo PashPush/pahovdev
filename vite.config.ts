@@ -14,7 +14,7 @@ export default defineConfig({
           if (id.includes('node_modules')) {
             if (id.includes('three')) return 'vendor_three';
             if (id.includes('gsap')) return 'vendor_gsap';
-            if (id.includes('@emailjs') || id.includes('react-icons')) return 'vendor_misc';
+            if (id.includes('@emailjs')) return 'vendor_misc';
             return 'vendor'; // other node_modules
           }
         },
