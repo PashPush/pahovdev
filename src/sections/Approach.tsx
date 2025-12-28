@@ -2,9 +2,10 @@ import gsap from 'gsap';
 import { useMediaQuery } from 'react-responsive';
 import { useGSAP } from '@gsap/react';
 import { featureLists, goodLists } from '../constants/index.ts';
+import { classNames } from '../lib/classNames.ts';
 
 const Approach = () => {
-  const isMobile = useMediaQuery({ maxWidth: 767 });
+  const isMobile = useMediaQuery({ maxWidth: 640 });
   const isSmallMobile = useMediaQuery({ maxWidth: 460 });
 
   useGSAP(() => {
@@ -17,14 +18,17 @@ const Approach = () => {
         end: '+=2000',
         scrub: 1.5,
         pin: true,
+        anticipatePin: isMobile ? 1 : 0,
+        fastScrollEnd: true,
+        preventOverlaps: true,
       },
     });
 
     const contentAnimation = isMobile
-      ? { stagger: 0.8, translateX: 20, ease: 'power1.inOut' }
+      ? { translateX: 20, stagger: 0.8, ease: 'power1.inOut' }
       : { scale: 1.2, stagger: 0.8, ease: 'power1.inOut' };
 
-    const translateY = isSmallMobile ? 130 : 0;
+    const translateY = isSmallMobile ? 100 : 0;
 
     maskTimeline
       .to('.will-grow', contentAnimation)
@@ -40,7 +44,7 @@ const Approach = () => {
       .fromTo('#masked-content', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power1.inOut' })
       .to('.masked-span', { opacity: 1, duration: 1, stagger: 0.3, ease: 'power1.inOut' })
       .to('.masked-p', { opacity: 1, duration: 1, ease: 'power1.inOut' });
-  });
+  }, []);
 
   return (
     <div id="approach">
@@ -51,7 +55,7 @@ const Approach = () => {
         </h2>
 
         <div className="content">
-          <ul className="space-y-4 will-fade will-grow md:mr-50 z-10">
+          <ul className="space-y-4 will-fade will-grow sm:mr-50 z-10">
             {goodLists.map((feature, index) => (
               <li key={index} className="flex items-center gap-2">
                 <img src="/images/check.png" alt="check" />
@@ -60,22 +64,24 @@ const Approach = () => {
             ))}
           </ul>
 
-          <div className="approach-img">
+          <div className={classNames('approach-img', { 'approach-mobile': isMobile })}>
             <img
               src="/images/pavel.webp"
               alt="my approach"
-              className="abs-center masked-img size-full object-contain"
+              className={classNames('abs-center masked-img size-full object-contain', {
+                'masked-img-mobile': isMobile,
+              })}
               loading="lazy"
               width={isMobile ? 300 : 400}
               height={isMobile ? 300 : 400}
             />
           </div>
 
-          <ul className="space-y-4 will-fade will-grow md:ml-50 z-10">
+          <ul className="space-y-4 will-fade will-grow sm:ml-50 z-10">
             {featureLists.map((feature, index) => (
               <li key={index} className="flex items-center justify-start gap-2">
                 <img src="/images/check.png" alt="check" />
-                <p className="md:w-fit w-70">{feature}</p>
+                <p className="sm:w-fit w-70">{feature}</p>
               </li>
             ))}
           </ul>

@@ -19,6 +19,22 @@ body {
   outline: none;
 }
 
+/* html {
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: auto;
+}
+
+body {
+  overscroll-behavior-y: none;
+}
+
+#approach,
+#skills {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: transform;
+} */
+
 @theme {
   --font-sans: sans-serif;
   --font-yeseva-one: 'Yeseva One', serif;
@@ -70,7 +86,11 @@ body {
   mask-image: url('/images/cogs.webp');
   mask-repeat: no-repeat;
   mask-position: center;
-  mask-size: 35%;
+  mask-size: 40%;
+}
+
+.masked-img.masked-img-mobile {
+  top: 25%;
 }
 
 @media (height <= 600px) {
@@ -78,12 +98,8 @@ body {
     top: 50%;
     mask-size: 35%;
   }
-}
-
-@media (width <= 767px) {
-  .masked-img {
-    mask-size: 70%;
-    top: 25%;
+  .masked-img.masked-img-mobile {
+    top: 45%;
   }
 }
 
@@ -159,7 +175,7 @@ body {
     }
 
     .subtitle {
-      @apply text-2xl leading-9;
+      @apply text-2xl leading-9 mb-0;
     }
 
     .hero-text {
@@ -167,7 +183,7 @@ body {
     }
 
     .hero-button {
-      @apply w-70 mb-8;
+      @apply w-70 mb-0;
     }
   }
   /* 
@@ -417,16 +433,16 @@ body {
   }
 
   #approach {
-    @apply flex-center flex-col min-h-dvh p-5 mt-28 relative radial-gradient;
+    @apply flex-center flex-col min-h-[100vh] p-5 mt-28 relative radial-gradient;
 
     & > div {
-      @apply col-between md:pt-12 container mx-auto h-full pt-14;
+      @apply col-between sm:pt-12 container mx-auto h-full pt-14;
 
       h2 {
-        @apply relative md:text-[16vw] text-6xl text-nowrap leading-none text-center font-yeseva-one text-[#505050];
+        @apply relative sm:text-[16vw] text-6xl text-nowrap leading-none text-center font-yeseva-one text-[#505050];
 
         span {
-          @apply md:text-[4vw] text-[8vw] inline-flex relative left-[-2vw];
+          @apply sm:text-[4vw] text-[8vw] inline-flex relative left-[-2vw];
         }
       }
 
@@ -435,11 +451,15 @@ body {
       }
 
       .content {
-        @apply flex w-full md:flex-row md:pt-0 flex-col justify-around gap-10 pt-[20vh];
+        @apply flex w-full sm:flex-row sm:pt-0 flex-col justify-around gap-10 pt-[20vh];
       }
 
       .approach-img {
-        @apply w-[100vw] h-[100vh] rounded-4xl absolute md:top-1/2 md:-translate-y-1/2 left-1/2 top-10 -translate-x-1/2;
+        @apply w-[100vw] h-[100vh] rounded-4xl absolute sm:top-1/2 sm:-translate-y-1/2 left-1/2 top-10 -translate-x-1/2;
+      }
+
+      .approach-img.approach-mobile {
+        @apply scale-150 translate-y-30;
       }
 
       .masked-container {
@@ -448,10 +468,10 @@ body {
         }
 
         div {
-          @apply opacity-0 w-full md:px-0 px-5 space-y-5 absolute md:bottom-5 bottom-10 left-1/2 -translate-x-1/2 py-4 bg-[rgb(0,0,0,0.6)];
+          @apply opacity-0 w-full sm:px-0 px-5 space-y-5 absolute sm:bottom-5 bottom-10 left-1/2 -translate-x-1/2 py-4 bg-[rgb(0,0,0,0.6)];
 
           h3 {
-            @apply md:text-8xl text-4xl text-center w-full font-yeseva-one text-white flex flex-wrap justify-center;
+            @apply sm:text-8xl text-3xl text-center w-full font-yeseva-one text-white flex flex-wrap justify-center;
 
             .masked-span {
               @apply opacity-0 mr-2;
@@ -459,7 +479,7 @@ body {
           }
 
           p {
-            @apply md:text-3xl text-2xl text-center opacity-0;
+            @apply sm:text-3xl text-lg text-center opacity-0;
           }
         }
       }
@@ -473,6 +493,8 @@ body {
           @apply text-[10vw];
         }
         .masked-container {
+          @apply pt-0;
+
           h2 {
             @apply text-4xl;
           }
@@ -766,7 +788,7 @@ body {
   }
 
   .third-wrapper {
-    @apply max-w-7xl pt-30 pb-10 xl:px-20 sm:px-10 px-3;
+    @apply max-w-7xl pt-30 pb-10 xl:px-20 sm:px-10 px-4;
   }
 
   .lang-title-icon {

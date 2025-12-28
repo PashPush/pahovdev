@@ -77,7 +77,7 @@ const Second = () => {
           rotate: getRotate(index),
           opacity: 1,
           duration: 0.7,
-          delay: 0.5 * (index + 1),
+          delay: 0.4 * (index + 1),
           scrollTrigger: {
             trigger: sticker,
             start: 'top bottom-=1000',

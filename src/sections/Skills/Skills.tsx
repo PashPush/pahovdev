@@ -18,6 +18,9 @@ const Skills = () => {
           trigger: '#skills',
           pin: true,
           scrub: 1,
+          anticipatePin: isMobile ? 1 : 0,
+          fastScrollEnd: true,
+          preventOverlaps: true,
           end: () => '+=' + (document.querySelector('#skills') as HTMLElement).offsetWidth,
         },
       });

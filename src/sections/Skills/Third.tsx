@@ -81,44 +81,48 @@ const Third = () => {
         );
       });
 
-      gsap.fromTo(
-        beyondCode,
-        {
-          y: -80,
-          opacity: 0,
-          transformOrigin: 'center top',
-        },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.7,
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            containerAnimation: mainTrigger.animation,
-            start: 'left 70%',
+      if (beyondCode) {
+        gsap.fromTo(
+          beyondCode,
+          {
+            y: -80,
+            opacity: 0,
+            transformOrigin: 'center top',
           },
-        }
-      );
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.7,
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              containerAnimation: mainTrigger.animation,
+              start: 'left 70%',
+            },
+          }
+        );
+      }
 
-      gsap.fromTo(
-        langEffective,
-        {
-          x: 50,
-          opacity: 0,
-          transformOrigin: 'center top',
-        },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 0.7,
-          delay: 1.5,
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            containerAnimation: mainTrigger.animation,
-            start: 'left 60%',
+      if (langEffective) {
+        gsap.fromTo(
+          langEffective,
+          {
+            x: 50,
+            opacity: 0,
+            transformOrigin: 'center top',
           },
-        }
-      );
+          {
+            x: 0,
+            opacity: 1,
+            duration: 0.7,
+            delay: 1.5,
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              containerAnimation: mainTrigger.animation,
+              start: 'left 60%',
+            },
+          }
+        );
+      }
 
       gsap.fromTo(
         callGrow,
@@ -139,9 +143,34 @@ const Third = () => {
         }
       );
       // Animate language cards
-      const langCards = sectionRef?.current?.querySelectorAll('.lang-card');
+      const langCards = sectionRef.current?.querySelectorAll('.lang-card');
       if (langCards) {
         langCards.forEach((card, index) => {
+          gsap.fromTo(
+            card,
+            {
+              x: 150,
+              opacity: 0,
+            },
+            {
+              x: 0,
+              opacity: 1,
+              duration: 0.7,
+              delay: 0.4 * index,
+              scrollTrigger: {
+                trigger: sectionRef.current,
+                containerAnimation: mainTrigger.animation,
+                start: 'left 60%',
+              },
+            }
+          );
+        });
+      }
+
+      // Animate drive cards
+      const driveCards = sectionRef.current?.querySelectorAll('.drive-card');
+      if (driveCards) {
+        driveCards.forEach((card, index) => {
           gsap.fromTo(
             card,
             {
@@ -162,33 +191,8 @@ const Third = () => {
           );
         });
       }
-
-      // Animate drive cards
-      const driveCards = sectionRef?.current?.querySelectorAll('.drive-card');
-      if (driveCards) {
-        driveCards.forEach((card, index) => {
-          gsap.fromTo(
-            card,
-            {
-              x: 150,
-              opacity: 0,
-            },
-            {
-              x: 0,
-              opacity: 1,
-              duration: 0.7,
-              delay: 0.6 * index,
-              scrollTrigger: {
-                trigger: sectionRef.current,
-                containerAnimation: mainTrigger.animation,
-                start: 'left 60%',
-              },
-            }
-          );
-        });
-      }
     });
-  }, []);
+  }, [sectionRef.current]);
 
   return (
     <section ref={sectionRef} className="third-wrapper">

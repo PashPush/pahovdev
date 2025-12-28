@@ -6,7 +6,8 @@ import { useEffect, useRef } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
 const ShaderPhoto = () => {
-  const isMobile = useMediaQuery({ maxWidth: 767 });
+  const isMobile = useMediaQuery({ maxWidth: 640 });
+  const horizontal = useMediaQuery({ maxHeight: 600 });
   const mountedRef = useRef(false);
   const cleanupRef = useRef(null);
 
@@ -20,12 +21,14 @@ const ShaderPhoto = () => {
     // Loaders
     const textureLoader = new THREE.TextureLoader();
 
+    const gap = horizontal ? 0 : 100;
+
     /**
      * Sizes
      */
     const sizes = {
-      width: window.innerWidth,
-      height: window.innerHeight,
+      width: window.outerWidth,
+      height: window.outerHeight - gap,
       pixelRatio: Math.min(window.devicePixelRatio, 2),
     };
 
@@ -134,8 +137,9 @@ const ShaderPhoto = () => {
     scene.add(camera);
 
     const handleResize = () => {
-      sizes.width = window.innerWidth;
-      sizes.height = window.innerHeight;
+      if (sizes.width === window.outerWidth) return;
+      sizes.width = window.outerWidth;
+      sizes.height = window.outerHeight - gap;
       sizes.pixelRatio = Math.min(window.devicePixelRatio, 2);
 
       particlesMaterial.uniforms.uResolution.value.set(sizes.width * sizes.pixelRatio, sizes.height * sizes.pixelRatio);

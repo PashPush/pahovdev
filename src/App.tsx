@@ -12,6 +12,10 @@ import Contact from './sections/Contact';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
+ScrollTrigger.config({
+  ignoreMobileResize: true,
+});
+
 console.log('%cЗдравствуй, дорогой друг!', 'color: #2cc800; font-weight: bold; font-size: 20px;');
 
 const App = () => {
