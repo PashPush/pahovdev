@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, memo } from 'react';
 import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -12,6 +12,91 @@ import {
 } from 'react-icons/io5';
 import { classNames } from '../../lib/classNames';
 import { useMediaQuery } from 'react-responsive';
+
+type Language = {
+  flag: string;
+  name: string;
+  level: string;
+  levelText: string;
+  percentage: number;
+};
+
+type Drive = {
+  icon: typeof IoSparklesOutline;
+  title: string;
+  description: string;
+};
+
+// Memoize language card component
+const LanguageCard = memo(({ lang, index }: { lang: Language; index: number }) => {
+  const horizontal = useMediaQuery({ maxHeight: 600 });
+
+  return (
+    <div className="group lang-card">
+      <div className="flex sm:justify-between justify-center lg:mb-4 mb-2">
+        <div className="flex items-center lg:gap-x-4 gap-x-2 flex-wrap">
+          <span className="text-4xl">{lang.flag}</span>
+          <h4 className="text-xl text-white hidden sm:block">{lang.name}</h4>
+
+          <div className="flex items-center lg:gap-4 gap-2">
+            <span
+              className={classNames('lang-badge group-hover:border-white/80', {
+                'bg-green-400/40': index === 0,
+                'bg-yellow-300/40': index === 1,
+                'bg-blue-400/40': index === 2,
+              })}
+            >
+              {lang.level}
+            </span>
+            {!horizontal && <span className="text-slate-100 text-sm hidden sm:block">{lang.levelText}</span>}
+          </div>
+        </div>
+      </div>
+
+      <div className="relative h-2 bg-[#4b1c54] rounded-full overflow-hidden">
+        <div
+          className={classNames(
+            'absolute inset-y-0 left-0 bg-gradient-to-r rounded-full transition-all duration-1000',
+            {
+              'from-[#42857b] to-[#26ccb7]': index === 0,
+              'from-[#b6784b] to-[#f3c925]': index === 1,
+              'from-[#2555b1] to-[#d0e2ff]': index === 2,
+            }
+          )}
+          style={{ width: `${lang.percentage}%` }}
+        ></div>
+      </div>
+    </div>
+  );
+});
+
+LanguageCard.displayName = 'LanguageCard';
+
+// Memoize drive card component
+const DriveCard = memo(({ drive }: { drive: Drive }) => {
+  const horizontal = useMediaQuery({ maxHeight: 600 });
+  const Icon = drive.icon;
+
+  return (
+    <div className="group drive-card">
+      <div className="flex sm:gap-4 gap-2">
+        <div className="flex-shrink-0">
+          <div className="drive-icon-wrapper group-hover:border-white/80">
+            <Icon className="drive-icon group-hover:text-white" />
+          </div>
+        </div>
+        <div className="flex-1">
+          <h4 className="drive-title group-hover:text-white">{drive.title}</h4>
+          {!horizontal && (
+            <p className="text-slate-200 md:text-sm xl:text-base text-xs leading-relaxed">{drive.description}</p>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+});
+
+DriveCard.displayName = 'DriveCard';
 
 const Third = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -49,151 +134,118 @@ const Third = () => {
   useGSAP(() => {
     if (!sectionRef.current) return;
 
-    const additionals = sectionRef.current.querySelectorAll('.additional > div');
-    const beyondCode = sectionRef.current.querySelector('.beyond-code');
-    const langEffective = sectionRef.current.querySelector('.lang-effective');
-    const callGrow = sectionRef.current.querySelector('.call-grow');
-
     gsap.delayedCall(0.2, () => {
-      const mainTrigger = ScrollTrigger.getAll().find(st => st.trigger && st.trigger.id === 'skills');
+      const mainTrigger = ScrollTrigger.getAll().find(st => st.trigger && (st.trigger as HTMLElement).id === 'skills');
 
-      if (!mainTrigger) {
-        return;
-      }
+      if (!mainTrigger || !sectionRef.current) return;
 
-      additionals.forEach((additional, index) => {
-        gsap.fromTo(
-          additional,
-          {
-            opacity: 0,
-            transformOrigin: 'center top',
-          },
-          {
-            opacity: 1,
-            duration: 1,
-            delay: 0.5 * (index + 1),
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              containerAnimation: mainTrigger.animation,
-              start: 'left 70%',
-            },
-          }
-        );
+      const additionals = sectionRef.current.querySelectorAll('.additional > div');
+      const beyondCode = sectionRef.current.querySelector('.beyond-code');
+      const langEffective = sectionRef.current.querySelector('.lang-effective');
+      const callGrow = sectionRef.current.querySelector('.call-grow');
+      const langCards = sectionRef.current.querySelectorAll('.lang-card');
+      const driveCards = sectionRef.current.querySelectorAll('.drive-card');
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          containerAnimation: mainTrigger.animation,
+          start: 'left 80%',
+          end: 'left 20%',
+          fastScrollEnd: true,
+          preventOverlaps: true,
+        },
       });
 
       if (beyondCode) {
-        gsap.fromTo(
+        tl.fromTo(
           beyondCode,
-          {
-            y: -80,
-            opacity: 0,
-            transformOrigin: 'center top',
-          },
+          { y: -80, opacity: 0 },
           {
             y: 0,
             opacity: 1,
-            duration: 0.7,
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              containerAnimation: mainTrigger.animation,
-              start: 'left 70%',
-            },
-          }
+            duration: 0.5,
+            force3D: true,
+          },
+          0
+        );
+      }
+
+      if (additionals.length > 0) {
+        tl.fromTo(
+          additionals,
+          { opacity: 0 },
+          {
+            opacity: 1,
+            duration: 0.5,
+            stagger: 0.4,
+            force3D: true,
+          },
+          0.2
+        );
+      }
+
+      if (langCards.length > 0) {
+        tl.fromTo(
+          langCards,
+          { x: 150, opacity: 0 },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 0.5,
+            stagger: 0.3,
+            force3D: true,
+          },
+          0.3
         );
       }
 
       if (langEffective) {
-        gsap.fromTo(
+        tl.fromTo(
           langEffective,
-          {
-            x: 50,
-            opacity: 0,
-            transformOrigin: 'center top',
-          },
+          { x: 50, opacity: 0 },
           {
             x: 0,
             opacity: 1,
-            duration: 0.7,
-            delay: 1.5,
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              containerAnimation: mainTrigger.animation,
-              start: 'left 60%',
-            },
-          }
+            duration: 0.5,
+            force3D: true,
+          },
+          1
         );
       }
 
-      gsap.fromTo(
-        callGrow,
-        {
-          y: 80,
-          opacity: 0,
-          transformOrigin: 'center top',
-        },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            containerAnimation: mainTrigger.animation,
-            start: 'left 45%',
+      if (driveCards.length > 0) {
+        tl.fromTo(
+          driveCards,
+          { x: 150, opacity: 0 },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 0.5,
+            stagger: 0.4,
+            force3D: true,
           },
-        }
-      );
-      // Animate language cards
-      const langCards = sectionRef.current?.querySelectorAll('.lang-card');
-      if (langCards) {
-        langCards.forEach((card, index) => {
-          gsap.fromTo(
-            card,
-            {
-              x: 150,
-              opacity: 0,
-            },
-            {
-              x: 0,
-              opacity: 1,
-              duration: 0.7,
-              delay: 0.4 * index,
-              scrollTrigger: {
-                trigger: sectionRef.current,
-                containerAnimation: mainTrigger.animation,
-                start: 'left 60%',
-              },
-            }
-          );
-        });
+          0.5
+        );
       }
 
-      // Animate drive cards
-      const driveCards = sectionRef.current?.querySelectorAll('.drive-card');
-      if (driveCards) {
-        driveCards.forEach((card, index) => {
-          gsap.fromTo(
-            card,
-            {
-              x: 150,
-              opacity: 0,
-            },
-            {
-              x: 0,
-              opacity: 1,
-              duration: 0.7,
-              delay: 0.5 * index,
-              scrollTrigger: {
-                trigger: sectionRef.current,
-                containerAnimation: mainTrigger.animation,
-                start: 'left 60%',
-              },
-            }
-          );
-        });
+      if (callGrow) {
+        tl.fromTo(
+          callGrow,
+          { y: 80, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.7,
+            force3D: true,
+          },
+          '-=0.3'
+        );
       }
     });
   }, [sectionRef.current]);
 
+  // todo: handle small screens
   return (
     <section ref={sectionRef} className="third-wrapper">
       <div className="max-w-7xl w-full">
@@ -211,43 +263,7 @@ const Third = () => {
 
             <div className="flex sm:block flex-row gap-2 justify-between">
               {languages.map((lang, index) => (
-                <div key={index} className="group lang-card">
-                  <div className="flex sm:justify-between justify-center lg:mb-4 mb-2">
-                    <div className="flex items-center lg:gap-x-4 gap-x-2 flex-wrap">
-                      <span className="text-4xl">{lang.flag}</span>
-                      <h4 className="text-xl text-white hidden sm:block">{lang.name}</h4>
-
-                      <div className="flex items-center lg:gap-4 gap-2">
-                        <span
-                          className={classNames('lang-badge group-hover:border-white/80', {
-                            'bg-green-400/40': index === 0,
-                            'bg-yellow-300/40': index === 1,
-                            'bg-blue-400/40': index === 2,
-                          })}
-                        >
-                          {lang.level}
-                        </span>
-                        {!horizontal && (
-                          <span className="text-slate-100 text-sm hidden sm:block">{lang.levelText}</span>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="relative h-2 bg-[#4b1c54] rounded-full overflow-hidden">
-                    <div
-                      className={classNames(
-                        'absolute inset-y-0 left-0 bg-gradient-to-r rounded-full transition-all duration-1000',
-                        {
-                          'from-[#42857b] to-[#26ccb7]': index === 0,
-                          'from-[#b6784b] to-[#f3c925]': index === 1,
-                          'from-[#2555b1] to-[#d0e2ff]': index === 2,
-                        }
-                      )}
-                      style={{ width: `${lang.percentage}%` }}
-                    ></div>
-                  </div>
-                </div>
+                <LanguageCard key={lang.name} lang={lang} index={index} />
               ))}
             </div>
 
@@ -266,28 +282,9 @@ const Third = () => {
               <h3>Что меня драйвит</h3>
             </div>
 
-            {drives.map((drive, index) => {
-              const Icon = drive.icon;
-              return (
-                <div key={index} className="group drive-card">
-                  <div className="flex sm:gap-4 gap-2">
-                    <div className="flex-shrink-0">
-                      <div className="drive-icon-wrapper group-hover:border-white/80">
-                        <Icon className="drive-icon group-hover:text-white" />
-                      </div>
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="drive-title group-hover:text-white">{drive.title}</h4>
-                      {!horizontal && (
-                        <p className="text-slate-200 md:text-sm xl:text-base text-xs leading-relaxed">
-                          {drive.description}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+            {drives.map((drive, index) => (
+              <DriveCard key={index} drive={drive} />
+            ))}
           </div>
         </div>
 

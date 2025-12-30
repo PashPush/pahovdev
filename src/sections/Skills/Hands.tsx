@@ -15,6 +15,8 @@ const Hands = () => {
         return;
       }
 
+      // todo: optimize somehow
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: '.second-bg',
@@ -22,6 +24,8 @@ const Hands = () => {
           containerAnimation: mainTrigger.animation,
           start: 'left 80%',
           end: 'left 0%',
+          fastScrollEnd: true,
+          preventOverlaps: true,
         },
       });
 

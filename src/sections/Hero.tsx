@@ -29,8 +29,11 @@ const Hero = () => {
             <br />Я люблю пилить
             {isMobile ? <br /> : ' '}
             <Interface />
+            <br />
+            <span className="strong-team">Готов усилить Вашу команду</span>
+            <br />
           </div>
-          <Button text="смотреть проекты" className="hero-button" id="work" />
+          <Button text="проекты" className="hero-button" id="work" />
         </div>
       </section>
       <ShaderPhoto />

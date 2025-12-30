@@ -20,8 +20,8 @@ const ShaderPhoto = () => {
 
     // Loaders
     const textureLoader = new THREE.TextureLoader();
-
-    const gap = horizontal ? 0 : 100;
+    // todo: make it dynamic based on screen size
+    const gap = horizontal ? 0 : isMobile ? 150 : 100;
 
     /**
      * Sizes
@@ -232,7 +232,7 @@ const ShaderPhoto = () => {
       }
       mountedRef.current = false;
     };
-  }, [isMobile]);
+  }, [isMobile, horizontal]);
 
   return <canvas id="webgl"></canvas>;
 };

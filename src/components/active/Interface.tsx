@@ -34,6 +34,7 @@ const Interface = () => {
     const chainsaw = container.querySelector('.chainsaw');
     const faces = container.querySelector('.faces');
     const chips = container.querySelector('.wood-chips');
+    const team = document.querySelector('.strong-team');
 
     const tlToPromise = tl =>
       new Promise(resolve => {
@@ -59,6 +60,15 @@ const Interface = () => {
         duration: 1,
         ease: 'power2.inOut',
       })
+        .to(
+          team,
+          {
+            translateY: 54,
+            duration: 1,
+            ease: 'power2.inOut',
+          },
+          '<'
+        )
         .to(container, {
           'clip-path': 'polygon(-200% -500%, 160% -300%, 150% 300%, 0 300%)',
           duration: 0,

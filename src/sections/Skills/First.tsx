@@ -22,7 +22,7 @@ import {
   SiSass,
 } from 'react-icons/si';
 import { useMediaQuery } from 'react-responsive';
-import { useRef } from 'react';
+import { useRef, memo } from 'react';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import AnimatedGears from './AnimatedGears';
@@ -74,7 +74,7 @@ const testing: Skill[] = [
   { id: 'figma', name: 'Figma', Icon: SiFigma, color: '#ec87a9', colorBack: '#b9587b' },
 ];
 
-function SkillBadge({ skill }: { skill: Skill }) {
+const SkillBadge = memo(({ skill }: { skill: Skill }) => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const horizontal = useMediaQuery({ maxHeight: 600 });
 
@@ -86,6 +86,7 @@ function SkillBadge({ skill }: { skill: Skill }) {
       style={{
         background: skill.colorBack ?? skill.color,
         width: 'fit-content',
+        willChange: 'transform, opacity',
       }}
       role="listitem"
       aria-label={skill.name}
@@ -99,6 +100,7 @@ function SkillBadge({ skill }: { skill: Skill }) {
             alt="Zustand"
             width={isMobile || horizontal ? 24 : 40}
             height={isMobile || horizontal ? 24 : 40}
+            loading="lazy"
           />
         )}
       </span>
@@ -107,7 +109,9 @@ function SkillBadge({ skill }: { skill: Skill }) {
       </span>
     </div>
   );
-}
+});
+
+SkillBadge.displayName = 'SkillBadge';
 
 const First = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -122,7 +126,16 @@ const First = () => {
       const el = ref.current;
       if (!el) return;
 
-      gsap.fromTo(
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: el,
+          start: 'top bottom-=100',
+          fastScrollEnd: true,
+          preventOverlaps: true,
+        },
+      });
+
+      tl.fromTo(
         el,
         { y: 50, opacity: 0 },
         {
@@ -130,15 +143,11 @@ const First = () => {
           opacity: 1,
           duration: 0.7,
           delay: 0.1 * i,
-          scrollTrigger: {
-            trigger: el,
-            start: 'top bottom-=100',
-          },
         }
       );
 
       const badges = el.querySelectorAll('.skill-badge');
-      gsap.fromTo(
+      tl.fromTo(
         badges,
         { opacity: 0, y: 5 },
         {
@@ -147,11 +156,8 @@ const First = () => {
           duration: 1,
           stagger: 0.07,
           ease: 'power2.out',
-          scrollTrigger: {
-            trigger: el,
-            start: 'top center+=200',
-          },
-        }
+        },
+        '<0.2'
       );
     });
   }, []);

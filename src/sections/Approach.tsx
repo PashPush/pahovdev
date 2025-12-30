@@ -15,12 +15,13 @@ const Approach = () => {
       scrollTrigger: {
         trigger: '#approach',
         start,
-        end: '+=2000',
-        scrub: 1.5,
+        end: '+=1400',
+        scrub: 1,
         pin: true,
         anticipatePin: isMobile ? 1 : 0,
         fastScrollEnd: true,
         preventOverlaps: true,
+        invalidateOnRefresh: false,
       },
     });
 
@@ -32,7 +33,7 @@ const Approach = () => {
 
     maskTimeline
       .to('.will-grow', contentAnimation)
-      .to({}, { duration: 2 })
+      .to({}, { duration: 1 })
       .to('.will-fade', { opacity: 0, stagger: 0.2, ease: 'power1.inOut' })
       .to('.masked-img', {
         scale: 2,

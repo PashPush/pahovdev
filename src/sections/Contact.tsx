@@ -45,7 +45,7 @@ const Contact = () => {
   };
 
   return (
-    <div id="contact" ref={sectionRef} className="contacts">
+    <div ref={sectionRef} className="contacts" id="contacts">
       <div className="title">Контакты</div>
       <div className="form-wrapper">
         <div className="form-body">
@@ -63,7 +63,7 @@ const Contact = () => {
               />
             </div>
 
-            <div>
+            <div id="contact">
               <label htmlFor="email">Email / Telegram / WhatsApp</label>
               <input
                 type="text"

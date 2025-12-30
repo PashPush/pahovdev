@@ -11,12 +11,21 @@ const pointer = {
 let uniforms;
 const gl = initShader();
 
-setupEvents();
+setTimeout(() => {
+  const contacts = document.getElementById('contacts');
 
-resizeCanvas();
-window.addEventListener('resize', resizeCanvas);
-
-render();
+  if (gl) {
+    setupEvents();
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    render();
+    if (contacts.classList.contains('fallback-bg')) {
+      contacts.classList.remove('fallback-bg');
+    }
+  } else {
+    contacts.classList.add('fallback-bg');
+  }
+}, 80);
 
 function initShader() {
   const vsSource = document.getElementById('vertShader').innerHTML;
@@ -25,7 +34,8 @@ function initShader() {
   const gl = canvasEl.getContext('webgl') || canvasEl.getContext('experimental-webgl');
 
   if (!gl) {
-    alert('WebGL is not supported by your browser.');
+    console.log('Unable to initialize WebGL. Your browser or machine may not support it.');
+    return null;
   }
 
   function createShader(gl, sourceCode, type) {

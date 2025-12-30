@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, memo } from 'react';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { useMediaQuery } from 'react-responsive';
@@ -6,6 +6,15 @@ import CurvedLine from './icons/CurvedLine';
 import { stickers } from '../../constants';
 import CurvedLineMobile from './icons/CurvedLineMobile';
 import Hands from './Hands';
+
+const Sticker = memo(({ title, description }: { title: string; description: string }) => (
+  <div className="sticker">
+    <h3>{title}</h3>
+    <p>{description}</p>
+  </div>
+));
+
+Sticker.displayName = 'Sticker';
 
 const Second = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -15,55 +24,44 @@ const Second = () => {
   const isSafari = useRef(/^((?!chrome|android).)*safari/i.test(navigator.userAgent));
 
   const getRotate = (index: number) => {
-    switch (index) {
-      case 0:
-        return -1;
-
-      case 1:
-        return 2;
-
-      case 2:
-        return 1;
-
-      default:
-        return -1;
-    }
+    const rotations = [-1, 2, 1];
+    return rotations[index] ?? -1;
   };
 
   useGSAP(() => {
-    const triggerEl =
-      sectionRef && typeof sectionRef === 'object' && 'current' in sectionRef ? sectionRef.current : document.body;
+    const triggerEl = sectionRef.current || document.body;
 
     const svg = document.querySelector(smallScreen ? '#curved-line-mobile' : '#curved-line');
-    const line = svg && svg.querySelector('path');
+    const line = svg?.querySelector('path');
 
     if (line && !isSafari.current) {
-      const offsetLineStart = isMobile ? 60 : smallScreen ? 100 : 150;
-      const offsetLineEnd = isMobile ? 0 : smallScreen ? 100 : 250;
+      const offsetLineStart = isMobile ? 60 : smallScreen ? 100 : 150; // todo: compute by screen width
+      const offsetLineEnd = isMobile ? 0 : smallScreen ? 100 : 230; // todo: compute by screen width
       const lineLength = line.getTotalLength();
+
       gsap.set(line, { strokeDasharray: lineLength });
 
       gsap.fromTo(
         line,
-        {
-          strokeDashoffset: smallScreen ? lineLength : -lineLength,
-        },
+        { strokeDashoffset: smallScreen ? lineLength : -lineLength },
         {
           strokeDashoffset: 0,
           ease: 'none',
+          force3D: true,
           scrollTrigger: {
             trigger: triggerEl,
             start: `top+=${offsetLineStart}%`,
             end: `bottom top-=${offsetLineEnd}%`,
             scrub: 1,
+            // fastScrollEnd: true,
           },
         }
       );
     }
 
-    const stickers = document.querySelectorAll('.sticker');
+    const stickers = sectionRef.current?.querySelectorAll('.sticker');
 
-    stickers.forEach((sticker, index) => {
+    stickers?.forEach((sticker, index) => {
       gsap.fromTo(
         sticker,
         {
@@ -85,7 +83,7 @@ const Second = () => {
         }
       );
     });
-  }, []);
+  }, [isMobile, smallScreen]);
 
   return (
     <section ref={sectionRef} className="w-full flex flex-row justify-between">
@@ -93,10 +91,7 @@ const Second = () => {
         {smallScreen ? <CurvedLineMobile /> : <CurvedLine />}
         <div className="processes">
           {stickers.map(({ title, description }) => (
-            <div key={title} className="sticker">
-              <h3>{title}</h3>
-              <p>{description}</p>
-            </div>
+            <Sticker key={title} title={title} description={description} />
           ))}
         </div>
       </div>
@@ -106,4 +101,4 @@ const Second = () => {
   );
 };
 
-export default Second;
+export default memo(Second);

@@ -1,5 +1,5 @@
 import gsap from 'gsap';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import First from './First';
 import Second from './Second';
@@ -7,11 +7,16 @@ import Third from './Third';
 
 const Skills = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
+  const skillsRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       const horizontalSections = gsap.utils.toArray('.horizontal-section');
       const xPercent = isMobile ? -112.52 : -100;
       const canvas = document.querySelector('canvas#neuro');
+      const skillsElement = skillsRef.current;
+
+      if (!skillsElement) return;
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -21,7 +26,8 @@ const Skills = () => {
           anticipatePin: isMobile ? 1 : 0,
           fastScrollEnd: true,
           preventOverlaps: true,
-          end: () => '+=' + (document.querySelector('#skills') as HTMLElement).offsetWidth,
+          end: () => '+=' + skillsElement.offsetWidth,
+          invalidateOnRefresh: false, // Don't recalculate on window resize
         },
       });
 
@@ -32,14 +38,19 @@ const Skills = () => {
         ease: 'none',
       });
 
-      tl.to(canvas, { display: 'block', duration: 0.1 });
+      tl.to(canvas, {
+        display: 'block',
+        duration: 0.1,
+      });
+
+      tl.to({}, { duration: 0.1 });
     });
 
     return () => ctx.revert();
   }, [isMobile]);
 
   return (
-    <main id="skills">
+    <main id="skills" ref={skillsRef}>
       <div className="skills-word">
         <h1>
           <span>S</span>
