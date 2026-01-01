@@ -40,42 +40,42 @@ type Skill = {
 };
 
 const frontend: Skill[] = [
-  { id: 'react', name: 'React', Icon: SiReact, color: '#61dafb', colorBack: '#469fb7' },
-  { id: 'typescript', name: 'TypeScript', Icon: SiTypescript, color: '#3178C6', colorBack: '#1b3d6d' },
-  { id: 'javascript', name: 'JavaScript', Icon: SiJavascript, color: '#f7df1e', colorBack: '#c2a902' },
-  { id: 'html', name: 'HTML', Icon: SiHtml5, color: '#e34f26', colorBack: '#a63416' },
-  { id: 'css', name: 'CSS', Icon: SiCss3, color: '#264de4', colorBack: '#182d8a' },
-  { id: 'react-native', name: 'React Native', Icon: SiReact, color: '#00bcd4', colorBack: '#007888' },
-  { id: 'tailwind', name: 'Tailwind', Icon: SiTailwindcss, color: '#38bdf8', colorBack: '#20748f' },
-  { id: 'scss', name: 'SCSS', Icon: SiSass, color: '#cc6699', colorBack: '#8b3b62' },
-  { id: 'redux', name: 'Redux', Icon: SiRedux, color: '#764abc', colorBack: '#442674' },
-  { id: 'mobx', name: 'MobX', Icon: SiMobx, color: '#df5d15', colorBack: '#833a11' },
-  { id: 'zustand', name: 'Zustand', Icon: '/images/zustand.webp', color: '#7e57c2', colorBack: '#483071' },
+  { id: 'react', name: 'React', Icon: SiReact, color: '#76d2ea', colorBack: '#589db0' },
+  { id: 'typescript', name: 'TypeScript', Icon: SiTypescript, color: '#4a81b7', colorBack: '#2d4a6c' },
+  { id: 'javascript', name: 'JavaScript', Icon: SiJavascript, color: '#e4d445', colorBack: '#b5a326' },
+  { id: 'html', name: 'HTML', Icon: SiHtml5, color: '#ca5b3e', colorBack: '#96402a' },
+  { id: 'css', name: 'CSS', Icon: SiCss3, color: '#415fcb', colorBack: '#2b3f82' },
+  { id: 'react-native', name: 'React Native', Icon: SiReact, color: '#23b1c3', colorBack: '#1b7480' },
+  { id: 'tailwind', name: 'Tailwind', Icon: SiTailwindcss, color: '#51b7e2', colorBack: '#35768c' },
+  { id: 'scss', name: 'SCSS', Icon: SiSass, color: '#bd7196', colorBack: '#814563' },
+  { id: 'redux', name: 'Redux', Icon: SiRedux, color: '#7757a9', colorBack: '#4d366f' },
+  { id: 'mobx', name: 'MobX', Icon: SiMobx, color: '#c86835', colorBack: '#7a4628' },
+  { id: 'zustand', name: 'Zustand', Icon: '/images/zustand.webp', color: '#7e60ad', colorBack: '#513f6d' },
 ];
 
 const backendAndTools: Skill[] = [
   { id: 'next', name: 'Next.js', Icon: SiNextdotjs, color: '#000000', colorBack: '#3a3a3a' },
-  { id: 'webpack', name: 'Webpack', Icon: SiWebpack, color: '#8ed6fb', colorBack: '#4c9ac7' },
-  { id: 'vite', name: 'Vite', Icon: SiVite, color: '#8c71fe', colorBack: '#31236b' },
-  { id: 'node', name: 'Node.js', Icon: SiNodedotjs, color: '#417e38', colorBack: '#295722' },
-  { id: 'rest', name: 'REST', Icon: SiPostman, color: '#FF6C37', colorBack: '#b9471b' },
-  { id: 'graphql', name: 'GraphQL', Icon: SiGraphql, color: '#e10098', colorBack: '#8a0059' },
-  { id: 'docker', name: 'Docker', Icon: SiDocker, color: '#2496ed', colorBack: '#165b8a' },
-  { id: 'ci', name: 'CI/CD', Icon: CICD as IconType, color: '#ff8a00', colorBack: '#b45c00' },
-  { id: 'git', name: 'Git', Icon: SiGit, color: '#f05134', colorBack: '#92301f' },
-  { id: 'n8n', name: 'n8n', Icon: N8n as IconType, color: '#eb4a71', colorBack: '#8f2b44' },
+  { id: 'webpack', name: 'Webpack', Icon: SiWebpack, color: '#99d0e9', colorBack: '#5c98ba' },
+  { id: 'vite', name: 'Vite', Icon: SiVite, color: '#8d79e0', colorBack: '#3e3468' },
+  { id: 'node', name: 'Node.js', Icon: SiNodedotjs, color: '#517a4b', colorBack: '#385833' },
+  { id: 'rest', name: 'REST', Icon: SiPostman, color: '#e87a54', colorBack: '#a85534' },
+  { id: 'graphql', name: 'GraphQL', Icon: SiGraphql, color: '#c7228f', colorBack: '#7e1e5b' },
+  { id: 'docker', name: 'Docker', Icon: SiDocker, color: '#3f94d3', colorBack: '#295f82' },
+  { id: 'ci', name: 'CI/CD', Icon: CICD as IconType, color: '#ea9238', colorBack: '#a76522' },
+  { id: 'git', name: 'Git', Icon: SiGit, color: '#d8614c', colorBack: '#863f33' },
+  { id: 'n8n', name: 'n8n', Icon: N8n as IconType, color: '#d75c78', colorBack: '#843c4e' },
 ];
 
 const testing: Skill[] = [
-  { id: 'jest', name: 'Jest', Icon: SiJest, color: '#99424f', colorBack: '#5d2830' },
-  { id: 'playwright', name: 'Playwright', Icon: Playwright as IconType, color: '#1f8ceb', colorBack: '#14518d' },
-  { id: 'storybook', name: 'Storybook', Icon: SiStorybook, color: '#ff4785', colorBack: '#b0305d' },
-  { id: 'gsap', name: 'Gsap', Icon: Gsap as IconType, color: '#0ae448', colorBack: '#22853e' },
-  { id: 'figma', name: 'Figma', Icon: SiFigma, color: '#ec87a9', colorBack: '#b9587b' },
+  { id: 'jest', name: 'Jest', Icon: SiJest, color: '#8d4e58', colorBack: '#583238' },
+  { id: 'playwright', name: 'Playwright', Icon: Playwright as IconType, color: '#3c8dd1', colorBack: '#275783' },
+  { id: 'storybook', name: 'Storybook', Icon: SiStorybook, color: '#e75d8c', colorBack: '#a24364' },
+  { id: 'gsap', name: 'Gsap', Icon: Gsap as IconType, color: '#2dd45c', colorBack: '#34804b' },
+  { id: 'figma', name: 'Figma', Icon: SiFigma, color: '#dd8fa9', colorBack: '#ab637d' },
 ];
 
 const SkillBadge = memo(({ skill }: { skill: Skill }) => {
-  const isMobile = useMediaQuery({ maxWidth: 768 });
+  const isMobile = useMediaQuery({ maxWidth: 767 });
   const horizontal = useMediaQuery({ maxHeight: 600 });
 
   const { Icon } = skill;

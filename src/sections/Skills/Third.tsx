@@ -136,9 +136,8 @@ const Third = () => {
   ];
 
   useGSAP(() => {
-    if (!sectionRef.current) return;
-
     gsap.delayedCall(0.2, () => {
+      if (!sectionRef.current) return;
       const mainTrigger = ScrollTrigger.getAll().find(st => st.trigger && (st.trigger as HTMLElement).id === 'skills');
 
       if (!mainTrigger || !sectionRef.current) return;

@@ -177,11 +177,6 @@ canvas {
       @apply w-70 mb-0;
     }
   }
-  /* 
-  .react-img {
-    @apply absolute  -top-18 md:w-[141px] md:h-[129px] w-[80px] h-[73px];
-    filter: grayscale(1) opacity(0.2);
-  } */
 
   .interface {
     @apply inline-block relative text-black w-48 select-none text-3xl leading-11 cursor-pointer;
@@ -221,15 +216,6 @@ canvas {
         @apply bg-white;
       }
     }
-
-    /* &::before {
-      content: '';
-      @apply absolute bottom-1 -left-20 h-100 w-100 bg-amber-100 z-10;
-    }
-    &::after {
-      content: '';
-      @apply absolute top-10 left-0 h-50 w-50  bg-amber-100 z-10;
-    } */
   }
 
   .strong-team {
@@ -576,13 +562,13 @@ canvas {
     }
 
     .skill-badge {
-      @apply flex items-center md:gap-2 xl:gap-3 gap-1 rounded-full shadow-md md:pr-3 xl:pr-5 pr-2.5 md:h-12 xl:h-14 h-9 filter-[saturate(0.6)];
+      @apply flex items-center md:gap-2 xl:gap-3 gap-1 rounded-full shadow-md md:pr-3 xl:pr-5 pr-2.5 md:h-12 xl:h-14 h-9;
 
       &:hover {
         @apply cursor-pointer filter-[none];
 
         .skill-icon {
-          @apply transform scale-110 shadow-lg;
+          @apply transform scale-110 filter-[saturate(1.6)];
         }
       }
     }
