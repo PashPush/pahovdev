@@ -27,7 +27,6 @@ const Skills = () => {
           fastScrollEnd: true,
           preventOverlaps: true,
           end: () => '+=' + skillsElement.offsetWidth,
-          invalidateOnRefresh: false, // Don't recalculate on window resize
         },
       });
 

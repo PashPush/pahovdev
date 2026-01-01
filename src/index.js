@@ -1,4 +1,3 @@
-const canvasEl = document.querySelector('canvas#neuro');
 const devicePixelRatio = Math.min(window.devicePixelRatio, 2);
 
 const pointer = {
@@ -8,10 +7,11 @@ const pointer = {
   tY: 0,
 };
 
-let uniforms;
-const gl = initShader();
+let canvasEl, gl, uniforms;
 
 setTimeout(() => {
+  canvasEl = document.querySelector('canvas#neuro');
+  gl = initShader();
   const contacts = document.getElementById('contacts');
 
   if (gl) {

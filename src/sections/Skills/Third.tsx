@@ -27,7 +27,6 @@ type Drive = {
   description: string;
 };
 
-// Memoize language card component
 const LanguageCard = memo(({ lang, index }: { lang: Language; index: number }) => {
   const horizontal = useMediaQuery({ maxHeight: 600 });
 
@@ -72,13 +71,18 @@ const LanguageCard = memo(({ lang, index }: { lang: Language; index: number }) =
 
 LanguageCard.displayName = 'LanguageCard';
 
-// Memoize drive card component
 const DriveCard = memo(({ drive }: { drive: Drive }) => {
   const horizontal = useMediaQuery({ maxHeight: 600 });
+  const shortScreen = useMediaQuery({ maxHeight: 740 });
+  const isMobile = useMediaQuery({ maxWidth: 460 });
   const Icon = drive.icon;
 
   return (
-    <div className="group drive-card">
+    <div
+      className={classNames('group drive-card', {
+        hidden: shortScreen && isMobile && drive.title === 'Саморазвитие и непрерывное обучение',
+      })}
+    >
       <div className="flex sm:gap-4 gap-2">
         <div className="flex-shrink-0">
           <div className="drive-icon-wrapper group-hover:border-white/80">
@@ -110,9 +114,9 @@ const Third = () => {
 
   const drives = [
     {
-      icon: IoRocketOutline,
-      title: 'Изучение новых технологий и паттернов',
-      description: 'Постоянно развиваюсь, следя за трендами и best practices',
+      icon: IoReaderOutline,
+      title: 'Саморазвитие и непрерывное обучение',
+      description: 'Читаю литературу, экспериментирую, пробую новое в разных сферах',
     },
     {
       icon: IoColorPaletteOutline,
@@ -120,9 +124,9 @@ const Third = () => {
       description: 'Создаю не просто код, а продуманный пользовательский опыт',
     },
     {
-      icon: IoReaderOutline,
-      title: 'Саморазвитие и непрерывное обучение',
-      description: 'Читаю техническую литературу, изучаю документацию, экспериментирую',
+      icon: IoRocketOutline,
+      title: 'Изучение новых технологий и паттернов',
+      description: 'Постоянно развиваюсь, следя за трендами и best practices',
     },
     {
       icon: IoCompassSharp,
@@ -245,7 +249,6 @@ const Third = () => {
     });
   }, [sectionRef.current]);
 
-  // todo: handle small screens
   return (
     <section ref={sectionRef} className="third-wrapper">
       <div className="max-w-7xl w-full">

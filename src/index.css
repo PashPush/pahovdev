@@ -508,20 +508,12 @@ canvas {
     }
   }
 
-  .video-mask {
-    @apply relative w-[102%] h-[100vh] overflow-hidden flex-center;
-  }
-
-  .video-mask svg {
-    @apply relative w-full h-auto;
-  }
-
   #skills {
-    @apply relative h-screen md:w-[370%] w-[425%] flex flex-nowrap z-10 overflow-hidden;
+    @apply relative h-[calc(var(--vh)*100)] md:w-[370%] w-[425%] flex flex-nowrap z-10 overflow-hidden;
     perspective: 1000px;
 
     .skills-word {
-      @apply h-screen md:w-[20vw] w-[25vw] flex items-center justify-center pt-16 bg-black z-10 ml-0.5;
+      @apply h-[calc(var(--vh)*100)] md:w-[20vw] w-[25vw] flex items-center justify-center pt-16 bg-black z-10 ml-0.5;
     }
 
     h1 {
@@ -529,7 +521,7 @@ canvas {
     }
 
     section.horizontal-section {
-      @apply md:w-[80vw] w-[100vw] flex-center flex-col bg-black h-screen  bg-center bg-no-repeat will-change-transform;
+      @apply md:w-[80vw] w-[100vw] flex-center flex-col bg-black h-[calc(var(--vh)*100)]  bg-center bg-no-repeat will-change-transform;
     }
 
     .heading {
