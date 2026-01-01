@@ -15,8 +15,8 @@ const Hero = () => {
 
   return (
     <>
-      <section id="hero" className="h-[100vh] overflow-hidden">
-        <div className="hero-layout">
+      <section className="h-[100vh] overflow-hidden">
+        <div id="hero" className="hero-layout">
           <h1 className="title">
             <span>Frontend</span> <span>Developer</span>
           </h1>
