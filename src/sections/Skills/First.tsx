@@ -129,6 +129,7 @@ const First = () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: el,
+          once: true,
           start: 'top bottom-=100',
           fastScrollEnd: true,
           preventOverlaps: true,

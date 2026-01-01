@@ -53,6 +53,7 @@ const Second = () => {
             start: `top+=${offsetLineStart}%`,
             end: `bottom top-=${offsetLineEnd}%`,
             scrub: 1,
+            once: true,
             // fastScrollEnd: true,
           },
         }

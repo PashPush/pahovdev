@@ -19,7 +19,7 @@ setTimeout(() => {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
     render();
-    if (contacts.classList.contains('fallback-bg')) {
+    if (contacts && contacts.classList.contains('fallback-bg')) {
       contacts.classList.remove('fallback-bg');
     }
   } else {
