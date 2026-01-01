@@ -39,16 +39,25 @@ const NavBar = () => {
     return () => observer.disconnect();
   }, []);
 
+  const lettersClass = classNames('', {
+    'text-cyan-200': currentLink === '#projects',
+    'text-green-200': currentLink === '#experience',
+    'text-violet-200': currentLink === '#approach',
+    'text-orange-200': currentLink === '#reviews',
+    'text-teal-200': currentLink === '#skills',
+    'text-blue-300': currentLink === '#contact',
+  });
+
   return (
     <header className={`navbar ${scrolled ? 'scrolled' : 'not-scrolled'}`}>
       <div className="inner">
         <a href="#hero" className="logo" tabIndex={1}>
-          Pavel Hovalkin
+          <span className={lettersClass}>Pa</span>vel K<span className={lettersClass}>hov</span>alkin
         </a>
 
         <nav className="desktop">
           <ul>
-            {navLinks.slice(1, 5).map(({ link, name }) => (
+            {navLinks.slice(1, 6).map(({ link, name }) => (
               <li key={name} className="group">
                 <a href={link} tabIndex={1}>
                   <span>{name}</span>

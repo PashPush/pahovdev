@@ -16,6 +16,10 @@ const navLinks = [
     link: '#approach',
   },
   {
+    name: 'Отзывы',
+    link: '#reviews',
+  },
+  {
     name: 'Навыки',
     link: '#skills',
   },

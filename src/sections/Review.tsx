@@ -32,7 +32,7 @@ const Review = () => {
     );
   }, []);
   return (
-    <div ref={sectionRef} className="review">
+    <div ref={sectionRef} id="reviews" className="review">
       <div className="review-wrapper">
         {feedbacks.map((feedback, index) => (
           <BlinkCard card={feedback} key={index} icon={feedback.icon} index={index} className="feedback-card">

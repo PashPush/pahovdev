@@ -123,7 +123,7 @@ const Contact = () => {
           <MdMail size={24} color="#fff" />
         </a>
       </div>
-      <div className="flex-center md:pb-4 pb-2">Pavel Hovalkin © {new Date().getFullYear()}</div>
+      <div className="flex-center md:pb-4 pb-2">Pavel Khovalkin © {new Date().getFullYear()}</div>
     </div>
   );
 };
