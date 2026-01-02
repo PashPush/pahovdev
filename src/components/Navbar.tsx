@@ -51,7 +51,7 @@ const NavBar = () => {
   return (
     <header className={`navbar ${scrolled ? 'scrolled' : 'not-scrolled'}`}>
       <div className="inner">
-        <a href="#hero" className="logo" tabIndex={1}>
+        <a href="#hero" className="logo">
           <span className={lettersClass}>Pa</span>vel K<span className={lettersClass}>hov</span>alkin
         </a>
 
@@ -59,7 +59,7 @@ const NavBar = () => {
           <ul>
             {navLinks.slice(1, 6).map(({ link, name }) => (
               <li key={name} className="group">
-                <a href={link} tabIndex={1}>
+                <a href={link}>
                   <span>{name}</span>
                   <span className={classNames('underline', { active: link === currentLink })} />
                 </a>
@@ -68,7 +68,7 @@ const NavBar = () => {
           </ul>
         </nav>
 
-        <a href="#contact" className="contact-btn group" tabIndex={1}>
+        <a href="#contact" className="contact-btn group">
           <div className={classNames('inner', { active: currentLink === '#contact' })}>
             <span>Контакты</span>
           </div>

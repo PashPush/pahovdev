@@ -81,15 +81,11 @@ const SkillBadge = memo(({ skill }: { skill: Skill }) => {
   const { Icon } = skill;
 
   return (
-    <div
+    <li
       className="skill-badge opacity-0"
       style={{
         background: skill.colorBack ?? skill.color,
-        width: 'fit-content',
-        willChange: 'transform, opacity',
       }}
-      role="listitem"
-      aria-label={skill.name}
     >
       <span style={{ background: skill.color }} className="skill-icon">
         {typeof Icon !== 'string' ? (
@@ -107,7 +103,7 @@ const SkillBadge = memo(({ skill }: { skill: Skill }) => {
       <span className="skill-text" style={{ lineHeight: 1 }}>
         {skill.name}
       </span>
-    </div>
+    </li>
   );
 });
 
@@ -168,29 +164,35 @@ const First = () => {
       <AnimatedGears ref={sectionRef} />
       <div className="skills-wrapper">
         <div ref={frontendRef}>
-          <div className="skill-list" role="list">
-            <h3 className="first-title">Фронтенд База</h3>
-            {frontend.map(s => (
-              <SkillBadge key={s.id} skill={s} />
-            ))}
+          <div className="skill-list">
+            <h2 className="first-title">Фронтенд База</h2>
+            <ul>
+              {frontend.map(s => (
+                <SkillBadge key={s.id} skill={s} />
+              ))}
+            </ul>
           </div>
         </div>
 
         <div ref={backendRef}>
-          <div className="skill-list" role="list">
-            <h3 className="first-title">Бэкенд и Инструменты</h3>
-            {backendAndTools.map(s => (
-              <SkillBadge key={s.id} skill={s} />
-            ))}
+          <div className="skill-list">
+            <h2 className="first-title">Бэкенд и Инструменты</h2>
+            <ul>
+              {backendAndTools.map(s => (
+                <SkillBadge key={s.id} skill={s} />
+              ))}
+            </ul>
           </div>
         </div>
 
         <div ref={componentsRef}>
-          <div className="skill-list" role="list">
-            <h3 className="first-title">Качество Компонентов</h3>
-            {testing.map(s => (
-              <SkillBadge key={s.id} skill={s} />
-            ))}
+          <div className="skill-list">
+            <h2 className="first-title">Качество Компонентов</h2>
+            <ul>
+              {testing.map(s => (
+                <SkillBadge key={s.id} skill={s} />
+              ))}
+            </ul>
           </div>
         </div>
       </div>

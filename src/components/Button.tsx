@@ -17,7 +17,7 @@ const handleClick = (event: React.MouseEvent, id?: string) => {
 
 const Button = ({ text, className, id }: ButtonProps) => {
   return (
-    <a href="#" onClick={event => handleClick(event, id)} className={`${className ?? ''} cta-wrapper`} tabIndex={2}>
+    <a href="#" onClick={event => handleClick(event, id)} className={`${className ?? ''} cta-wrapper`}>
       <div className="cta-button group">
         <div className="bg-circle" />
         <p className="text">{text}</p>

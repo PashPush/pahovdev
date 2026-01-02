@@ -198,13 +198,7 @@ const Interface = () => {
   };
 
   return (
-    <a
-      href="#"
-      ref={containerRef}
-      onClick={handleClick}
-      className={classNames('interface', { done: count > 2 })}
-      tabIndex={2}
-    >
+    <a href="#" ref={containerRef} onClick={handleClick} className={classNames('interface', { done: count > 2 })}>
       <span className={classNames('inter', { 'no-margin': isMobile })}>интер</span>
       <Chips />
       <Chainsaw />

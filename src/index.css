@@ -549,7 +549,11 @@ canvas {
     }
 
     .skill-list {
-      @apply flex flex-row md:gap-3 xl:gap-[2vh] gap-2 flex-wrap rounded-2xl min-h-fit md:p-4 xl:p-5 p-3 bg-[rgba(255,255,255,0.1)] shadow-md;
+      @apply flex flex-row flex-wrap rounded-2xl min-h-fit md:p-4 xl:p-5 p-3 bg-[rgba(255,255,255,0.1)] shadow-md;
+
+      ul {
+        @apply flex flex-row md:gap-3 xl:gap-[2vh] gap-2 flex-wrap md:pt-3 xl:pt-[2vh] pt-2;
+      }
     }
 
     .skill-icon {
@@ -562,7 +566,7 @@ canvas {
     }
 
     .skill-badge {
-      @apply flex items-center md:gap-2 xl:gap-3 gap-1 rounded-full shadow-md md:pr-3 xl:pr-5 pr-2.5 md:h-12 xl:h-14 h-9;
+      @apply flex items-center md:gap-2 xl:gap-3 gap-1 rounded-full shadow-md md:pr-3 xl:pr-5 pr-2.5 md:h-12 xl:h-14 h-9 w-fit will-change-[transform,opacity];
 
       &:hover {
         @apply cursor-pointer filter-[none];
@@ -575,6 +579,10 @@ canvas {
 
     .first-wrapper {
       @apply max-w-7xl pt-22 pb-10 sm:px-5 lg:px-15 px-2;
+    }
+
+    .first-title {
+      @apply flex w-full sm:text-2xl xl:text-4xl text-xl text-white font-yeseva-one;
     }
 
     @media (height <= 600px) {
@@ -658,10 +666,6 @@ canvas {
 
     #curved-line-mobile {
       @apply absolute top-0 left-0 h-[100vh] z-100 opacity-60;
-    }
-
-    .first-title {
-      @apply flex w-full sm:text-2xl xl:text-4xl text-xl text-white font-yeseva-one;
     }
 
     .processes-wrapper {
