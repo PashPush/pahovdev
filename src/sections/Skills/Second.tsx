@@ -68,6 +68,8 @@ const Second = () => {
 
     const stickers = sectionRef.current?.querySelectorAll('.sticker');
 
+    const offsetStickers = isMobile ? 800 : 1200;
+
     stickers?.forEach((sticker, index) => {
       gsap.fromTo(
         sticker,
@@ -81,11 +83,12 @@ const Second = () => {
           x: 0,
           rotate: getRotate(index),
           opacity: 1,
-          duration: 0.7,
-          delay: 0.4 * (index + 1),
+          duration: 0.5,
+          delay: 0.3 * (index + 1),
           scrollTrigger: {
             trigger: sticker,
-            start: 'top bottom-=1000',
+            start: `top bottom-=${offsetStickers}`,
+            once: true,
           },
         }
       );

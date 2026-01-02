@@ -73,6 +73,10 @@ canvas {
   background: radial-gradient(circle at center, #434343 0%, #000 50%, transparent 100%);
 }
 
+@utility h-fix {
+  @apply h-[calc(var(--vh)*100)];
+}
+
 .masked-img {
   mask-image: url('/images/cogs.webp');
   mask-repeat: no-repeat;
@@ -499,11 +503,11 @@ canvas {
   }
 
   #skills {
-    @apply relative h-[calc(var(--vh)*100)] md:w-[370%] w-[425%] flex flex-nowrap z-10 overflow-hidden;
+    @apply relative h-fix md:w-[370%] w-[425%] flex flex-nowrap z-10 overflow-hidden;
     perspective: 1000px;
 
     .skills-word {
-      @apply h-[calc(var(--vh)*100)] md:w-[20vw] w-[25vw] flex items-center justify-center pt-16 bg-black z-10 ml-0.5;
+      @apply h-fix md:w-[20vw] w-[25vw] flex items-center justify-center pt-16 bg-black z-10 ml-0.5;
     }
 
     h1 {
@@ -511,7 +515,7 @@ canvas {
     }
 
     section.horizontal-section {
-      @apply md:w-[80vw] w-[100vw] flex-center flex-col bg-black h-[calc(var(--vh)*100)]  bg-center bg-no-repeat will-change-transform;
+      @apply md:w-[80vw] w-[100vw] flex-center flex-col bg-black h-fix  bg-center bg-no-repeat will-change-transform;
     }
 
     .heading {

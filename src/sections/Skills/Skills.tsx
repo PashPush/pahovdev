@@ -7,6 +7,7 @@ import Third from './Third';
 
 const Skills = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
+  const horizontal = useMediaQuery({ maxHeight: 600 });
   const skillsRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
@@ -46,7 +47,7 @@ const Skills = () => {
     });
 
     return () => ctx.revert();
-  }, [isMobile]);
+  }, [isMobile, horizontal]);
 
   return (
     <main id="skills" ref={skillsRef}>
