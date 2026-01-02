@@ -1,5 +1,5 @@
 import gsap from 'gsap';
-import { useEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import First from './First';
 import Second from './Second';
@@ -9,7 +9,7 @@ const Skills = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const skillsRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       const horizontalSections = gsap.utils.toArray('.horizontal-section');
       const xPercent = isMobile ? -112.52 : -100;
@@ -20,13 +20,13 @@ const Skills = () => {
 
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: '#skills',
+          trigger: skillsElement,
           pin: true,
           scrub: 1,
           anticipatePin: isMobile ? 1 : 0,
           fastScrollEnd: true,
           preventOverlaps: true,
-          end: () => '+=' + skillsElement.offsetWidth,
+          end: () => `+=${skillsElement.scrollWidth - document.documentElement.clientWidth}`,
         },
       });
 

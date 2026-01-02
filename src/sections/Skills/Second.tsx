@@ -30,13 +30,19 @@ const Second = () => {
 
   useGSAP(() => {
     const triggerEl = sectionRef.current || document.body;
+    const skillsEl = document.querySelector('#skills');
 
     const svg = document.querySelector(smallScreen ? '#curved-line-mobile' : '#curved-line');
     const line = svg?.querySelector('path');
 
-    if (line && !isSafari.current) {
-      const offsetLineStart = isMobile ? 60 : smallScreen ? 100 : 150; // todo: compute by screen width
-      const offsetLineEnd = isMobile ? 0 : smallScreen ? 100 : 230; // todo: compute by screen width
+    if (line && !isSafari.current && skillsEl) {
+      const offsetLineStart = isMobile
+        ? skillsEl.scrollWidth / 50
+        : smallScreen
+          ? skillsEl.scrollWidth / 80
+          : skillsEl.scrollWidth / 85;
+      const offsetLineEnd = isMobile ? 0 : smallScreen ? skillsEl.scrollWidth / 120 : skillsEl.scrollWidth / 45;
+
       const lineLength = line.getTotalLength();
 
       gsap.set(line, { strokeDasharray: lineLength });

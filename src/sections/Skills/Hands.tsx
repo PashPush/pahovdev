@@ -7,16 +7,7 @@ const Hands = () => {
   const horizontal = useMediaQuery({ maxHeight: 600 });
 
   useGSAP(() => {
-    gsap.delayedCall(0.2, () => {
-      const mainTrigger = ScrollTrigger.getAll().find(st => st.trigger && st.trigger.id === 'skills');
-
-      if (!mainTrigger) {
-        console.log('Main horizontal ScrollTrigger not found');
-        return;
-      }
-
-      // todo: optimize somehow
-
+    const createAnim = (mainTrigger: ScrollTrigger) => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: '.second-bg',
@@ -24,8 +15,6 @@ const Hands = () => {
           containerAnimation: mainTrigger.animation,
           start: 'left 80%',
           end: 'left 0%',
-          fastScrollEnd: true,
-          preventOverlaps: true,
         },
       });
 
@@ -168,7 +157,18 @@ const Hands = () => {
           },
           '<'
         );
-    });
+    };
+
+    const checkTrigger = () => {
+      const mainTrigger = ScrollTrigger.getAll().find(st => st.trigger && st.trigger.id === 'skills');
+      if (mainTrigger?.animation) {
+        createAnim(mainTrigger);
+      } else {
+        gsap.delayedCall(0.1, checkTrigger);
+      }
+    };
+
+    checkTrigger();
   }, []);
 
   return (

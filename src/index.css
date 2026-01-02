@@ -440,7 +440,7 @@ canvas {
       }
 
       .approach-img {
-        @apply w-[100vw] h-[100vh] rounded-4xl absolute sm:top-1/2 sm:-translate-y-1/2 left-1/2 top-10 -translate-x-1/2;
+        @apply w-[100vw] h-[100vh] rounded-4xl absolute sm:top-1/2 xl:top-[53%] sm:-translate-y-1/2 left-1/2 top-5 -translate-x-1/2;
       }
 
       .approach-img.approach-mobile {
@@ -456,7 +456,7 @@ canvas {
           @apply opacity-0 w-full sm:px-0 px-5 space-y-5 absolute sm:bottom-5 bottom-10 left-1/2 -translate-x-1/2 py-4 bg-[rgb(0,0,0,0.6)];
 
           h3 {
-            @apply sm:text-8xl text-3xl text-center w-full font-yeseva-one text-white flex flex-wrap justify-center;
+            @apply sm:text-5xl xl:text-7xl text-3xl text-center w-full font-yeseva-one text-white flex flex-wrap justify-center;
 
             .masked-span {
               @apply opacity-0 mr-2;

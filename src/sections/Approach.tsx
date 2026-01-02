@@ -67,14 +67,14 @@ const Approach = () => {
 
           <div className={classNames('approach-img', { 'approach-mobile': isMobile })}>
             <img
-              src="/images/pavel.webp"
-              alt="my approach"
+              src="/images/pavel2.webp"
+              alt="Pavel in the office"
               className={classNames('abs-center masked-img size-full object-contain', {
                 'masked-img-mobile': isMobile,
               })}
               loading="lazy"
-              width={isMobile ? 300 : 400}
-              height={isMobile ? 300 : 400}
+              width={400}
+              height={320}
             />
           </div>
 
@@ -96,9 +96,9 @@ const Approach = () => {
           </h2>
           <div id="masked-content">
             <h3>
-              <span className="masked-span">Команда.</span>
-              <span className="masked-span">Процесс.</span>
-              <span className="masked-span">Результат.</span>
+              <span className="masked-span">Я</span>
+              <span className="masked-span">—</span>
+              <span className="masked-span">командный игрок</span>
             </h3>
             <p className="masked-p">
               Умею работать в ритме Kanban и Scrum.

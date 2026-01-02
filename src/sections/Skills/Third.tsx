@@ -80,7 +80,7 @@ const DriveCard = memo(({ drive }: { drive: Drive }) => {
   return (
     <div
       className={classNames('group drive-card', {
-        hidden: shortScreen && isMobile && drive.title === 'Саморазвитие и непрерывное обучение',
+        hidden: shortScreen && isMobile && drive.title === 'UX/UI дизайн и внимание к деталям',
       })}
     >
       <div className="flex sm:gap-4 gap-2">
@@ -114,14 +114,14 @@ const Third = () => {
 
   const drives = [
     {
-      icon: IoReaderOutline,
-      title: 'Саморазвитие и непрерывное обучение',
-      description: 'Читаю литературу, экспериментирую, пробую новое в разных сферах',
+      icon: IoCompassSharp,
+      title: 'Баланс между жизнью и кодом',
+      description: 'Языки, спорт, игра на пианино, пение — источники вдохновения и креативности',
     },
     {
-      icon: IoColorPaletteOutline,
-      title: 'UX/UI дизайн и внимание к деталям',
-      description: 'Создаю не просто код, а продуманный пользовательский опыт',
+      icon: IoReaderOutline,
+      title: 'Видеть результат своей работы',
+      description: 'Когда пользователь интуитивно понимает интерфейс — это лучшая награда',
     },
     {
       icon: IoRocketOutline,
@@ -129,124 +129,133 @@ const Third = () => {
       description: 'Постоянно развиваюсь, следя за трендами и best practices',
     },
     {
-      icon: IoCompassSharp,
-      title: 'Баланс между жизнью и кодом',
-      description: 'Языки, спорт, игра на пианино, пение — источники вдохновения и креативности',
+      icon: IoColorPaletteOutline,
+      title: 'UX/UI дизайн и внимание к деталям',
+      description: 'Создаю не просто код, а продуманный пользовательский опыт',
     },
   ];
 
-  useGSAP(() => {
-    gsap.delayedCall(0.2, () => {
-      if (!sectionRef.current) return;
-      const mainTrigger = ScrollTrigger.getAll().find(st => st.trigger && (st.trigger as HTMLElement).id === 'skills');
+  useGSAP(
+    () => {
+      const createAnim = (mainTrigger: ScrollTrigger) => {
+        if (!sectionRef.current) return;
 
-      if (!mainTrigger || !sectionRef.current) return;
+        const additionals = sectionRef.current.querySelectorAll('.additional > div');
+        const beyondCode = sectionRef.current.querySelector('.beyond-code');
+        const langEffective = sectionRef.current.querySelector('.lang-effective');
+        const callGrow = sectionRef.current.querySelector('.call-grow');
+        const langCards = sectionRef.current.querySelectorAll('.lang-card');
+        const driveCards = sectionRef.current.querySelectorAll('.drive-card');
 
-      const additionals = sectionRef.current.querySelectorAll('.additional > div');
-      const beyondCode = sectionRef.current.querySelector('.beyond-code');
-      const langEffective = sectionRef.current.querySelector('.lang-effective');
-      const callGrow = sectionRef.current.querySelector('.call-grow');
-      const langCards = sectionRef.current.querySelectorAll('.lang-card');
-      const driveCards = sectionRef.current.querySelectorAll('.drive-card');
-
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          containerAnimation: mainTrigger.animation,
-          start: 'left 80%',
-          end: 'left 20%',
-          fastScrollEnd: true,
-          preventOverlaps: true,
-        },
-      });
-
-      if (beyondCode) {
-        tl.fromTo(
-          beyondCode,
-          { y: -80, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.5,
-            force3D: true,
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            containerAnimation: mainTrigger.animation,
+            start: 'left 80%',
+            end: 'left 20%',
           },
-          0
-        );
-      }
+        });
 
-      if (additionals.length > 0) {
-        tl.fromTo(
-          additionals,
-          { opacity: 0 },
-          {
-            opacity: 1,
-            duration: 0.5,
-            stagger: 0.4,
-            force3D: true,
-          },
-          0.2
-        );
-      }
+        if (beyondCode) {
+          tl.fromTo(
+            beyondCode,
+            { y: -80, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.5,
+              force3D: true,
+            },
+            0
+          );
+        }
 
-      if (langCards.length > 0) {
-        tl.fromTo(
-          langCards,
-          { x: 150, opacity: 0 },
-          {
-            x: 0,
-            opacity: 1,
-            duration: 0.5,
-            stagger: 0.3,
-            force3D: true,
-          },
-          0.3
-        );
-      }
+        if (additionals.length > 0) {
+          tl.fromTo(
+            additionals,
+            { opacity: 0 },
+            {
+              opacity: 1,
+              duration: 0.5,
+              stagger: 0.4,
+              force3D: true,
+            },
+            0.2
+          );
+        }
 
-      if (langEffective) {
-        tl.fromTo(
-          langEffective,
-          { x: 50, opacity: 0 },
-          {
-            x: 0,
-            opacity: 1,
-            duration: 0.5,
-            force3D: true,
-          },
-          1
-        );
-      }
+        if (langCards.length > 0) {
+          tl.fromTo(
+            langCards,
+            { x: 150, opacity: 0 },
+            {
+              x: 0,
+              opacity: 1,
+              duration: 0.5,
+              stagger: 0.3,
+              force3D: true,
+            },
+            0.3
+          );
+        }
 
-      if (driveCards.length > 0) {
-        tl.fromTo(
-          driveCards,
-          { x: 150, opacity: 0 },
-          {
-            x: 0,
-            opacity: 1,
-            duration: 0.5,
-            stagger: 0.4,
-            force3D: true,
-          },
-          0.5
-        );
-      }
+        if (langEffective) {
+          tl.fromTo(
+            langEffective,
+            { x: 50, opacity: 0 },
+            {
+              x: 0,
+              opacity: 1,
+              duration: 0.5,
+              force3D: true,
+            },
+            1
+          );
+        }
 
-      if (callGrow) {
-        tl.fromTo(
-          callGrow,
-          { y: 80, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.7,
-            force3D: true,
-          },
-          '-=0.3'
-        );
-      }
-    });
-  }, [sectionRef.current]);
+        if (driveCards.length > 0) {
+          tl.fromTo(
+            driveCards,
+            { x: 150, opacity: 0 },
+            {
+              x: 0,
+              opacity: 1,
+              duration: 0.5,
+              stagger: 0.4,
+              force3D: true,
+            },
+            0.5
+          );
+        }
+
+        if (callGrow) {
+          tl.fromTo(
+            callGrow,
+            { y: 80, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.7,
+              force3D: true,
+            },
+            '-=0.3'
+          );
+        }
+      };
+
+      const checkTrigger = () => {
+        const mainTrigger = ScrollTrigger.getAll().find(st => st.trigger && st.trigger.id === 'skills');
+        if (mainTrigger?.animation) {
+          createAnim(mainTrigger);
+        } else {
+          gsap.delayedCall(0.1, checkTrigger);
+        }
+      };
+
+      checkTrigger();
+    },
+    { scope: sectionRef }
+  );
 
   return (
     <section ref={sectionRef} className="third-wrapper">
