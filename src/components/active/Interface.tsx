@@ -203,6 +203,10 @@ const Interface = () => {
         isPlayingRef.current = false;
       });
 
+    if (reactivateTimerRef.current) {
+      clearTimeout(reactivateTimerRef.current);
+    }
+
     if (count < 2) {
       reactivateTimerRef.current = setTimeout(() => {
         setIsActivated(false);
