@@ -10,9 +10,11 @@ import Chips from './Chips';
 const Interface = () => {
   const isMobile = useMediaQuery({ maxWidth: 460 });
   const [count, setCount] = useState(0);
+  const [isActivated, setIsActivated] = useState(false);
   const containerRef = useRef(null);
   const isPlayingRef = useRef(false);
   const activeTimelinesRef = useRef([]);
+  const reactivateTimerRef = useRef(null);
 
   useEffect(() => {
     return () => {
@@ -24,6 +26,10 @@ const Interface = () => {
         }
       });
       activeTimelinesRef.current = [];
+
+      if (reactivateTimerRef.current) {
+        clearTimeout(reactivateTimerRef.current);
+      }
     };
   }, []);
 
@@ -183,6 +189,7 @@ const Interface = () => {
     if (isPlayingRef.current) return;
     if (count > 2) return;
 
+    setIsActivated(true);
     isPlayingRef.current = true;
 
     runStage(count)
@@ -195,10 +202,22 @@ const Interface = () => {
       .finally(() => {
         isPlayingRef.current = false;
       });
+
+    if (count < 2) {
+      reactivateTimerRef.current = setTimeout(() => {
+        setIsActivated(false);
+        reactivateTimerRef.current = null;
+      }, 6000);
+    }
   };
 
   return (
-    <a href="#" ref={containerRef} onClick={handleClick} className={classNames('interface', { done: count > 2 })}>
+    <a
+      href="#"
+      ref={containerRef}
+      onClick={handleClick}
+      className={classNames('interface', { done: count > 2, 'animate-wiggle': !isActivated })}
+    >
       <span className={classNames('inter', { 'no-margin': isMobile })}>интер</span>
       <Chips />
       <Chainsaw />

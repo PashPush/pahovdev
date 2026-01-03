@@ -39,6 +39,11 @@ const NavBar = () => {
     return () => observer.disconnect();
   }, []);
 
+  const scrollToTop = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const lettersClass = classNames('', {
     'text-cyan-200': currentLink === '#projects',
     'text-green-200': currentLink === '#experience',
@@ -51,7 +56,7 @@ const NavBar = () => {
   return (
     <header className={`navbar ${scrolled ? 'scrolled' : 'not-scrolled'}`}>
       <div className="inner">
-        <a href="#hero" className="logo">
+        <a href="#" onClick={scrollToTop} className="logo">
           <span className={lettersClass}>Pa</span>vel K<span className={lettersClass}>hov</span>alkin
         </a>
 
