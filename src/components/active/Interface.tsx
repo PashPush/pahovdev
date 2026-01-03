@@ -216,17 +216,28 @@ const Interface = () => {
   };
 
   return (
-    <a
-      href="#"
-      ref={containerRef}
-      onClick={handleClick}
-      className={classNames('interface', { done: count > 2, 'animate-wiggle': !isActivated })}
-    >
-      <span className={classNames('inter', { 'no-margin': isMobile })}>интер</span>
-      <Chips />
-      <Chainsaw />
-      <span className="faces">фейсы</span>
-    </a>
+    <>
+      <a
+        href="#"
+        ref={containerRef}
+        onClick={handleClick}
+        className={classNames('interface', { done: count > 2, 'animate-wiggle': !isActivated })}
+      >
+        <span className={classNames('inter', { 'no-margin': isMobile })}>интер</span>
+        <Chips />
+        <Chainsaw />
+        <span className="faces">фейсы</span>
+      </a>
+      <span
+        onClick={handleClick}
+        className={classNames('click-it', {
+          'opacity-0': isActivated || count > 1,
+        })}
+      >
+        {' '}
+        Click it
+      </span>
+    </>
   );
 };
 

@@ -236,6 +236,10 @@ canvas {
     }
   }
 
+  .click-it {
+    @apply text-gray-400 text-base ml-3 sm:ml-4 transition-all duration-300 cursor-pointer;
+  }
+
   .strong-team {
     @apply absolute font-semibold;
   }
