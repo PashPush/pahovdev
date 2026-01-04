@@ -13,6 +13,7 @@ dist-ssr
 *.local
 .env
 GEMINI.md
+WARP.md
 
 # Editor directories and files
 .vscode/*

@@ -181,7 +181,7 @@ const Third = () => {
           {
             opacity: 1,
             duration: 0.5,
-            stagger: 0.4,
+            stagger: 0.3,
             force3D: true,
           },
           0.2
@@ -196,7 +196,7 @@ const Third = () => {
             x: 0,
             opacity: 1,
             duration: 0.5,
-            stagger: 0.3,
+            stagger: 0.2,
             force3D: true,
           },
           0.3
@@ -225,10 +225,10 @@ const Third = () => {
             x: 0,
             opacity: 1,
             duration: 0.5,
-            stagger: 0.4,
+            stagger: 0.3,
             force3D: true,
           },
-          0.5
+          0.3
         );
       }
 
@@ -246,7 +246,7 @@ const Third = () => {
         );
       }
     });
-  }, [sectionRef.current]);
+  }, [sectionRef.current, horizontal]);
 
   return (
     <section ref={sectionRef} className="third-wrapper">

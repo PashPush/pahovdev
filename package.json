@@ -8,7 +8,7 @@
     "dev": "vite",
     "start": "vite",
     "predeploy": "vite build",
-    "deploy": "gh-pages -d dist",
+    "deploy": "gh-pages -d dist -c pahov.ru",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"

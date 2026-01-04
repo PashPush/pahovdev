@@ -55,7 +55,7 @@ const Experience = () => {
   }, []);
 
   return (
-    <section id="experience" className="flex-center md:mt-20 mt-10 pt-20 section-padding xl:px-0">
+    <section id="experience" className="app-experience">
       <div className="w-full h-full md:px-20 px-5">
         <TitleHeader title="Опыт работы" sub="💼 Моя карьера" />
         <div className="md:mt-32 mt-20 relative">

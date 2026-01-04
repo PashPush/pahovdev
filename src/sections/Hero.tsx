@@ -15,7 +15,7 @@ const Hero = () => {
 
   return (
     <>
-      <section className="h-[100vh]">
+      <section className="h-[92vh]">
         <div id="hero"></div>
         <div className="hero-layout">
           <h1 className="title">

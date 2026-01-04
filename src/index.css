@@ -352,7 +352,7 @@ canvas {
   }
 
   .app-projects {
-    @apply w-full mt-10 px-5 md:px-20 pt-20 pb-10 flex items-center justify-center;
+    @apply w-full mt-0 sm:mt-10 px-5 md:px-20 pt-20 pb-10 flex items-center justify-center;
 
     .projects-layout {
       @apply flex xl:flex-row flex-col gap-10 justify-between;
@@ -437,6 +437,10 @@ canvas {
     li {
       @apply text-base md:text-lg;
     }
+  }
+
+  .app-experience {
+    @apply flex-center sm:mt-10 mt-0 pt-20 xl:px-0;
   }
 
   #approach {
