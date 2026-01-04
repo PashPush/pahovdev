@@ -10,13 +10,16 @@ import Chips from './Chips';
 const Interface = () => {
   const isMobile = useMediaQuery({ maxWidth: 460 });
   const [count, setCount] = useState(0);
-  const [isActivated, setIsActivated] = useState(false);
+  const [isActivated, setIsActivated] = useState(true);
   const containerRef = useRef(null);
   const isPlayingRef = useRef(false);
   const activeTimelinesRef = useRef([]);
   const reactivateTimerRef = useRef(null);
 
   useEffect(() => {
+    reactivateTimerRef.current = setTimeout(() => {
+      setIsActivated(false);
+    }, 1500);
     return () => {
       activeTimelinesRef.current.forEach(tl => {
         try {
@@ -234,7 +237,6 @@ const Interface = () => {
           'opacity-0': isActivated || count > 1,
         })}
       >
-        {' '}
         Click it
       </span>
     </>
