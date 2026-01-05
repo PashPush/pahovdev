@@ -22,13 +22,13 @@ export const useViewportHeight = () => {
     const handleResize = () => {
       const currentHeight = window.innerHeight;
 
-      if (currentHeight > maxHeightRef.current) {
+      if (currentHeight >= maxHeightRef.current) {
         maxHeightRef.current = currentHeight;
         setViewportHeight(currentHeight);
 
         setTimeout(() => {
           ScrollTrigger.refresh();
-        }, 400);
+        }, 300);
       }
     };
 

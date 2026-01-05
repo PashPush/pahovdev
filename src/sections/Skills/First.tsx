@@ -48,6 +48,7 @@ const frontend: Skill[] = [
   { id: 'react-native', name: 'React Native', Icon: SiReact, color: '#23b1c3', colorBack: '#1b7480' },
   { id: 'tailwind', name: 'Tailwind', Icon: SiTailwindcss, color: '#51b7e2', colorBack: '#35768c' },
   { id: 'scss', name: 'SCSS', Icon: SiSass, color: '#bd7196', colorBack: '#814563' },
+  { id: 'gsap', name: 'Gsap', Icon: Gsap as IconType, color: '#2dd45c', colorBack: '#34804b' },
   { id: 'redux', name: 'Redux', Icon: SiRedux, color: '#7757a9', colorBack: '#4d366f' },
   { id: 'mobx', name: 'MobX', Icon: SiMobx, color: '#c86835', colorBack: '#7a4628' },
   { id: 'zustand', name: 'Zustand', Icon: '/images/zustand.webp', color: '#7e60ad', colorBack: '#513f6d' },
@@ -70,7 +71,6 @@ const testing: Skill[] = [
   { id: 'jest', name: 'Jest', Icon: SiJest, color: '#8d4e58', colorBack: '#583238' },
   { id: 'playwright', name: 'Playwright', Icon: Playwright as IconType, color: '#3c8dd1', colorBack: '#275783' },
   { id: 'storybook', name: 'Storybook', Icon: SiStorybook, color: '#e75d8c', colorBack: '#a24364' },
-  { id: 'gsap', name: 'Gsap', Icon: Gsap as IconType, color: '#2dd45c', colorBack: '#34804b' },
   { id: 'figma', name: 'Figma', Icon: SiFigma, color: '#dd8fa9', colorBack: '#ab637d' },
 ];
 
@@ -176,7 +176,7 @@ const First = () => {
 
         <div ref={backendRef}>
           <div className="skill-list">
-            <h2 className="first-title">Бэкенд и Инструменты</h2>
+            <h2 className="first-title">Тулинг</h2>
             <ul>
               {backendAndTools.map(s => (
                 <SkillBadge key={s.id} skill={s} />
@@ -187,7 +187,7 @@ const First = () => {
 
         <div ref={componentsRef}>
           <div className="skill-list">
-            <h2 className="first-title">Качество Компонентов</h2>
+            <h2 className="first-title">Тесты и UI</h2>
             <ul>
               {testing.map(s => (
                 <SkillBadge key={s.id} skill={s} />
