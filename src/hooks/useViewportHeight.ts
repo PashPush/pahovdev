@@ -23,13 +23,23 @@ export const useViewportHeight = () => {
       const currentHeight = window.innerHeight;
 
       if (currentHeight >= maxHeightRef.current) {
+        setTimeout(() => {
+          maxHeightRef.current = currentHeight;
+          setViewportHeight(currentHeight);
+
+          ScrollTrigger.refresh();
+        }, 100);
+      }
+    };
+
+    const handleOrientationChange = () => {
+      setTimeout(() => {
+        const currentHeight = window.innerHeight;
         maxHeightRef.current = currentHeight;
         setViewportHeight(currentHeight);
 
-        setTimeout(() => {
-          ScrollTrigger.refresh();
-        }, 300);
-      }
+        ScrollTrigger.refresh();
+      }, 200);
     };
 
     const debouncedResize = () => {
@@ -40,10 +50,12 @@ export const useViewportHeight = () => {
     };
 
     window.addEventListener('resize', debouncedResize);
+    window.addEventListener('orientationchange', handleOrientationChange);
 
     return () => {
       if (resizeTimeout) window.clearTimeout(resizeTimeout);
       window.removeEventListener('resize', debouncedResize);
+      window.removeEventListener('orientationchange', handleOrientationChange);
     };
   }, []);
 };

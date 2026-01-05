@@ -37,11 +37,12 @@ const Skills = () => {
         },
       });
 
-      tl.to({}, { duration: 0.1 });
+      tl.to({}, { duration: 0.07 });
 
       tl.to(horizontalSections, {
         xPercent: xPercent * (horizontalSections.length - 1),
         ease: 'none',
+        force3D: true,
       });
 
       tl.to(canvas, {
