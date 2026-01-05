@@ -1,4 +1,5 @@
-const devicePixelRatio = Math.min(window.devicePixelRatio, 2);
+let canvasEl, gl, uniforms, shaderProgram, animationId;
+let contextLost = false;
 
 const pointer = {
   x: 0,
@@ -7,34 +8,96 @@ const pointer = {
   tY: 0,
 };
 
-let canvasEl, gl, uniforms;
+function getDevicePixelRatio() {
+  return Math.min(window.devicePixelRatio, 2);
+}
 
-setTimeout(() => {
+function init() {
   canvasEl = document.querySelector('canvas#neuro');
-  gl = initShader();
+  if (!canvasEl) {
+    return;
+  }
+
+  canvasEl.addEventListener('webglcontextlost', handleContextLost, false);
+  canvasEl.addEventListener('webglcontextrestored', handleContextRestored, false);
+
+  initWebGL();
+}
+
+function initWebGL() {
   const contacts = document.getElementById('contacts');
 
+  gl = initShader();
+
   if (gl) {
+    contextLost = false;
     setupEvents();
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
+
+    if (animationId) {
+      cancelAnimationFrame(animationId);
+    }
     render();
+
     if (contacts && contacts.classList.contains('fallback-bg')) {
       contacts.classList.remove('fallback-bg');
     }
   } else {
+    if (contacts) {
+      contacts.classList.add('fallback-bg');
+    }
+  }
+}
+
+function handleContextLost(event) {
+  event.preventDefault();
+  contextLost = true;
+
+  if (animationId) {
+    cancelAnimationFrame(animationId);
+    animationId = null;
+  }
+
+  const contacts = document.getElementById('contacts');
+  if (contacts) {
     contacts.classList.add('fallback-bg');
   }
-}, 80);
+}
+
+function handleContextRestored() {
+  initWebGL();
+}
 
 function initShader() {
-  const vsSource = document.getElementById('vertShader').innerHTML;
-  const fsSource = document.getElementById('fragShader').innerHTML;
+  const vsSource = document.getElementById('vertShader')?.innerHTML;
+  const fsSource = document.getElementById('fragShader')?.innerHTML;
 
-  const gl = canvasEl.getContext('webgl') || canvasEl.getContext('experimental-webgl');
+  if (!vsSource || !fsSource) {
+    return null;
+  }
 
-  if (!gl) {
-    console.log('Unable to initialize WebGL. Your browser or machine may not support it.');
+  const glContext =
+    canvasEl.getContext('webgl', {
+      alpha: true,
+      antialias: false,
+      depth: false,
+      stencil: false,
+      preserveDrawingBuffer: false,
+      powerPreference: 'low-power',
+      failIfMajorPerformanceCaveat: false,
+    }) ||
+    canvasEl.getContext('experimental-webgl', {
+      alpha: true,
+      antialias: false,
+      depth: false,
+      stencil: false,
+      preserveDrawingBuffer: false,
+      powerPreference: 'low-power',
+      failIfMajorPerformanceCaveat: false,
+    });
+
+  if (!glContext) {
     return null;
   }
 
@@ -52,8 +115,12 @@ function initShader() {
     return shader;
   }
 
-  const vertexShader = createShader(gl, vsSource, gl.VERTEX_SHADER);
-  const fragmentShader = createShader(gl, fsSource, gl.FRAGMENT_SHADER);
+  const vertexShader = createShader(glContext, vsSource, glContext.VERTEX_SHADER);
+  const fragmentShader = createShader(glContext, fsSource, glContext.FRAGMENT_SHADER);
+
+  if (!vertexShader || !fragmentShader) {
+    return null;
+  }
 
   function createShaderProgram(gl, vertexShader, fragmentShader) {
     const program = gl.createProgram();
@@ -69,37 +136,51 @@ function initShader() {
     return program;
   }
 
-  const shaderProgram = createShaderProgram(gl, vertexShader, fragmentShader);
-  uniforms = getUniforms(shaderProgram);
+  shaderProgram = createShaderProgram(glContext, vertexShader, fragmentShader);
 
-  function getUniforms(program) {
-    let uniforms = [];
+  if (!shaderProgram) {
+    return null;
+  }
+
+  uniforms = getUniforms(glContext, shaderProgram);
+
+  function getUniforms(gl, program) {
+    let uniformsMap = [];
     let uniformCount = gl.getProgramParameter(program, gl.ACTIVE_UNIFORMS);
     for (let i = 0; i < uniformCount; i++) {
       let uniformName = gl.getActiveUniform(program, i).name;
-      uniforms[uniformName] = gl.getUniformLocation(program, uniformName);
+      uniformsMap[uniformName] = gl.getUniformLocation(program, uniformName);
     }
-    return uniforms;
+    return uniformsMap;
   }
 
   const vertices = new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]);
 
-  const vertexBuffer = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
-  gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+  const vertexBuffer = glContext.createBuffer();
+  glContext.bindBuffer(glContext.ARRAY_BUFFER, vertexBuffer);
+  glContext.bufferData(glContext.ARRAY_BUFFER, vertices, glContext.STATIC_DRAW);
 
-  gl.useProgram(shaderProgram);
+  glContext.useProgram(shaderProgram);
 
-  const positionLocation = gl.getAttribLocation(shaderProgram, 'a_position');
-  gl.enableVertexAttribArray(positionLocation);
+  const positionLocation = glContext.getAttribLocation(shaderProgram, 'a_position');
+  glContext.enableVertexAttribArray(positionLocation);
 
-  gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
-  gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
+  glContext.bindBuffer(glContext.ARRAY_BUFFER, vertexBuffer);
+  glContext.vertexAttribPointer(positionLocation, 2, glContext.FLOAT, false, 0, 0);
 
-  return gl;
+  return glContext;
 }
 
 function render() {
+  if (contextLost || !gl) {
+    return;
+  }
+
+  if (gl.isContextLost()) {
+    contextLost = true;
+    return;
+  }
+
   const currentTime = performance.now();
 
   pointer.x += (pointer.tX - pointer.x) * 0.2;
@@ -110,12 +191,15 @@ function render() {
   gl.uniform1f(uniforms.u_scroll_progress, window['pageYOffset'] / (2 * window.innerHeight));
 
   gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-  requestAnimationFrame(render);
+  animationId = requestAnimationFrame(render);
 }
 
 function resizeCanvas() {
-  canvasEl.width = window.innerWidth * devicePixelRatio;
-  canvasEl.height = window.innerHeight * devicePixelRatio;
+  if (!canvasEl || !gl || contextLost) return;
+
+  const dpr = getDevicePixelRatio();
+  canvasEl.width = window.innerWidth * dpr;
+  canvasEl.height = window.innerHeight * dpr;
   gl.uniform1f(uniforms.u_ratio, canvasEl.width / canvasEl.height);
   gl.viewport(0, 0, canvasEl.width, canvasEl.height);
 }
@@ -124,15 +208,33 @@ function setupEvents() {
   window.addEventListener('pointermove', e => {
     updateMousePosition(e.clientX, e.clientY);
   });
-  window.addEventListener('touchmove', e => {
-    updateMousePosition(e.targetTouches[0].clientX, e.targetTouches[0].clientY);
-  });
+  window.addEventListener(
+    'touchmove',
+    e => {
+      if (e.targetTouches[0]) {
+        updateMousePosition(e.targetTouches[0].clientX, e.targetTouches[0].clientY);
+      }
+    },
+    { passive: true }
+  );
   window.addEventListener('click', e => {
     updateMousePosition(e.clientX, e.clientY);
+  });
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible' && !contextLost && gl && !animationId) {
+      render();
+    }
   });
 
   function updateMousePosition(eX, eY) {
     pointer.tX = eX;
     pointer.tY = eY;
   }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  requestAnimationFrame(init);
 }

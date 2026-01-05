@@ -35,63 +35,70 @@ const Second = () => {
     const svg = document.querySelector(smallScreen ? '#curved-line-mobile' : '#curved-line');
     const line = svg?.querySelector('path');
 
-    if (line && !isSafari.current && skillsEl) {
-      const offsetLineStart = isMobile
-        ? skillsEl.scrollWidth / 50
-        : smallScreen
-          ? skillsEl.scrollWidth / 80
-          : skillsEl.scrollWidth / 85;
-      const offsetLineEnd = isMobile ? 0 : smallScreen ? skillsEl.scrollWidth / 120 : skillsEl.scrollWidth / 45;
+    // Defer ScrollTrigger creation to ensure parent pin is initialized
+    const setupAnimations = () => {
+      if (line && !isSafari.current && skillsEl) {
+        const offsetLineStart = isMobile
+          ? skillsEl.scrollWidth / 50
+          : smallScreen
+            ? skillsEl.scrollWidth / 80
+            : skillsEl.scrollWidth / 85;
+        const offsetLineEnd = isMobile ? 0 : smallScreen ? skillsEl.scrollWidth / 120 : skillsEl.scrollWidth / 45;
 
-      const lineLength = line.getTotalLength();
+        const lineLength = line.getTotalLength();
 
-      gsap.set(line, { strokeDasharray: lineLength });
+        gsap.set(line, { strokeDasharray: lineLength });
 
-      gsap.fromTo(
-        line,
-        { strokeDashoffset: smallScreen ? lineLength : -lineLength },
-        {
-          strokeDashoffset: 0,
-          ease: 'none',
-          force3D: true,
-          scrollTrigger: {
-            trigger: triggerEl,
-            start: `top+=${offsetLineStart}%`,
-            end: `bottom top-=${offsetLineEnd}%`,
-            scrub: 1,
-            once: true,
-            // fastScrollEnd: true,
+        gsap.fromTo(
+          line,
+          { strokeDashoffset: smallScreen ? lineLength : -lineLength },
+          {
+            strokeDashoffset: 0,
+            ease: 'none',
+            force3D: true,
+            scrollTrigger: {
+              trigger: triggerEl,
+              start: `top+=${offsetLineStart}%`,
+              end: `bottom top-=${offsetLineEnd}%`,
+              scrub: 1,
+              once: true,
+            },
+          }
+        );
+      }
+
+      const stickers = sectionRef.current?.querySelectorAll('.sticker');
+
+      const offsetStickers = isMobile ? 800 : 1200;
+
+      stickers?.forEach((sticker, index) => {
+        gsap.fromTo(
+          sticker,
+          {
+            x: 30,
+            opacity: 0,
+            rotate: -10,
+            transformOrigin: 'center top',
           },
-        }
-      );
-    }
+          {
+            x: 0,
+            rotate: getRotate(index),
+            opacity: 1,
+            duration: 0.5,
+            delay: 0.3 * (index + 1),
+            scrollTrigger: {
+              trigger: sticker,
+              start: `top bottom-=${offsetStickers}`,
+              once: true,
+            },
+          }
+        );
+      });
+    };
 
-    const stickers = sectionRef.current?.querySelectorAll('.sticker');
-
-    const offsetStickers = isMobile ? 800 : 1200;
-
-    stickers?.forEach((sticker, index) => {
-      gsap.fromTo(
-        sticker,
-        {
-          x: 30,
-          opacity: 0,
-          rotate: -10,
-          transformOrigin: 'center top',
-        },
-        {
-          x: 0,
-          rotate: getRotate(index),
-          opacity: 1,
-          duration: 0.5,
-          delay: 0.3 * (index + 1),
-          scrollTrigger: {
-            trigger: sticker,
-            start: `top bottom-=${offsetStickers}`,
-            once: true,
-          },
-        }
-      );
+    // Wait for parent ScrollTrigger with pin to be ready
+    requestAnimationFrame(() => {
+      requestAnimationFrame(setupAnimations);
     });
   }, [isMobile, smallScreen]);
 
