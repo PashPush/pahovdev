@@ -22,7 +22,7 @@ export const useViewportHeight = () => {
     const handleResize = () => {
       const currentHeight = window.innerHeight;
 
-      if (currentHeight >= maxHeightRef.current) {
+      if (currentHeight > maxHeightRef.current) {
         setTimeout(() => {
           maxHeightRef.current = currentHeight;
           setViewportHeight(currentHeight);
