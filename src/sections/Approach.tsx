@@ -1,12 +1,16 @@
 import gsap from 'gsap';
 import { useMediaQuery } from 'react-responsive';
 import { useGSAP } from '@gsap/react';
-import { featureLists, goodLists } from '../constants/index.ts';
+import { useTranslation } from 'react-i18next';
 import { classNames } from '../lib/classNames.ts';
 
 const Approach = () => {
+  const { t } = useTranslation();
   const isMobile = useMediaQuery({ maxWidth: 640 });
   const isSmallMobile = useMediaQuery({ maxWidth: 460 });
+
+  const features = t('features', { returnObjects: true }) as string[];
+  const goods = t('goods', { returnObjects: true }) as string[];
 
   useGSAP(() => {
     const start = isMobile ? 'top 1%' : 'top top';
@@ -51,13 +55,13 @@ const Approach = () => {
     <div id="approach">
       <div>
         <h2 className="will-fade">
-          <span>Мой</span>
-          ПОДХОД
+          <span>{t('approach.my')}</span>
+          {t('approach.approach')}
         </h2>
 
         <div className="content">
           <ul className="space-y-4 will-fade will-grow sm:mr-50 z-10">
-            {goodLists.map((feature, index) => (
+            {goods.map((feature, index) => (
               <li key={index} className="flex items-center gap-2">
                 <img src="/images/check.png" alt="check" />
                 <p>{feature}</p>
@@ -79,7 +83,7 @@ const Approach = () => {
           </div>
 
           <ul className="space-y-4 will-fade will-grow sm:ml-50 z-10">
-            {featureLists.map((feature, index) => (
+            {features.map((feature, index) => (
               <li key={index} className="flex items-center justify-start gap-2">
                 <img src="/images/check.png" alt="check" />
                 <p className="sm:w-fit w-70">{feature}</p>
@@ -90,20 +94,20 @@ const Approach = () => {
 
         <div className="masked-container">
           <h2 className="will-fade">
-            Нормально делай
+            {t('approach.doWell')}
             <br />
-            Нормально будет
+            {t('approach.beWell')}
           </h2>
           <div id="masked-content">
             <h3>
-              <span className="masked-span">Я</span>
-              <span className="masked-span">—</span>
-              <span className="masked-span">командный игрок</span>
+              <span className="masked-span">{t('approach.iAm')}</span>
+              <span className="masked-span">{t('approach.dash')}</span>
+              <span className="masked-span">{t('approach.teamPlayer')}</span>
             </h3>
             <p className="masked-p">
-              Умею работать в ритме Kanban и Scrum.
+              {t('approach.kanban')}
               <br />
-              Фокус на качестве, сроках и общем успехе.
+              {t('approach.focus')}
             </p>
           </div>
         </div>

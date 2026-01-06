@@ -1,5 +1,6 @@
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
+import { useTranslation } from 'react-i18next';
 
 import Button from '../components/Button';
 // @ts-expect-error jsx
@@ -8,6 +9,7 @@ import Interface from '../components/active/Interface';
 import { useMediaQuery } from 'react-responsive';
 
 const Hero = () => {
+  const { t } = useTranslation();
   const isMobile = useMediaQuery({ maxWidth: 460 });
   useGSAP(() => {
     gsap.fromTo('.title', { y: 50, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.4, duration: 1, ease: 'power2.inOut' });
@@ -19,22 +21,22 @@ const Hero = () => {
         <div id="hero"></div>
         <div className="hero-layout">
           <h1 className="title">
-            <span>Frontend</span> <span>Developer</span>
+            <span>{t('hero.title1')}</span> <span>{t('hero.title2')}</span>
           </h1>
         </div>
         <div className="hero-text">
           <div className="subtitle">
-            Привет,
+            {t('hero.greeting')}
             <br />
-            меня зовут Павел
-            <br />Я люблю пилить
+            {t('hero.myName')}
+            <br />{t('hero.loveToBuild')}
             {isMobile ? <br /> : ' '}
             <Interface />
             <br />
-            <span className="strong-team">Готов усилить Вашу команду</span>
+            <span className="strong-team">{t('hero.readyToJoin')}</span>
             <br />
           </div>
-          <Button text="проекты" className="hero-button" id="work" />
+          <Button text={t('hero.cta')} className="hero-button" id="work" />
         </div>
       </section>
       <ShaderPhoto />

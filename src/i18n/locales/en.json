@@ -1,0 +1,190 @@
+{
+  "nav": {
+    "intro": "Intro",
+    "projects": "Projects",
+    "experience": "Experience",
+    "approach": "Approach",
+    "reviews": "Reviews",
+    "skills": "Skills",
+    "contact": "Contacts",
+    "contactBtn": "Contacts"
+  },
+  "hero": {
+    "title1": "Frontend",
+    "title2": "Developer",
+    "greeting": "Hi,",
+    "myName": "my name is Pavel",
+    "loveToBuild": "I love to build",
+    "readyToJoin": "Ready to strengthen your team",
+    "cta": "projects",
+    "inter": "INTER",
+    "faces": "FACES"
+  },
+  "words": {
+    "ideas": "Ideas",
+    "concepts": "Concepts",
+    "designs": "Designs",
+    "code": "Code",
+    "fantasies": "Fantasies",
+    "creative": "Creative",
+    "sketches": "Sketches",
+    "wishes": "Wishes"
+  },
+  "experience": {
+    "title": "Work Experience",
+    "subtitle": "My Career"
+  },
+  "expCards": {
+    "0": {
+      "review": "Working with Pavel is always pleasant. He quickly adapted to our team and made a significant contribution to our projects.",
+      "info": "Australian product. Dictionaries.",
+      "title": "Frontend Developer",
+      "subtitle": "Achievements",
+      "date": "February 2024 - Present",
+      "responsibilities": [
+        "Improved website and app performance, accelerating load time by 35%.",
+        "Identified and fixed critical bugs.",
+        "Developed an AI module for additional content generation and enhancement."
+      ]
+    },
+    "1": {
+      "review": "Integrated well into the team, a competent developer. A positive person.",
+      "info": "Digital agency. Website creation and promotion.",
+      "title": "Frontend Developer",
+      "subtitle": "Results",
+      "date": "May 2022 - February 2024",
+      "responsibilities": [
+        "Developed and launched 10+ projects from scratch.",
+        "Added functionality to existing projects, redesign, refactoring, migration from jQuery to React.",
+        "Integrated projects with external APIs and services."
+      ]
+    },
+    "2": {
+      "review": "Winner of the \"Valuable Employee 2021\" nomination for quality performance, professionalism, and dedication to the Company.",
+      "info": "Floor coverings manufacturing.",
+      "title": "Web Developer",
+      "subtitle": "Responsibilities",
+      "date": "September 2020 - May 2022",
+      "responsibilities": [
+        "Maintained 5+ subsidiary websites",
+        "Created promo landing pages",
+        "Integrated projects with external services."
+      ]
+    },
+    "3": {
+      "review": "Studied well, proved himself from the best side.",
+      "title": "Bachelor of Applied Informatics",
+      "date": "Togliatti State University"
+    }
+  },
+  "projects": {
+    "pt": {
+      "name": "Power Thesaurus",
+      "stack": "Stack: React, React Native, Plasmo."
+    },
+    "index": {
+      "name": "Index Marketing"
+    },
+    "sagama": {
+      "name": "Sagama Group"
+    }
+  },
+  "approach": {
+    "my": "",
+    "approach": "APPROACH",
+    "doWell": "Do it well",
+    "beWell": "It will be well",
+    "iAm": "I",
+    "dash": "am",
+    "teamPlayer": "a team player",
+    "kanban": "I can work in Kanban and Scrum rhythm.",
+    "focus": "Focus on quality, deadlines, and overall success."
+  },
+  "features": ["User convenience", "Team strength", "Continuous growth"],
+  "goods": ["Business value", "Code quality", "Meeting deadlines"],
+  "feedbacks": {
+    "0": {
+      "name": "Alexander Radyushin",
+      "position": "Founder and CEO of Power Thesaurus",
+      "review": "Excellent sense of balance between speed and quality. Pavel can quickly understand unfamiliar code, carefully improving it without breaking existing logic. Such a developer raises the overall level of the team."
+    },
+    "1": {
+      "name": "Andrey Ryabov",
+      "position": "Team Lead. Index Marketing",
+      "review": "He is a careful developer who tests his code and helps find logical inconsistencies before release. Communication with him is easy, without formalities — you can always quickly agree and resolve any issue."
+    },
+    "2": {
+      "name": "Sergey Butuzov",
+      "position": "TechLead. Mercury Development",
+      "review": "A responsible specialist attentive to details. If he takes a task — you can be sure it will be completed on time, with thoughtful UX and clean code. It's nice to see such a professional approach."
+    }
+  },
+  "stickers": {
+    "0": {
+      "title": "To Do",
+      "description": "Analyzing requirements and goals"
+    },
+    "1": {
+      "title": "In Progress",
+      "description": "Writing reliable, clean code"
+    },
+    "2": {
+      "title": "Code Review",
+      "description": "Open to discussion and improvements"
+    },
+    "3": {
+      "title": "Ready for Release",
+      "description": "Ready for deployment without rework"
+    }
+  },
+  "skills": {
+    "first": {
+      "frontend": "Frontend Base",
+      "tooling": "Tooling",
+      "testing": "Tests & UI"
+    },
+    "third": {
+      "beyondCode": "Beyond Code",
+      "languages": "Language Proficiency",
+      "drives": "What Drives Me",
+      "langEffective": "I can effectively work with international teams and clients",
+      "callGrow": "Looking for opportunities to grow and create",
+      "meaningful": "meaningful products",
+      "langLevels": {
+        "advanced": "Advanced",
+        "intermediate": "Intermediate",
+        "native": "Native Speaker"
+      },
+      "driveItems": {
+        "balance": {
+          "title": "Balance between life and code",
+          "description": "Languages, sports, piano, singing — sources of inspiration and creativity"
+        },
+        "result": {
+          "title": "Seeing the result of my work",
+          "description": "When users intuitively understand the interface — that's the best reward"
+        },
+        "learning": {
+          "title": "Learning new technologies and patterns",
+          "description": "Constantly growing, following trends and best practices"
+        },
+        "ux": {
+          "title": "UX/UI design and attention to detail",
+          "description": "Creating not just code, but a thoughtful user experience"
+        }
+      }
+    }
+  },
+  "contact": {
+    "title": "Contacts",
+    "name": "Name",
+    "namePlaceholder": "How should I address you?",
+    "email": "Email / Telegram / WhatsApp",
+    "emailPlaceholder": "Where is it convenient to receive a reply?",
+    "message": "Message",
+    "messagePlaceholder": "Have a vacancy or an interesting project? Write a few words :)",
+    "sending": "Sending...",
+    "send": "Send",
+    "success": "Message sent!"
+  }
+}

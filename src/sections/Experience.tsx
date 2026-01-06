@@ -1,11 +1,13 @@
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { useTranslation } from 'react-i18next';
 import { expCards } from '../constants';
 import TitleHeader from '../components/TitleHeader';
 import BlinkCard from '../components/BlinkCard';
 import { useMediaQuery } from 'react-responsive';
 
 const Experience = () => {
+  const { t } = useTranslation();
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const timelineHeight = isMobile ? '90%' : '70%';
 
@@ -54,46 +56,64 @@ const Experience = () => {
     }, '<');
   }, []);
 
+  const getResponsibilities = (index: number): string[] => {
+    const responsibilities = t(`expCards.${index}.responsibilities`, { returnObjects: true }) as unknown;
+    return Array.isArray(responsibilities) ? (responsibilities as string[]) : [];
+  };
+
   return (
     <section id="experience" className="app-experience">
       <div className="w-full h-full md:px-20 px-5">
-        <TitleHeader title="Опыт работы" sub="💼 Моя карьера" />
+        <TitleHeader title={t('experience.title')} sub={`💼 ${t('experience.subtitle')}`} />
         <div className="md:mt-32 mt-20 relative">
           <div className="relative z-50 xl:space-y-32 space-y-10">
-            {expCards.map((card, index) => (
-              <div key={card.logoPath} className="exp-card-wrapper">
-                <div className="xl:w-2/6">
-                  <BlinkCard index={index} card={card} className="timeline-card">
-                    <a href={card.url} target="_blank" className="relative z-10">
-                      <img src={card.imgPath} alt={card.logoAlt} />
-                    </a>
-                  </BlinkCard>
-                </div>
-                <div className="xl:w-4/6">
-                  <div className="flex items-start">
-                    <div className="timeline-wrapper">
-                      <div className="timeline" />
-                      <div className="gradient-line w-1 h-full" />
-                    </div>
-                    <div className="expText flex xl:gap-20 md:gap-10 gap-5 relative z-20">
-                      <div className="timeline-logo">
-                        <img src={card.logoPath} alt={card.logoAlt} />
+            {expCards.map((card, index) => {
+              const responsibilities = getResponsibilities(card.index);
+              return (
+                <div key={card.logoPath} className="exp-card-wrapper">
+                  <div className="xl:w-2/6">
+                    <BlinkCard
+                      index={index}
+                      card={{
+                        ...card,
+                        review: t(`expCards.${card.index}.review`),
+                        info: index <= 2 ? t(`expCards.${card.index}.info`) : undefined,
+                      }}
+                      className="timeline-card"
+                    >
+                      <a href={card.url} target="_blank" className="relative z-10">
+                        <img src={card.imgPath} alt={card.logoAlt} />
+                      </a>
+                    </BlinkCard>
+                  </div>
+                  <div className="xl:w-4/6">
+                    <div className="flex items-start">
+                      <div className="timeline-wrapper">
+                        <div className="timeline" />
+                        <div className="gradient-line w-1 h-full" />
                       </div>
-                      <div>
-                        <h2 className="font-semibold sm:text-3xl text-2xl">{card.title}</h2>
-                        <p className="my-5 text-white-50">{card.date}</p>
-                        {card.responsibilities.length > 0 && <p className="text-[#899aae] italic">{card.subtitle}</p>}
-                        <ul className="exp-ul">
-                          {card.responsibilities.map((responsibility, index) => (
-                            <li key={index}>{responsibility}</li>
-                          ))}
-                        </ul>
+                      <div className="expText flex xl:gap-20 md:gap-10 gap-5 relative z-20">
+                        <div className="timeline-logo">
+                          <img src={card.logoPath} alt={card.logoAlt} />
+                        </div>
+                        <div>
+                          <h2 className="font-semibold sm:text-3xl text-2xl">{t(`expCards.${card.index}.title`)}</h2>
+                          <p className="my-5 text-white-50">🗓️ {t(`expCards.${card.index}.date`)}</p>
+                          {responsibilities.length > 0 && (
+                            <p className="text-[#899aae] italic">{t(`expCards.${card.index}.subtitle`)}</p>
+                          )}
+                          <ul className="exp-ul">
+                            {responsibilities.map((responsibility, idx) => (
+                              <li key={idx}>{responsibility}</li>
+                            ))}
+                          </ul>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>

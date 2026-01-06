@@ -2,6 +2,7 @@ import { useRef, memo } from 'react';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { useMediaQuery } from 'react-responsive';
+import { useTranslation } from 'react-i18next';
 import CurvedLine from './icons/CurvedLine';
 import { stickers } from '../../constants';
 import CurvedLineMobile from './icons/CurvedLineMobile';
@@ -17,6 +18,7 @@ const Sticker = memo(({ title, description }: { title: string; description: stri
 Sticker.displayName = 'Sticker';
 
 const Second = () => {
+  const { t } = useTranslation();
   const sectionRef = useRef<HTMLDivElement>(null);
   const isMobile = useMediaQuery({ maxWidth: 640 });
   const smallScreen = useMediaQuery({ maxWidth: 1024 });
@@ -107,8 +109,12 @@ const Second = () => {
       <div className="processes-wrapper">
         {smallScreen ? <CurvedLineMobile /> : <CurvedLine />}
         <div className="processes">
-          {stickers.map(({ title, description }) => (
-            <Sticker key={title} title={title} description={description} />
+          {stickers.map(({ index }) => (
+            <Sticker
+              key={index}
+              title={t(`stickers.${index}.title`)}
+              description={t(`stickers.${index}.description`)}
+            />
           ))}
         </div>
       </div>

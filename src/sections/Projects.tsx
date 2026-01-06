@@ -1,8 +1,10 @@
 import { useRef } from 'react';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { useTranslation } from 'react-i18next';
 
 const Projects = () => {
+  const { t } = useTranslation();
   const project1Ref = useRef(null);
   const project2Ref = useRef(null);
   const project3Ref = useRef(null);
@@ -40,8 +42,8 @@ const Projects = () => {
               <img src="/images/project-pt.webp" alt="Power Thesaurus" />
             </div>
             <div className="text-content">
-              <h2>Power Thesaurus</h2>
-              <p className="text-white-50 md:text-xl">Стек: React, React Native, Plasmo.</p>
+              <h2>{t('projects.pt.name')}</h2>
+              <p className="text-white-50 md:text-xl">{t('projects.pt.stack')}</p>
             </div>
           </div>
 
@@ -50,14 +52,14 @@ const Projects = () => {
               <div className="image-wrapper project-index">
                 <img src="/images/project-index.webp" alt="Index Marketing" />
               </div>
-              <h2>Индекс Маркетинг</h2>
+              <h2>{t('projects.index.name')}</h2>
             </div>
 
             <div className="project" ref={project3Ref}>
               <div className="image-wrapper project-sagama">
                 <img src="/images/project-sagama.webp" alt="Sagama" />
               </div>
-              <h2>Sagama Group</h2>
+              <h2>{t('projects.sagama.name')}</h2>
             </div>
           </div>
         </div>

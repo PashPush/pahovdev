@@ -2,6 +2,7 @@ import { useRef, memo } from 'react';
 import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useTranslation } from 'react-i18next';
 import {
   IoSparklesOutline,
   IoRocketOutline,
@@ -103,35 +104,36 @@ const DriveCard = memo(({ drive }: { drive: Drive }) => {
 DriveCard.displayName = 'DriveCard';
 
 const Third = () => {
+  const { t } = useTranslation();
   const sectionRef = useRef<HTMLDivElement>(null);
   const horizontal = useMediaQuery({ maxHeight: 600 });
 
   const languages = [
-    { name: 'English', level: 'C1', levelText: 'Advanced', flag: '🇬🇧', percentage: 89 },
-    { name: 'Español', level: 'B1', levelText: 'Intermediate', flag: '🇪🇸', percentage: 61 },
-    { name: 'Русский', level: 'NS', levelText: 'Native Speaker', flag: '🇷🇺', percentage: 100 },
+    { name: 'English', level: 'C1', levelText: t('skills.third.langLevels.advanced'), flag: '🇬🇧', percentage: 89 },
+    { name: 'Español', level: 'B1', levelText: t('skills.third.langLevels.intermediate'), flag: '🇪🇸', percentage: 61 },
+    { name: 'Русский', level: 'NS', levelText: t('skills.third.langLevels.native'), flag: '🇷🇺', percentage: 100 },
   ];
 
   const drives = [
     {
       icon: IoCompassSharp,
-      title: 'Баланс между жизнью и кодом',
-      description: 'Языки, спорт, игра на пианино, пение — источники вдохновения и креативности',
+      title: t('skills.third.driveItems.balance.title'),
+      description: t('skills.third.driveItems.balance.description'),
     },
     {
       icon: IoReaderOutline,
-      title: 'Видеть результат своей работы',
-      description: 'Когда пользователь интуитивно понимает интерфейс — это лучшая награда',
+      title: t('skills.third.driveItems.result.title'),
+      description: t('skills.third.driveItems.result.description'),
     },
     {
       icon: IoRocketOutline,
-      title: 'Изучение новых технологий и паттернов',
-      description: 'Постоянно развиваюсь, следя за трендами и best practices',
+      title: t('skills.third.driveItems.learning.title'),
+      description: t('skills.third.driveItems.learning.description'),
     },
     {
       icon: IoColorPaletteOutline,
-      title: 'UX/UI дизайн и внимание к деталям',
-      description: 'Создаю не просто код, а продуманный пользовательский опыт',
+      title: t('skills.third.driveItems.ux.title'),
+      description: t('skills.third.driveItems.ux.description'),
     },
   ];
 
@@ -252,7 +254,7 @@ const Third = () => {
     <section ref={sectionRef} className="third-wrapper">
       <div className="max-w-7xl w-full">
         <div className="noise opacity-[0.03]"></div>
-        {!horizontal && <h2 className="beyond-code">Не только код</h2>}
+        {!horizontal && <h2 className="beyond-code">{t('skills.third.beyondCode')}</h2>}
 
         <div className="additional">
           <div className="languages">
@@ -260,7 +262,7 @@ const Third = () => {
               <div className="lang-title-icon">
                 <IoLanguageSharp className="sm:size-6 size-5 text-blue-200" />
               </div>
-              <h3>Владение языками</h3>
+              <h3>{t('skills.third.languages')}</h3>
             </div>
 
             <div className="flex sm:block flex-row gap-2 justify-between">
@@ -271,7 +273,7 @@ const Third = () => {
 
             {!horizontal && (
               <div className="lang-effective">
-                <p>Умею эффективно работать с международными командами и заказчиками</p>
+                <p>{t('skills.third.langEffective')}</p>
               </div>
             )}
           </div>
@@ -281,7 +283,7 @@ const Third = () => {
               <div className="drive-title-icon">
                 <IoSparklesOutline className="sm:size-6 size-5 text-purple-300" />
               </div>
-              <h3>Что меня драйвит</h3>
+              <h3>{t('skills.third.drives')}</h3>
             </div>
 
             {drives.map((drive, index) => (
@@ -293,8 +295,8 @@ const Third = () => {
         <div className="call-grow">
           <div>
             <p>
-              Ищу возможности для роста и создания
-              <span> значимых продуктов</span>
+              {t('skills.third.callGrow')}
+              <span> {t('skills.third.meaningful')}</span>
             </p>
           </div>
         </div>

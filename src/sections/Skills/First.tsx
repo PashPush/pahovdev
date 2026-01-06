@@ -25,6 +25,7 @@ import { useMediaQuery } from 'react-responsive';
 import { useRef, memo } from 'react';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { useTranslation } from 'react-i18next';
 import AnimatedGears from './AnimatedGears';
 import CICD from './icons/CICD';
 import N8n from './icons/N8n';
@@ -110,6 +111,7 @@ const SkillBadge = memo(({ skill }: { skill: Skill }) => {
 SkillBadge.displayName = 'SkillBadge';
 
 const First = () => {
+  const { t } = useTranslation();
   const sectionRef = useRef<HTMLDivElement>(null);
   const frontendRef = useRef<HTMLDivElement>(null);
   const backendRef = useRef<HTMLDivElement>(null);
@@ -165,7 +167,7 @@ const First = () => {
       <div className="skills-wrapper">
         <div ref={frontendRef}>
           <div className="skill-list">
-            <h2 className="first-title">Фронтенд База</h2>
+            <h2 className="first-title">{t('skills.first.frontend')}</h2>
             <ul>
               {frontend.map(s => (
                 <SkillBadge key={s.id} skill={s} />
@@ -176,7 +178,7 @@ const First = () => {
 
         <div ref={backendRef}>
           <div className="skill-list">
-            <h2 className="first-title">Тулинг</h2>
+            <h2 className="first-title">{t('skills.first.tooling')}</h2>
             <ul>
               {backendAndTools.map(s => (
                 <SkillBadge key={s.id} skill={s} />
@@ -187,7 +189,7 @@ const First = () => {
 
         <div ref={componentsRef}>
           <div className="skill-list">
-            <h2 className="first-title">Тесты и UI</h2>
+            <h2 className="first-title">{t('skills.first.testing')}</h2>
             <ul>
               {testing.map(s => (
                 <SkillBadge key={s.id} skill={s} />

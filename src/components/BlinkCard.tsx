@@ -1,28 +1,23 @@
 import { useRef } from 'react';
 
-type ExperienceCard = {
+type BlinkCardData = {
   review: string;
   info?: string;
-  imgPath: string;
-  url: string;
-  logoPath: string;
-  logoAlt: string;
-  title: string;
-  date: string;
-  responsibilities: string[];
-};
-
-type RewiewCard = {
-  name: string;
-  info?: string;
-  position: string;
-  review: string;
-  imgPath: string;
-  icon: string;
+  imgPath?: string;
+  url?: string;
+  logoPath?: string;
+  logoAlt?: string;
+  title?: string;
+  date?: string;
+  responsibilities?: string[];
+  name?: string;
+  position?: string;
+  icon?: string;
+  index?: number;
 };
 
 type BlinkCardProps = {
-  card: ExperienceCard | RewiewCard;
+  card: BlinkCardData;
   index: number;
   icon?: string;
   children: React.ReactNode;

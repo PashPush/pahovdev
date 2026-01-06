@@ -1,10 +1,12 @@
 import { useRef } from 'react';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { useTranslation } from 'react-i18next';
 import BlinkCard from '../components/BlinkCard';
 import { feedbacks } from '../constants';
 
 const Review = () => {
+  const { t } = useTranslation();
   const sectionRef = useRef(null);
 
   useGSAP(() => {
@@ -35,14 +37,20 @@ const Review = () => {
     <div ref={sectionRef} id="reviews" className="review">
       <div className="review-wrapper">
         {feedbacks.map((feedback, index) => (
-          <BlinkCard card={feedback} key={index} icon={feedback.icon} index={index} className="feedback-card">
+          <BlinkCard
+            card={{ ...feedback, review: t(`feedbacks.${feedback.index}.review`) }}
+            key={index}
+            icon={feedback.icon}
+            index={index}
+            className="feedback-card"
+          >
             <div className="flex items-center gap-3">
               <div>
-                <img src={feedback.imgPath} alt={feedback.name} className="rounded-full md:w-20 w-15" />
+                <img src={feedback.imgPath} alt={t(`feedbacks.${feedback.index}.name`)} className="rounded-full md:w-20 w-15" />
               </div>
               <div>
-                <p className="font-bold">{feedback.name}</p>
-                <p className="text-white-50 sm:text-base text-sm">{feedback.position}</p>
+                <p className="font-bold">{t(`feedbacks.${feedback.index}.name`)}</p>
+                <p className="text-white-50 sm:text-base text-sm">{t(`feedbacks.${feedback.index}.position`)}</p>
               </div>
             </div>
           </BlinkCard>

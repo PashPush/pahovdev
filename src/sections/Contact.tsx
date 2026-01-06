@@ -1,10 +1,12 @@
 import { useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import emailjs from '@emailjs/browser';
 import { SiTelegram, SiWhatsapp } from 'react-icons/si';
 import { MdMail } from 'react-icons/md';
 import { classNames } from '../lib/classNames';
 
 const Contact = () => {
+  const { t } = useTranslation();
   const sectionRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const [loading, setLoading] = useState(false);
@@ -46,44 +48,44 @@ const Contact = () => {
 
   return (
     <div ref={sectionRef} className="contacts" id="contacts">
-      <div className="title">Контакты</div>
+      <div className="title">{t('contact.title')}</div>
       <div className="form-wrapper">
         <div className="form-body">
           <form ref={formRef} onSubmit={handleSubmit} className="w-full flex flex-col sm:gap-7 gap-4">
             <div>
-              <label htmlFor="name">Имя</label>
+              <label htmlFor="name">{t('contact.name')}</label>
               <input
                 type="text"
                 id="name"
                 name="name"
                 value={form.name}
                 onChange={handleChange}
-                placeholder="Как к Вам обращаться?"
+                placeholder={t('contact.namePlaceholder')}
                 required
               />
             </div>
 
             <div id="contact">
-              <label htmlFor="email">Email / Telegram / WhatsApp</label>
+              <label htmlFor="email">{t('contact.email')}</label>
               <input
                 type="text"
                 id="email"
                 name="email"
                 value={form.email}
                 onChange={handleChange}
-                placeholder="Куда удобнее получить ответ?"
+                placeholder={t('contact.emailPlaceholder')}
                 required
               />
             </div>
 
             <div>
-              <label htmlFor="message">Сообщение</label>
+              <label htmlFor="message">{t('contact.message')}</label>
               <textarea
                 id="message"
                 name="message"
                 value={form.message}
                 onChange={handleChange}
-                placeholder="Есть вакансия или интересный проект? Напишите пару слов :)"
+                placeholder={t('contact.messagePlaceholder')}
                 rows={2}
                 required
               />
@@ -92,7 +94,7 @@ const Contact = () => {
             <button type="submit">
               <div className="cta-button group">
                 <div className="bg-circle" />
-                <p className="text">{loading ? 'Отправка...' : 'Отправить'}</p>
+                <p className="text">{loading ? t('contact.sending') : t('contact.send')}</p>
                 <div className="arrow-wrapper">
                   <img src="/images/mail-login.svg" alt="email" className="animate-pulse" />
                 </div>
@@ -108,7 +110,7 @@ const Contact = () => {
               }
             )}
           >
-            <p>Сообщение отправлено!</p>
+            <p>{t('contact.success')}</p>
           </div>
         </div>
       </div>

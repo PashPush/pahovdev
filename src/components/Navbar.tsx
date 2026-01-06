@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { navLinks } from '../constants';
 import { classNames } from '../lib/classNames';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const NavBar = () => {
+  const { t } = useTranslation();
   const [currentLink, setCurrentLink] = useState('#hero');
   const [scrolled, setScrolled] = useState(false);
 
@@ -62,10 +65,10 @@ const NavBar = () => {
 
         <nav className="desktop">
           <ul>
-            {navLinks.slice(1, 6).map(({ link, name }) => (
-              <li key={name} className="group">
+            {navLinks.slice(1, 6).map(({ link, key }) => (
+              <li key={key} className="group">
                 <a href={link}>
-                  <span>{name}</span>
+                  <span>{t(`nav.${key}`)}</span>
                   <span className={classNames('underline', { active: link === currentLink })} />
                 </a>
               </li>
@@ -73,9 +76,11 @@ const NavBar = () => {
           </ul>
         </nav>
 
+        <LanguageSwitcher />
+
         <a href="#contact" className="contact-btn group">
           <div className={classNames('inner', { active: currentLink === '#contact' })}>
-            <span>Контакты</span>
+            <span>{t('nav.contactBtn')}</span>
           </div>
         </a>
       </div>

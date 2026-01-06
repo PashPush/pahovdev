@@ -311,14 +311,30 @@ canvas {
         }
       }
     }
+
+    .lang-switcher {
+      @apply flex gap-1 mr-2 md:mr-4;
+
+      button {
+        @apply px-1 py-1 text-sm rounded text-white/60 cursor-pointer hover:text-white transition-colors duration-200;
+
+        &.active {
+          @apply text-white bg-white/20;
+        }
+      }
+    }
   }
 
   @media (height <= 600px) {
     .navbar {
-      @apply py-2;
+      @apply py-2 h-14;
 
       &.not-scrolled {
         @apply top-0;
+      }
+
+      .logo {
+        @apply text-xl;
       }
     }
   }

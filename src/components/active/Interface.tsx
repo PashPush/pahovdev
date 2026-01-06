@@ -1,6 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 import { useRef, useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import Chainsaw from './Chainsaw';
 import gsap from 'gsap';
 import { useMediaQuery } from 'react-responsive';
@@ -8,6 +9,7 @@ import { classNames } from '../../lib/classNames';
 import Chips from './Chips';
 
 const Interface = () => {
+  const { t } = useTranslation();
   const isMobile = useMediaQuery({ maxWidth: 460 });
   const [count, setCount] = useState(0);
   const [isActivated, setIsActivated] = useState(true);
@@ -226,10 +228,10 @@ const Interface = () => {
         onClick={handleClick}
         className={classNames('interface', { done: count > 2, 'animate-wiggle': !isActivated })}
       >
-        <span className={classNames('inter', { 'no-margin': isMobile })}>интер</span>
+        <span className={classNames('inter', { 'no-margin': isMobile })}>{t('hero.inter')}</span>
         <Chips />
         <Chainsaw />
-        <span className="faces">фейсы</span>
+        <span className="faces">{t('hero.faces')}</span>
       </a>
       <span
         onClick={handleClick}
