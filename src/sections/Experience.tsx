@@ -94,7 +94,7 @@ const Experience = () => {
                       </div>
                       <div className="expText flex xl:gap-20 md:gap-10 gap-5 relative z-20">
                         <div className="timeline-logo">
-                          <img src={card.logoPath} alt={card.logoAlt} />
+                          <img src={card.logoPath} alt={card.logoAlt} width={50} height={50} loading="lazy" />
                         </div>
                         <div>
                           <h2 className="font-semibold sm:text-3xl text-2xl">{t(`expCards.${card.index}.title`)}</h2>

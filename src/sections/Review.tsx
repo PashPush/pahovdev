@@ -45,8 +45,15 @@ const Review = () => {
             className="feedback-card"
           >
             <div className="flex items-center gap-3">
-              <div>
-                <img src={feedback.imgPath} alt={t(`feedbacks.${feedback.index}.name`)} className="rounded-full md:w-20 w-15" />
+              <div className="shrink-0">
+                <img
+                  src={feedback.imgPath}
+                  alt={t(`feedbacks.${feedback.index}.name`)}
+                  width={60}
+                  height={60}
+                  className="rounded-full md:w-20 w-15 aspect-square object-cover"
+                  loading="lazy"
+                />
               </div>
               <div>
                 <p className="font-bold">{t(`feedbacks.${feedback.index}.name`)}</p>

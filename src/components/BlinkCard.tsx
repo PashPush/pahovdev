@@ -25,20 +25,28 @@ type BlinkCardProps = {
 };
 const BlinkCard = ({ card, index, icon = 'stars', children, className = '' }: BlinkCardProps) => {
   const cardRefs = useRef<(HTMLElement | null)[]>([]);
+  const rafRef = useRef<number | null>(null);
 
   const handleMouseMove = (index: number) => (e: React.MouseEvent<HTMLDivElement>) => {
     const card = cardRefs.current[index] as HTMLElement;
     if (!card) return;
 
-    const rect = card.getBoundingClientRect();
-    const mouseX = e.clientX - rect.left - rect.width / 2;
-    const mouseY = e.clientY - rect.top - rect.height / 2;
+    const clientX = e.clientX;
+    const clientY = e.clientY;
 
-    let angle = Math.atan2(mouseY, mouseX) * (180 / Math.PI);
+    if (rafRef.current) return;
 
-    angle = (angle + 360) % 360;
+    rafRef.current = requestAnimationFrame(() => {
+      const rect = card.getBoundingClientRect();
+      const mouseX = clientX - rect.left - rect.width / 2;
+      const mouseY = clientY - rect.top - rect.height / 2;
 
-    card.style.setProperty('--start', `${angle + 60}`);
+      let angle = Math.atan2(mouseY, mouseX) * (180 / Math.PI);
+      angle = (angle + 360) % 360;
+
+      card.style.setProperty('--start', `${angle + 60}`);
+      rafRef.current = null;
+    });
   };
 
   return (

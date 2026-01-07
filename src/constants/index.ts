@@ -8,17 +8,6 @@ const navLinks = [
   { key: 'contact', link: '#contact' },
 ];
 
-const words = [
-  { key: 'ideas', imgPath: '/images/ideas.svg' },
-  { key: 'concepts', imgPath: '/images/concepts.svg' },
-  { key: 'designs', imgPath: '/images/designs.svg' },
-  { key: 'code', imgPath: '/images/code.svg' },
-  { key: 'fantasies', imgPath: '/images/ideas.svg' },
-  { key: 'creative', imgPath: '/images/concepts.svg' },
-  { key: 'sketches', imgPath: '/images/designs.svg' },
-  { key: 'wishes', imgPath: '/images/code.svg' },
-];
-
 const expCards = [
   {
     index: 0,
@@ -56,11 +45,6 @@ const feedbacks = [
   { index: 2, imgPath: '/images/sergey.webp', icon: '🚀' },
 ];
 
-const stickers = [
-  { index: 0 },
-  { index: 1 },
-  { index: 2 },
-  { index: 3 },
-];
+const stickers = [{ index: 0 }, { index: 1 }, { index: 2 }, { index: 3 }];
 
-export { words, navLinks, expCards, feedbacks, stickers };
+export { navLinks, expCards, feedbacks, stickers };

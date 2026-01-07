@@ -39,7 +39,7 @@ const Projects = () => {
         <div className="projects-layout">
           <div ref={project1Ref} className="first-project-wrapper">
             <div className="image-wrapper bg-[#168be8]">
-              <img src="/images/project-pt.webp" alt="Power Thesaurus" />
+              <img src="/images/project-pt.webp" alt="Power Thesaurus" loading="lazy" />
             </div>
             <div className="text-content">
               <h2>{t('projects.pt.name')}</h2>
@@ -50,14 +50,14 @@ const Projects = () => {
           <div className="project-list-wrapper overflow-hidden">
             <div className="project" ref={project2Ref}>
               <div className="image-wrapper project-index">
-                <img src="/images/project-index.webp" alt="Index Marketing" />
+                <img src="/images/project-index.webp" alt="Index Marketing" loading="lazy" />
               </div>
               <h2>{t('projects.index.name')}</h2>
             </div>
 
             <div className="project" ref={project3Ref}>
               <div className="image-wrapper project-sagama">
-                <img src="/images/project-sagama.webp" alt="Sagama" />
+                <img src="/images/project-sagama.webp" alt="Sagama" loading="lazy" />
               </div>
               <h2>{t('projects.sagama.name')}</h2>
             </div>

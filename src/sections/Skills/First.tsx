@@ -75,10 +75,7 @@ const testing: Skill[] = [
   { id: 'figma', name: 'Figma', Icon: SiFigma, color: '#dd8fa9', colorBack: '#ab637d' },
 ];
 
-const SkillBadge = memo(({ skill }: { skill: Skill }) => {
-  const isMobile = useMediaQuery({ maxWidth: 767 });
-  const horizontal = useMediaQuery({ maxHeight: 600 });
-
+const SkillBadge = memo(({ skill, iconSize }: { skill: Skill; iconSize: number }) => {
   const { Icon } = skill;
 
   return (
@@ -90,15 +87,9 @@ const SkillBadge = memo(({ skill }: { skill: Skill }) => {
     >
       <span style={{ background: skill.color }} className="skill-icon">
         {typeof Icon !== 'string' ? (
-          <Icon size={isMobile || horizontal ? 24 : 40} color="#fff" />
+          <Icon size={iconSize} color="#fff" />
         ) : (
-          <img
-            src={Icon}
-            alt="Zustand"
-            width={isMobile || horizontal ? 24 : 40}
-            height={isMobile || horizontal ? 24 : 40}
-            loading="lazy"
-          />
+          <img src={Icon} alt="Zustand" width={iconSize} height={iconSize} loading="lazy" />
         )}
       </span>
       <span className="skill-text" style={{ lineHeight: 1 }}>
@@ -112,6 +103,9 @@ SkillBadge.displayName = 'SkillBadge';
 
 const First = () => {
   const { t } = useTranslation();
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+  const horizontal = useMediaQuery({ maxHeight: 600 });
+  const iconSize = isMobile || horizontal ? 24 : 40;
   const sectionRef = useRef<HTMLDivElement>(null);
   const frontendRef = useRef<HTMLDivElement>(null);
   const backendRef = useRef<HTMLDivElement>(null);
@@ -170,7 +164,7 @@ const First = () => {
             <h2 className="first-title">{t('skills.first.frontend')}</h2>
             <ul>
               {frontend.map(s => (
-                <SkillBadge key={s.id} skill={s} />
+                <SkillBadge key={s.id} skill={s} iconSize={iconSize} />
               ))}
             </ul>
           </div>
@@ -181,7 +175,7 @@ const First = () => {
             <h2 className="first-title">{t('skills.first.tooling')}</h2>
             <ul>
               {backendAndTools.map(s => (
-                <SkillBadge key={s.id} skill={s} />
+                <SkillBadge key={s.id} skill={s} iconSize={iconSize} />
               ))}
             </ul>
           </div>
@@ -192,7 +186,7 @@ const First = () => {
             <h2 className="first-title">{t('skills.first.testing')}</h2>
             <ul>
               {testing.map(s => (
-                <SkillBadge key={s.id} skill={s} />
+                <SkillBadge key={s.id} skill={s} iconSize={iconSize} />
               ))}
             </ul>
           </div>

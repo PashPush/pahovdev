@@ -1,5 +1,6 @@
 let canvasEl, gl, uniforms, shaderProgram, animationId;
 let contextLost = false;
+let isVisible = false;
 
 const pointer = {
   x: 0,
@@ -31,14 +32,9 @@ function initWebGL() {
 
   if (gl) {
     contextLost = false;
-    setupEvents();
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
-
-    if (animationId) {
-      cancelAnimationFrame(animationId);
-    }
-    render();
+    setupEvents();
 
     if (contacts && contacts.classList.contains('fallback-bg')) {
       contacts.classList.remove('fallback-bg');
@@ -172,12 +168,14 @@ function initShader() {
 }
 
 function render() {
-  if (contextLost || !gl) {
+  if (contextLost || !gl || !isVisible) {
+    animationId = null;
     return;
   }
 
   if (gl.isContextLost()) {
     contextLost = true;
+    animationId = null;
     return;
   }
 
@@ -192,6 +190,19 @@ function render() {
 
   gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
   animationId = requestAnimationFrame(render);
+}
+
+function startRenderLoop() {
+  if (!animationId && isVisible && !contextLost && gl) {
+    render();
+  }
+}
+
+function stopRenderLoop() {
+  if (animationId) {
+    cancelAnimationFrame(animationId);
+    animationId = null;
+  }
 }
 
 function resizeCanvas() {
@@ -222,10 +233,35 @@ function setupEvents() {
   });
 
   document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'visible' && !contextLost && gl && !animationId) {
-      render();
+    if (document.visibilityState === 'visible') {
+      startRenderLoop();
+    } else {
+      stopRenderLoop();
     }
   });
+
+  if ('MutationObserver' in window && canvasEl) {
+    const checkVisibility = () => {
+      const style = window.getComputedStyle(canvasEl);
+      const nowVisible = style.display !== 'none';
+      if (nowVisible !== isVisible) {
+        isVisible = nowVisible;
+        if (isVisible) {
+          startRenderLoop();
+        } else {
+          stopRenderLoop();
+        }
+      }
+    };
+
+    const observer = new MutationObserver(checkVisibility);
+    observer.observe(canvasEl, { attributes: true, attributeFilter: ['style', 'class'] });
+
+    checkVisibility();
+  } else {
+    isVisible = true;
+    startRenderLoop();
+  }
 
   function updateMousePosition(eX, eY) {
     pointer.tX = eX;
