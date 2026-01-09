@@ -13,13 +13,16 @@ i18n
       ru: { translation: ru },
       en: { translation: en },
     },
+    supportedLngs: ['ru', 'en'],
     fallbackLng: 'ru',
+    load: 'languageOnly',
     interpolation: {
       escapeValue: false,
     },
     detection: {
       order: ['localStorage', 'navigator'],
       caches: ['localStorage'],
+      convertDetectedLanguage: (lng: string) => lng.split('-')[0],
     },
   });
 

@@ -27,7 +27,7 @@ const LanguageSwitcher = () => {
   return (
     <div className="lang-switcher">
       {languages.map(({ code, label }) => (
-        <button key={code} onClick={() => handleChange(code)} className={i18n.language === code ? 'active' : ''}>
+        <button key={code} onClick={() => handleChange(code)} className={i18n.resolvedLanguage === code ? 'active' : ''}>
           {label}
         </button>
       ))}
