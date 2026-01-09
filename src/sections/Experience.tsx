@@ -17,11 +17,11 @@ const Experience = () => {
         xPercent: -100,
         opacity: 0,
         transformOrigin: 'left left',
-        duration: 1,
+        duration: 0.9,
         ease: 'power2.inOut',
         scrollTrigger: {
           trigger: card as HTMLElement,
-          start: 'top 80%',
+          start: 'top 90%',
         },
       });
     });
@@ -46,11 +46,11 @@ const Experience = () => {
       gsap.from(text as HTMLElement, {
         opacity: 0,
         xPercent: 0,
-        duration: 1,
+        duration: 0.9,
         ease: 'power2.inOut',
         scrollTrigger: {
           trigger: text as HTMLElement,
-          start: 'top 60%',
+          start: 'top 70%',
         },
       });
     }, '<');

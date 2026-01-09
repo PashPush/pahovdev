@@ -22,11 +22,11 @@ const Projects = () => {
         {
           y: 0,
           opacity: 1,
-          duration: 1,
+          duration: 0.9,
           delay: 0.2 * (index + 1),
           scrollTrigger: {
             trigger: card,
-            start: 'top bottom-=70',
+            start: 'top bottom-=50',
           },
         }
       );
